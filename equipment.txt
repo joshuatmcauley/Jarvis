@@ -1,0 +1,26 @@
+JARVIS Equipment List
+=====================
+
+Core Hardware:
+- Raspberry Pi 5
+- Elecrow 7-inch display (optional)
+- Pi Camera module 3 (for future features)
+
+RF Remote Control Hardware:
+- ESP32 DevKit board (or Arduino Uno/Nano)
+- 433MHz RF Receiver module (HC-12, RXB6, or similar)
+- 433MHz RF Transmitter module (FS1000A, STX882, or similar)
+- Energizer remote control plug 2-pack (from B&M Bargains UK)
+- Breadboard and jumper wires
+- USB cable for ESP32/Arduino connection to Raspberry Pi
+
+Optional Enhancements:
+- 17.3cm antenna wire for RF transmitter (improves range)
+- Project case for ESP32 and RF modules
+- Powered USB hub (for stable power supply)
+
+Approximate Cost:
+- RF modules: £5-10
+- ESP32: £5-10
+- Breadboard & wires: £5
+- Total: ~£15-25 for RF control addition

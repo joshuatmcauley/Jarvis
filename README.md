@@ -6,11 +6,13 @@ A simple desktop application for Raspberry Pi that serves as the foundation for 
 - Raspberry Pi 5
 - Elecrow 7-inch display (optional)
 - Pi Camera module 3 (for future features)
-- Arduino ESP32 (for future features)
+- Arduino ESP32 (for RF remote control)
+- 433MHz RF modules (for smart plug control)
 
 ## Features (Current)
 - 🖥️ Desktop application with GUI
 - 📊 System monitoring (CPU, Memory, Disk)
+- ⚡ RF remote control for smart plugs
 - ⏰ Real-time clock display
 - 🎨 Dark theme interface
 - 🔧 Extensible architecture for future features
@@ -62,13 +64,40 @@ JARVIS/
 └── README.md             # This file
 ```
 
+## RF Remote Control Setup
+
+JARVIS now supports controlling RF remote control plugs (like Energizer plugs from B&M Bargains)!
+
+### Quick Setup:
+
+1. **Get the hardware:**
+   - ESP32 or Arduino board (~£5-10)
+   - 433MHz RF transmitter/receiver modules (~£5-10)
+   - See `equipment.txt` for full list
+
+2. **Capture RF codes:**
+   - Follow instructions in `RF_SETUP_GUIDE.md`
+   - Sniff codes from your existing remote
+
+3. **Upload controller:**
+   - Configure `energizer_rf_controller.ino`
+   - Upload to ESP32
+
+4. **Control your plugs:**
+   - Via JARVIS app (click "RF Plug Control")
+   - Via phone browser (ESP32 web interface)
+   - Via Python scripts
+
+📖 **Full instructions:** See `QUICK_START_RF.md` for step-by-step guide
+
 ## Future Features (Coming Soon)
 - 🎤 Voice recognition and speech synthesis
 - 📷 Camera integration
 - 🌐 Weather information
 - 📰 News updates
 - 🎵 Music control
-- 🏠 Home automation
+- ⏱️ Scheduled plug control
+- 🤖 Smart automation rules
 
 ## Troubleshooting
 
