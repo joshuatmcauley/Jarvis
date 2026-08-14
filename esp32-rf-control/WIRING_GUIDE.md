@@ -9,16 +9,19 @@
 - **WiFi**: Built-in 2.4 GHz WiFi
 
 ### RF Receiver Module (RX480E - 433 MHz)
-- **Operating Voltage**: 3.3V - 5V (typically 3.3V)
+- **Operating Voltage**: 3.3V - 5V DC
 - **Frequency**: 433 MHz
-- **Output**: Digital signal (HIGH/LOW)
-- **Range**: Up to 100m in open space
+- **Output**: 4 digital channels (D0, D1, D2, D3) + VT (valid transmission)
+- **Built-in EV1527 decoder** - No external decoding needed!
+- **Range**: Up to 50m in open space
+- **Modes**: Momentary, Toggle, Interlock
 
-### RF Transmitter Module (TX118SA - 433 MHz)
-- **Operating Voltage**: 3.3V - 12V (5V recommended)
+### RF Transmitter Module (TX118SA - 4-button remote)
+- **Operating Voltage**: Uses CR2032 battery (3V)
 - **Frequency**: 433 MHz
-- **Input**: Digital signal (HIGH/LOW)
-- **Power**: Higher voltage = better range
+- **Encoding**: EV1527
+- **Buttons**: 4 buttons (K1, K2, K3, K4)
+- **Button mapping**: K1→D0, K2→D1, K3→D3, K4→D2
 
 ## Detailed Wiring Instructions
 
