@@ -1,0 +1,8 @@
+{
+  "name": "Iphone cursor agent",
+  "agentId": "bc-552ac9dc-5afe-44f5-bf2b-9ee0d966172e",
+  "url": "https://cursor.com/agents/bc-552ac9dc-5afe-44f5-bf2b-9ee0d966172e",
+  "repo": "https://github.com/joshuatmcauley/Jarvis",
+  "created": "2026-08-15",
+  "notes": "Josh's daily iPhone Jarvis. Speak in the Cursor iOS app on THIS agent, or send a Siri follow-up to this agentId. Memory lives in memory/ in git, not only in chat."
+}

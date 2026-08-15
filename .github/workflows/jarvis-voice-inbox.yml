@@ -1,0 +1,53 @@
+name: Jarvis voice inbox
+
+on:
+  issues:
+    types: [opened, labeled]
+
+jobs:
+  wake-agent:
+    if: contains(join(github.event.issue.labels.*.name, ','), 'jarvis')
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Send follow-up to the pinned daily agent
+        env:
+          CURSOR_API_KEY: ${{ secrets.CURSOR_API_KEY }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE_URL: ${{ github.event.issue.html_url }}
+        run: |
+          set -euo pipefail
+          if [ -z "${CURSOR_API_KEY:-}" ]; then
+            echo "Add repository secret CURSOR_API_KEY from https://cursor.com/dashboard/api"
+            exit 0
+          fi
+          AGENT_ID="bc-552ac9dc-5afe-44f5-bf2b-9ee0d966172e"
+          python3 - <<'PY'
+          import json, os
+          payload = {
+              "prompt": {
+                  "text": (
+                      "iPhone voice inbox from GitHub issue: "
+                      + os.environ["ISSUE_TITLE"]
+                      + "\n\n"
+                      + (os.environ.get("ISSUE_BODY") or "")
+                      + "\n\nSource: "
+                      + os.environ["ISSUE_URL"]
+                      + "\n\nFile this in memory/ (facts/journal/inbox as needed) and commit."
+                  )
+              }
+          }
+          open("/tmp/cursor-payload.json", "w").write(json.dumps(payload))
+          PY
+          CODE=$(curl -sS -o /tmp/cursor-resp.json -w "%{http_code}" \
+            -X POST "https://api.cursor.com/v1/agents/${AGENT_ID}/runs" \
+            -H "Authorization: Bearer ${CURSOR_API_KEY}" \
+            -H "Content-Type: application/json" \
+            --data @/tmp/cursor-payload.json)
+          echo "Cursor API status: ${CODE}"
+          cat /tmp/cursor-resp.json
+          if [ "$CODE" != "200" ] && [ "$CODE" != "201" ] && [ "$CODE" != "202" ]; then
+            echo "Follow-up not accepted. Open the pinned agent and paste the issue by hand."
+          fi
