@@ -1,0 +1,792 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Coleraine Driving Test — Complete Guide</title><style>
+@page { size: A4; margin: 0; }
+* { box-sizing: border-box; }
+html { counter-reset: page; }
+body { margin: 0; color: #263238; background: #dfe7e9; font: 10.6pt/1.46 Arial, Helvetica, sans-serif; }
+.page { counter-increment: page; width: 210mm; min-height: 297mm; margin: 0 auto 8mm; padding: 17mm 16mm 15mm; background: white; position: relative; page-break-after: always; overflow: hidden; }
+.page-num::after { content: counter(page); }
+footer { position: absolute; left: 16mm; right: 16mm; bottom: 8mm; border-top: 1px solid #cad6d9; padding-top: 3mm; display: flex; justify-content: space-between; color: #6b7d83; font-size: 7.5pt; letter-spacing: .08em; }
+h1,h2,h3,h4 { margin: 0; line-height: 1.12; color: #173b43; }
+h1 { font-size: 38pt; letter-spacing: -.04em; }
+h2 { font-size: 25pt; letter-spacing: -.025em; }
+h3 { font-size: 14pt; }
+h4 { font-size: 8.5pt; letter-spacing: .11em; color: #047f80; }
+p { margin: 2.5mm 0; }
+ul,ol { margin: 2mm 0 2mm 5mm; padding-left: 4mm; }
+li { margin: 1.15mm 0; }
+.chapter-head { border-bottom: 3px solid #ffb000; padding-bottom: 5mm; margin-bottom: 6mm; }
+.chapter-head span, .eyebrow { color: #008f91; font-size: 8pt; font-weight: bold; letter-spacing: .18em; }
+.chapter-head h2 { margin-top: 2mm; }
+.cover { background: #123940; color: white; padding: 22mm 18mm; }
+.cover h1,.cover h2 { color: white; }
+.cover .route { color: #ffbf26; font-size: 12pt; letter-spacing: .18em; font-weight: bold; }
+.cover .subtitle { font-size: 16pt; max-width: 150mm; margin-top: 8mm; color: #d9eeee; }
+.cover-band { margin: 20mm -18mm 0; padding: 12mm 18mm; background: #00a0a0; display: grid; grid-template-columns: repeat(3,1fr); gap: 6mm; }
+.cover-band b { display:block; font-size: 21pt; color:white; }
+.cover-band span { font-size: 8.5pt; text-transform: uppercase; letter-spacing: .09em; }
+.cover .note { position:absolute; left:18mm; right:18mm; bottom:28mm; border-left:4px solid #ffb000; padding-left:5mm; color:#d5e4e6; }
+.toc { columns: 2; column-gap: 10mm; }
+.toc h3 { break-after: avoid; margin: 5mm 0 2mm; color:#008486; }
+.toc ul { list-style:none; margin-left:0; padding:0; }
+.toc li { border-bottom:1px dotted #bac8cb; padding:1.2mm 0; font-size:9.5pt; }
+.callout { border-left: 4px solid #00a0a0; background:#edf8f8; padding:4mm 5mm; margin:5mm 0; border-radius:0 3mm 3mm 0; }
+.callout.warn { border-color:#ff9f1a; background:#fff7e8; }
+.callout.danger { border-color:#d1495b; background:#fff0f2; }
+.callout b { color:#173b43; font-size:9pt; letter-spacing:.06em; }
+.callout p { margin-bottom:0; }
+.three-grid,.four-grid,.two-grid { display:grid; gap:4mm; }
+.two-grid { grid-template-columns:1fr 1fr; }
+.three-grid { grid-template-columns:repeat(3,1fr); }
+.four-grid { grid-template-columns:1fr 1fr; }
+.card { border:1px solid #cad7da; border-radius:3mm; padding:4mm; break-inside:avoid; }
+.card h3 { color:#008486; margin-bottom:2mm; }
+.situation { border:1px solid #c7d4d7; border-radius:4mm; overflow:hidden; margin:5mm 0; break-inside:avoid; }
+.situation-title { background:#173b43; color:white; padding:4mm 5mm; display:flex; align-items:center; gap:5mm; }
+.situation-title span { color:#ffbf26; font-size:7pt; font-weight:bold; letter-spacing:.18em; }
+.situation-title h3 { color:white; }
+.situation .four-grid { padding:4mm 5mm 1mm; }
+.situation ul { font-size:9.1pt; }
+.mistakes { margin:0 5mm 3mm; border-top:1px solid #d4dfe1; padding-top:3mm; }
+.mistakes ul { display:grid; grid-template-columns:repeat(3,1fr); gap:3mm; list-style:none; padding:0; margin-left:0; }
+.golden { background:#ffbf26; color:#173b43; padding:3mm 5mm; font-size:10.5pt; }
+.golden b { margin-right:4mm; font-size:8pt; letter-spacing:.13em; }
+.diagram { width:100%; height:auto; margin:4mm 0; font-family:Arial; font-size:14px; font-weight:bold; fill:#263238; }
+.diagram .small { font-size:12px; font-weight:normal; }
+.step { display:flex; gap:4mm; margin:4mm 0; }
+.step b { background:#00a0a0; color:white; width:9mm; height:9mm; border-radius:50%; flex:none; display:grid; place-items:center; }
+.step p { margin:0; }
+.check { list-style:none; padding:0; margin-left:0; }
+.check li::before { content:"□"; color:#00a0a0; font-size:14pt; margin-right:3mm; vertical-align:-1px; }
+table { width:100%; border-collapse:collapse; margin:4mm 0; font-size:9.2pt; }
+th { background:#173b43; color:white; text-align:left; padding:2.5mm; }
+td { padding:2.5mm; border-bottom:1px solid #d4dfe1; vertical-align:top; }
+tr:nth-child(even) td { background:#f4f7f8; }
+.route-strip { display:flex; align-items:center; margin:5mm 0; }
+.route-strip div { flex:1; text-align:center; position:relative; }
+.route-strip div::after { content:""; position:absolute; height:3px; background:#ffb000; top:5mm; left:55%; width:90%; z-index:0; }
+.route-strip div:last-child::after { display:none; }
+.route-strip b { width:10mm; height:10mm; margin:auto; border-radius:50%; background:#00a0a0; color:white; display:grid; place-items:center; position:relative; z-index:1; }
+.route-strip span { display:block; margin-top:2mm; font-size:8pt; }
+.tiny { font-size:8pt; color:#60757a; }
+.dense { font-size:9.1pt; }
+.rule { border-top:1px solid #d3dfe1; margin:5mm 0; }
+.cheat { background:#173b43; color:white; }
+.cheat h2,.cheat h3,.cheat h4 { color:white; }
+.cheat .chapter-head { border-color:#ffbf26; }
+.cheat .card { border-color:#42636a; background:#20474e; }
+.cheat .gold { color:#ffbf26; }
+.sources li { margin:2.5mm 0; word-break:break-word; }
+@media print { body { background:white; } .page { margin:0; } }
+</style></head>
+<body>
+<article class="page cover">
+  <div class="route">NORTHERN IRELAND · CATEGORY B</div>
+  <h1 style="margin-top:14mm">Coleraine<br>Driving Test</h1>
+  <h2 style="font-size:24pt;color:#ffbf26;margin-top:4mm">Complete Survival Guide</h2>
+  <p class="subtitle">A practical, visual handbook for calm decisions, clean observations and safe driving under test pressure.</p>
+  <div class="cover-band">
+    <div><b>12</b><span>focused parts</span></div>
+    <div><b>40 min</b><span>approximate drive</span></div>
+    <div><b>1 goal</b><span>safe, legal, independent</span></div>
+  </div>
+  <div class="note"><b>Prepared August 2026.</b><br>This is an independent study aid, not an official DVA publication. Road layouts, signs and test procedures can change. Your appointment letter, live signs/markings and your Approved Driving Instructor always take priority.</div>
+  <footer><span>COLERAINE · BT52 2NJ</span><span class="page-num"></span></footer>
+</article>
+    <article class="page ">
+      <header class="chapter-head"><span>START HERE</span><h2>How to use this guide</h2></header>
+      
+<div class="route-strip"><div><b>1</b><span>Read the core routines</span></div><div><b>2</b><span>Practise one situation</span></div><div><b>3</b><span>Debrief the drive</span></div><div><b>4</b><span>Use the cheat sheet</span></div></div>
+<div class="two-grid">
+ <div class="card"><h3>Do this</h3><ul><li>Read Parts 1–2 once.</li><li>Before each lesson, choose one situation card.</li><li>Say the hazards and plan aloud with your instructor.</li><li>Afterwards, write one trigger and one better action.</li></ul></div>
+ <div class="card"><h3>Do not do this</h3><ul><li>Do not memorise an alleged test route.</li><li>Do not force a turn because an instruction was late.</li><li>Do not treat the speed limit as a target.</li><li>Do not replace instructor-led practice with this guide.</li></ul></div>
+</div>
+<div class="callout warn"><b>Three corrections to the outline you supplied</b><p>In Northern Ireland, independent driving does <b>not</b> use sat-nav. The current DVA car test uses one reversing exercise from reversing around a corner, turning in the road, or reverse parking on-road/into a bay; it also includes an emergency stop. Forward bay parking and pulling up on the right are useful skills but are not listed by DVA as the set NI reversing exercises.</p></div>
+<h3 style="margin-top:6mm">The pressure rule</h3>
+<p>When uncertain, keep the car safe and legal first. A wrong direction is not automatically a fault. A sudden lane change, unsafe gap or missed red light can be.</p>
+<div class="callout tip"><b>Say this to yourself</b><p>“I can miss the turn. I cannot miss the hazard.”</p></div>
+      <footer><span>COLERAINE DRIVING TEST · COMPLETE GUIDE</span><span class="page-num"></span></footer>
+    </article>
+    <article class="page ">
+      <header class="chapter-head"><span>ROAD MAP</span><h2>Contents</h2></header>
+      
+<div class="toc">
+<h3>Part 1 · Test fundamentals</h3><ul><li>What happens on the day</li><li>Faults and recovery</li><li>Independent driving</li><li>Vehicle safety questions</li><li>Test-day documents and vehicle</li></ul>
+<h3>Part 2 · Core routine</h3><ul><li>MSPSL and observations</li><li>Speed, signals and position</li><li>Planning and clearance</li></ul>
+<h3>Part 3 · Junctions</h3><ul><li>T-junctions, STOP and poor visibility</li><li>Major-to-minor turns</li><li>Lights, crossings and boxes</li></ul>
+<h3>Part 4 · Roundabouts</h3><ul><li>Lane choice and signals</li><li>Standard, spiral and mini-roundabouts</li><li>Wrong-lane recovery</li><li>Lodge Road and Coleraine practice zones</li></ul>
+<h3>Part 5 · Lanes and faster roads</h3><ul><li>Lane changes and blind spots</li><li>Dual carriageways, joining and leaving</li></ul>
+<h3>Part 6 · Hazards</h3><ul><li>People, cycles, large vehicles</li><li>Parked cars and meeting traffic</li><li>Weather, roadworks, emergency vehicles</li></ul>
+<h3>Part 7 · Manoeuvres</h3><ul><li>Reverse parking</li><li>Reversing around a corner</li><li>Turning in the road</li><li>Correction and observations</li></ul>
+<h3>Part 8 · Moving and stopping</h3><ul><li>Safe move-off</li><li>Kerbside stops and hill starts</li><li>Emergency stop</li></ul>
+<h3>Part 9 · Signs and markings</h3><ul><li>Lights and arrows</li><li>Limits, lanes and crossings</li></ul>
+<h3>Part 10 · Coleraine focus</h3><ul><li>Test-centre environment</li><li>Practice zones and four loops</li></ul>
+<h3>Part 11 · Mistakes and recovery</h3><ul><li>Wrong turn, stall, hesitation, speed</li><li>Other drivers and reset routine</li></ul>
+<h3>Part 12 · Quick reference</h3><ul><li>Five-second checklists</li><li>Decision tree</li><li>Final-day plan</li><li>Official sources</li></ul>
+</div>
+      <footer><span>COLERAINE DRIVING TEST · COMPLETE GUIDE</span><span class="page-num"></span></footer>
+    </article>
+    <article class="page ">
+      <header class="chapter-head"><span>PART 1 · TEST FUNDAMENTALS</span><h2>How the Northern Ireland test works</h2></header>
+      
+<div class="three-grid">
+ <div class="card"><h3>Before driving</h3><p>Eyesight check: read a registration plate at the required distance. If unsuccessful, the drive does not continue.</p></div>
+ <div class="card"><h3>Safety checks</h3><p>One “show me” and one “tell me” vehicle-safety question. One driving fault is recorded if one or both answers are wrong.</p></div>
+ <div class="card"><h3>On the road</h3><p>About 40 minutes, typical roads and traffic, one reversing exercise, emergency stop and a section of independent driving.</p></div>
+</div>
+<h3 style="margin-top:6mm">What the examiner is really assessing</h3>
+<table><tr><th>Area</th><th>What good looks like</th><th>What creates risk</th></tr>
+<tr><td>Observation</td><td>Checks are timely, targeted and acted upon.</td><td>Looking without responding; missing a vulnerable road user.</td></tr>
+<tr><td>Control</td><td>Smooth steering, speed and pedals while maintaining observation.</td><td>Loss of control, coasting, harsh or late inputs.</td></tr>
+<tr><td>Planning</td><td>Early reading of signs, markings, gaps and developing hazards.</td><td>Last-second braking, lane changes or indecision.</td></tr>
+<tr><td>Judgement</td><td>Safe gaps without unnecessary delay.</td><td>Making another road user brake/change course, or repeated undue hesitation.</td></tr>
+<tr><td>Progress</td><td>Appropriate speed and confident movement when safe.</td><td>Driving too fast for conditions or holding up traffic without reason.</td></tr></table>
+<div class="callout warn"><b>Pass standard</b><p>DVA states that up to 15 driving faults can still result in a pass; 16 or more means a fail. One serious or dangerous fault means a fail. Do not count faults during the drive—keep driving safely.</p></div>
+      <footer><span>COLERAINE DRIVING TEST · COMPLETE GUIDE</span><span class="page-num"></span></footer>
+    </article>
+    <article class="page ">
+      <header class="chapter-head"><span>PART 1 · TEST FUNDAMENTALS</span><h2>Faults, mistakes and recovery</h2></header>
+      
+<div class="two-grid">
+ <div class="card"><h3>Driving fault</h3><p>A lapse that is not potentially dangerous in that instance. Repetition can show a pattern and become serious.</p></div>
+ <div class="card"><h3>Serious fault</h3><p>A fault with the potential to be dangerous, or a serious breach of the expected standard.</p></div>
+ <div class="card"><h3>Dangerous fault</h3><p>Actual danger to you, the examiner, the public or property. The test may be stopped if the examiner considers you a danger.</p></div>
+ <div class="card"><h3>Examiner action</h3><p>Verbal or physical intervention is powerful evidence of risk, but the classification depends on the full circumstances.</p></div>
+</div>
+<h3 style="margin-top:6mm">The 10-second recovery</h3>
+<div class="step"><b>1</b><p><b>Stabilise:</b> steer, speed, space. Finish the immediate task safely.</p></div>
+<div class="step"><b>2</b><p><b>Breathe:</b> one slow exhale. Release your grip and shoulders.</p></div>
+<div class="step"><b>3</b><p><b>Scan:</b> mirrors, road ahead, signs and next hazard.</p></div>
+<div class="step"><b>4</b><p><b>Reset:</b> say “new road, new plan.” Do not replay the event.</p></div>
+<div class="callout tip"><b>Never self-fail</b><p>You cannot reliably classify a fault while driving. A stall, wrong turn or imperfect manoeuvre may be minor—or no fault at all—if managed safely.</p></div>
+      <footer><span>COLERAINE DRIVING TEST · COMPLETE GUIDE</span><span class="page-num"></span></footer>
+    </article>
+    <article class="page ">
+      <header class="chapter-head"><span>PART 1 · TEST FUNDAMENTALS</span><h2>Independent driving—without sat-nav</h2></header>
+      
+<p>The examiner may ask you to follow traffic signs, up to three verbal directions supported by a diagram, or a combination. DVA explicitly says sat-nav cannot be used because independent driving requires your own decisions.</p>
+<div class="two-grid">
+ <div class="card"><h3>Before it starts</h3><ul><li>Listen to the full instruction.</li><li>Repeat it once if useful.</li><li>Ask for clarification while stationary.</li><li>Identify the first decision only.</li></ul></div>
+ <div class="card"><h3>While driving</h3><ul><li>Scan direction signs early.</li><li>Keep normal MSPSL routines.</li><li>Ask for confirmation if genuinely unsure.</li><li>Prioritise a safe lane over the requested route.</li></ul></div>
+</div>
+
+    <section class="situation">
+      <div class="situation-title"><span>SITUATION</span><h3>You miss an independent-driving turn</h3></div>
+      <div class="four-grid">
+        <div><h4>1 · BEFORE</h4><ul><li>Check mirrors and continue in your current safe lane.</li><li>Cancel any misleading signal.</li></ul></div>
+        <div><h4>2 · APPROACH</h4><ul><li>Do not brake sharply or cut across lanes.</li><li>Tell the examiner briefly: “I’ve missed that turn.”</li></ul></div>
+        <div><h4>3 · DURING</h4><ul><li>Follow the road safely.</li><li>Listen for help to rejoin the route.</li></ul></div>
+        <div><h4>4 · EXIT / FINISH</h4><ul><li>Rebuild your plan from the next sign.</li><li>Return to normal progress.</li></ul></div>
+      </div>
+      <div class="mistakes"><h4>COMMON MISTAKES</h4><ul><li>❌ Forcing the turn</li><li>❌ Stopping in a live lane</li><li>❌ Dwelling on the mistake</li></ul></div>
+      <div class="golden"><b>GOLDEN RULE</b> A wrong route is not a fault unless the driving used to take it is faulty.</div>
+    </section>
+      <footer><span>COLERAINE DRIVING TEST · COMPLETE GUIDE</span><span class="page-num"></span></footer>
+    </article>
+    <article class="page ">
+      <header class="chapter-head"><span>PART 1 · TEST FUNDAMENTALS</span><h2>“Show me / tell me” revision</h2></header>
+      
+<p>Wording can vary and controls differ by car. Practise in the exact test vehicle. Never operate a control unless it is safe.</p>
+<div class="two-grid dense">
+ <div class="card"><h3>Know how to show</h3><ul><li>Direction indicators and hazard lights</li><li>Brake lights (explain use of reflections or assistance)</li><li>Horn, when appropriate and stationary</li><li>Windscreen wash/wipe</li><li>Front/rear demisters</li><li>Dipped/main-beam headlights and warning lamp</li><li>Rear fog light and when it should be used</li><li>Parking brake and service brake operation</li><li>Power-assisted steering check</li></ul></div>
+ <div class="card"><h3>Know how to tell</h3><ul><li>Tyre pressure: handbook/label, reliable gauge, cold tyres, valve caps, spare if fitted</li><li>Tyre condition: no cuts/bulges; legal tread across the required breadth and circumference</li><li>Head restraint: rigid part roughly level with eyes/top of ears and close to head</li><li>ABS warning-light check</li><li>Engine oil: dipstick or vehicle system, level ground, engine procedure</li><li>Coolant: reservoir min/max when cold; never open hot</li><li>Brake fluid and washer-fluid reservoirs</li><li>Lights and reflectors: clean, secure and working</li></ul></div>
+</div>
+<div class="callout warn"><b>Under the bonnet</b><p>Be able to identify the oil, coolant, brake-fluid and screen-wash locations in your car and explain the check. You will not be asked to touch a hot engine or physically check fluid levels.</p></div>
+<h3 style="margin-top:5mm">Answer formula</h3><p><b>Identify → method → safe condition → expected result.</b> Example: “I would identify the coolant expansion tank, check the level against MIN/MAX when the engine is cold, and top up with the correct mixture only as described in the handbook.”</p>
+
+      <footer><span>COLERAINE DRIVING TEST · COMPLETE GUIDE</span><span class="page-num"></span></footer>
+    </article>
+    <article class="page ">
+      <header class="chapter-head"><span>PART 1 · TEST FUNDAMENTALS</span><h2>Test-day checklist</h2></header>
+      
+<div class="two-grid">
+ <div><h3>Bring</h3><ul class="check"><li>Appointment letter</li><li>Both parts of your NI photocard driving licence (check your letter)</li><li>Valid MOT certificate</li><li>Theory-test pass certificate or confirmation if required</li><li>Glasses/contact lenses if needed</li><li>Any recall evidence required for the vehicle</li></ul></div>
+ <div><h3>Vehicle</h3><ul class="check"><li>Appropriately insured, licensed and roadworthy</li><li>Clearly visible L-plates front and rear</li><li>Passenger seatbelt and integral head restraint</li><li>Interior mirror for examiner—not a visor mirror</li><li>Working lights, tyres and warning lamps</li><li>Fuel/charge and clean windows/mirrors</li></ul></div>
+</div>
+<div class="callout danger"><b>Use your appointment letter as the authority</b><p>Document requirements can depend on your licence and booking. DVA warns that missing required items can mean no test and loss of the fee.</p></div>
+<h3 style="margin-top:6mm">Night-before vehicle sweep</h3>
+<table><tr><th>Outside</th><th>Inside</th><th>Admin</th></tr><tr><td>Tyres, lights, plates, glass, leaks</td><td>Seat/mirrors, warning lights, demisters, controls</td><td>Documents, insurance, route to centre, arrival time</td></tr></table>
+
+      <footer><span>COLERAINE DRIVING TEST · COMPLETE GUIDE</span><span class="page-num"></span></footer>
+    </article>
+    <article class="page ">
+      <header class="chapter-head"><span>PART 2 · CORE DRIVING</span><h2>The core routine: MSPSL</h2></header>
+      
+<div class="route-strip"><div><b>M</b><span>Mirrors</span></div><div><b>S</b><span>Signal</span></div><div><b>P</b><span>Position</span></div><div><b>S</b><span>Speed</span></div><div><b>L</b><span>Look</span></div></div>
+<div class="two-grid">
+ <div class="card"><h3>Mirrors</h3><p>Check the mirrors that answer a question. Slowing: interior, then relevant side mirror. Turning/changing lane: interior plus the side you will move toward.</p></div>
+ <div class="card"><h3>Signal</h3><p>Signal only when it helps. Give it in good time, but not so early that it misleads. Cancel after the manoeuvre.</p></div>
+ <div class="card"><h3>Position</h3><p>Choose the correct lane and road position early. Preserve space from kerbs, parked cars and vulnerable users.</p></div>
+ <div class="card"><h3>Speed</h3><p>Reduce early enough to observe and stop. Select a suitable gear before the hazard where possible.</p></div>
+</div>
+<div class="card" style="margin-top:4mm"><h3>Look</h3><p>Assess the junction, gap, crossing and escape space continuously. Looking is not enough—you must respond to what you see.</p></div>
+<div class="callout tip"><b>MSPSL is a thinking routine</b><p>It is not a theatrical sequence. Checks must be timely and connected to a decision.</p></div>
+      <footer><span>COLERAINE DRIVING TEST · COMPLETE GUIDE</span><span class="page-num"></span></footer>
+    </article>
+    <article class="page ">
+      <header class="chapter-head"><span>PART 2 · CORE DRIVING</span><h2>Mirrors, blind spots and planning</h2></header>
+      
+<table><tr><th>Change</th><th>Minimum useful check</th><th>Reason</th></tr>
+<tr><td>Slow or stop</td><td>Interior; relevant side if moving toward kerb</td><td>Know what follows and avoid surprising them.</td></tr>
+<tr><td>Turn left/right</td><td>Interior + left/right door mirror</td><td>Check cycles, motorcycles and overtaking traffic.</td></tr>
+<tr><td>Change lane</td><td>Interior + target-side mirror + effective sideways/blind-spot check as needed</td><td>Confirm the target space is clear.</td></tr>
+<tr><td>Move off</td><td>All-round observation, including blind spot</td><td>Detect anyone the mirrors cannot show.</td></tr>
+<tr><td>Pass obstruction</td><td>Interior + right mirror before moving out; interior + left before returning</td><td>Protect both lateral moves.</td></tr>
+<tr><td>Exit roundabout</td><td>Interior + left mirror before signalling/moving left</td><td>Check for a vehicle or cycle alongside.</td></tr></table>
+<h3>Observation quality</h3>
+<div class="three-grid"><div class="card"><h3>Early</h3><p>Enough time to change your plan.</p></div><div class="card"><h3>Relevant</h3><p>The mirror/blind spot for the direction of movement.</p></div><div class="card"><h3>Acted on</h3><p>Delay, change speed or abandon the move if needed.</p></div></div>
+<div class="callout tip"><b>Avoid mirror theatre</b><p>Rapid head flicks that do not collect information are not effective observation. Brief, clear checks with eyes returning promptly to the road are safer.</p></div>
+      <footer><span>COLERAINE DRIVING TEST · COMPLETE GUIDE</span><span class="page-num"></span></footer>
+    </article>
+    <article class="page ">
+      <header class="chapter-head"><span>PART 2 · CORE DRIVING</span><h2>Speed, space, signals and position</h2></header>
+      
+<table><tr><th>Road/vehicle</th><th>Car maximum unless signs say otherwise</th><th>Remember</th></tr>
+<tr><td>Built-up road with street lights</td><td>Usually 30 mph</td><td>20 mph limits are common; look for terminal signs.</td></tr>
+<tr><td>Single carriageway, national limit</td><td>60 mph</td><td>Single means no central reservation—not number of lanes.</td></tr>
+<tr><td>Dual carriageway, national limit</td><td>70 mph</td><td>Dual means a central reservation separates directions.</td></tr>
+<tr><td>Any signed lower limit</td><td>Signed value</td><td>Be at the new lower limit by the sign.</td></tr></table>
+<div class="two-grid">
+ <div class="card"><h3>Too fast</h3><ul><li>Cannot stop in distance seen clear</li><li>Rushes junction observation</li><li>Reduces clearance margin</li><li>Turns a small error serious</li></ul></div>
+ <div class="card"><h3>Too slow</h3><ul><li>Unjustifiably holds traffic</li><li>Misses safe gaps repeatedly</li><li>Shows poor limit recognition</li><li>Encourages risky overtakes</li></ul></div>
+</div>
+<div class="callout warn"><b>Maximum ≠ target</b><p>Choose the speed that lets you stop within the distance you can see to be clear, adjusted for people, surface, visibility and available space.</p></div>
+      <footer><span>COLERAINE DRIVING TEST · COMPLETE GUIDE</span><span class="page-num"></span></footer>
+    </article>
+    <article class="page ">
+      <header class="chapter-head"><span>PART 3 · JUNCTIONS</span><h2>T-junctions, STOP and poor visibility</h2></header>
+      
+    <section class="situation">
+      <div class="situation-title"><span>SITUATION</span><h3>Emerging from a side road</h3></div>
+      <div class="four-grid">
+        <div><h4>1 · BEFORE</h4><ul><li>Read STOP/GIVE WAY signs and markings.</li><li>Interior mirror; identify pedestrians and cycles.</li><li>Choose safe approach position.</li></ul></div>
+        <div><h4>2 · APPROACH</h4><ul><li>Slow early; select a responsive gear.</li><li>Stop if required or if the view demands it.</li><li>Keep wheels under control; avoid rolling.</li></ul></div>
+        <div><h4>3 · DURING</h4><ul><li>Look right–left–right and keep scanning.</li><li>Judge both gap and vehicle speed.</li><li>Move only without making others change course/speed.</li></ul></div>
+        <div><h4>4 · EXIT / FINISH</h4><ul><li>Accelerate appropriately.</li><li>Straighten and check mirrors.</li><li>Build speed if conditions allow.</li></ul></div>
+      </div>
+      <div class="mistakes"><h4>COMMON MISTAKES</h4><ul><li>❌ Looking only once</li><li>❌ Nose entering too far</li><li>❌ Accepting a gap under pressure</li></ul></div>
+      <div class="golden"><b>GOLDEN RULE</b> If you cannot see, you cannot safely go.</div>
+    </section>
+    <svg class="diagram" viewBox="0 0 760 320" role="img" aria-label="Emerging at a junction with observation zones">
+      <rect width="760" height="320" rx="18" fill="#eef4f5"/>
+      <path d="M0 70H760V220H450V320H300V220H0Z" fill="#455a64"/>
+      <path d="M0 145H760 M375 220V320" stroke="white" stroke-width="4" stroke-dasharray="18 14"/>
+      <path d="M300 220H450" stroke="white" stroke-width="7"/>
+      <path d="M375 255 C330 210,250 180,145 145 M375 255 C420 210,510 180,620 145" fill="none" stroke="#ffb000" stroke-width="7" stroke-dasharray="11 8"/>
+      <circle cx="375" cy="268" r="22" fill="#00a6a6"/>
+      <text x="95" y="120">LOOK LEFT</text><text x="565" y="120">LOOK RIGHT</text>
+      <text x="470" y="265">STOP / GIVE WAY LINE</text>
+      <text x="26" y="298" class="small">Blocked view? Creep only after an effective stop/observation, at a speed that lets you stop.</text>
+    </svg>
+      <footer><span>COLERAINE DRIVING TEST · COMPLETE GUIDE</span><span class="page-num"></span></footer>
+    </article>
+    <article class="page ">
+      <header class="chapter-head"><span>PART 3 · JUNCTIONS</span><h2>Major-to-minor turns</h2></header>
+      
+    <section class="situation">
+      <div class="situation-title"><span>SITUATION</span><h3>Turning right from a major road</h3></div>
+      <div class="four-grid">
+        <div><h4>1 · BEFORE</h4><ul><li>Interior and right mirror.</li><li>Signal in good time.</li><li>Check road markings and oncoming traffic.</li></ul></div>
+        <div><h4>2 · APPROACH</h4><ul><li>Position toward centre without crossing it.</li><li>Reduce speed early.</li><li>Keep the junction mouth clear if waiting.</li></ul></div>
+        <div><h4>3 · DURING</h4><ul><li>Give way to oncoming traffic and crossing pedestrians.</li><li>Look into the new road before turning.</li><li>Turn when the gap is safe; do not cut the corner.</li></ul></div>
+        <div><h4>4 · EXIT / FINISH</h4><ul><li>Enter the correct side of the new road.</li><li>Cancel signal; mirrors.</li><li>Progress when clear.</li></ul></div>
+      </div>
+      <div class="mistakes"><h4>COMMON MISTAKES</h4><ul><li>❌ Cutting corner</li><li>❌ Wheels turned while waiting in exposed position</li><li>❌ Focusing only on oncoming cars</li></ul></div>
+      <div class="golden"><b>GOLDEN RULE</b> Look into the road you are entering before the steering begins.</div>
+    </section>
+    <section class="situation">
+      <div class="situation-title"><span>SITUATION</span><h3>Turning left from a major road</h3></div>
+      <div class="four-grid">
+        <div><h4>1 · BEFORE</h4><ul><li>Interior and left mirror—check for cycles.</li><li>Signal if useful.</li><li>Check the new road and crossing.</li></ul></div>
+        <div><h4>2 · APPROACH</h4><ul><li>Move to normal left position, not over the kerb.</li><li>Slow enough for the view and radius.</li></ul></div>
+        <div><h4>3 · DURING</h4><ul><li>Give way to pedestrians crossing the road you enter.</li><li>Keep checking the left side.</li><li>Follow the kerb without swinging right.</li></ul></div>
+        <div><h4>4 · EXIT / FINISH</h4><ul><li>Straighten; cancel signal.</li><li>Mirrors and appropriate progress.</li></ul></div>
+      </div>
+      <div class="mistakes"><h4>COMMON MISTAKES</h4><ul><li>❌ Late left-mirror check</li><li>❌ Swinging wide</li><li>❌ Rushing past pedestrians</li></ul></div>
+      <div class="golden"><b>GOLDEN RULE</b> Slow enough to see and protect the nearside.</div>
+    </section>
+      <footer><span>COLERAINE DRIVING TEST · COMPLETE GUIDE</span><span class="page-num"></span></footer>
+    </article>
+    <article class="page ">
+      <header class="chapter-head"><span>PART 3 · JUNCTIONS</span><h2>Lights, crossings and box junctions</h2></header>
+      
+<div class="two-grid">
+ <div class="card"><h3>Traffic lights</h3><ul><li><b>Red:</b> stop behind the line.</li><li><b>Red + amber:</b> still stop; prepare.</li><li><b>Green:</b> proceed only if the way is clear.</li><li><b>Amber:</b> stop unless already over the line or so close that stopping could cause a collision.</li><li><b>Green arrow:</b> move only in its direction if clear.</li></ul></div>
+ <div class="card"><h3>Yellow box</h3><ul><li>Do not enter unless your exit is clear.</li><li>Exception: you may enter to turn right and wait only because of oncoming traffic or other right-turners.</li><li>Do not follow traffic blindly into the box.</li><li>Look beyond the vehicle ahead before crossing the line.</li></ul></div>
+</div>
+
+    <section class="situation">
+      <div class="situation-title"><span>SITUATION</span><h3>Lights turn amber as you approach</h3></div>
+      <div class="four-grid">
+        <div><h4>1 · BEFORE</h4><ul><li>Check interior mirror as part of your approach.</li><li>Know speed, distance and following traffic.</li></ul></div>
+        <div><h4>2 · APPROACH</h4><ul><li>If you can stop normally before the line, stop.</li><li>Do not accelerate to “beat” amber.</li></ul></div>
+        <div><h4>3 · DURING</h4><ul><li>If already across or too close to stop safely, continue with care.</li><li>Check the junction remains clear.</li></ul></div>
+        <div><h4>4 · EXIT / FINISH</h4><ul><li>Clear it without racing.</li><li>Re-establish mirrors and speed.</li></ul></div>
+      </div>
+      <div class="mistakes"><h4>COMMON MISTAKES</h4><ul><li>❌ Harsh avoidable stop</li><li>❌ Crossing after red</li><li>❌ Watching the light but not the junction</li></ul></div>
+      <div class="golden"><b>GOLDEN RULE</b> Amber means stop—except when stopping safely is no longer realistic.</div>
+    </section>
+      <footer><span>COLERAINE DRIVING TEST · COMPLETE GUIDE</span><span class="page-num"></span></footer>
+    </article>
+    <article class="page ">
+      <header class="chapter-head"><span>PART 4 · ROUNDABOUTS</span><h2>Roundabout fundamentals</h2></header>
+      
+    <svg class="diagram" viewBox="0 0 760 390" role="img" aria-label="Standard roundabout lane and signal diagram">
+      <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#ffb000"/></marker></defs>
+      <rect width="760" height="390" rx="18" fill="#eef4f5"/>
+      <circle cx="380" cy="195" r="72" fill="#85b982"/>
+      <circle cx="380" cy="195" r="112" fill="none" stroke="#455a64" stroke-width="57"/>
+      <path d="M350 390V285 M410 390V285 M350 105V0 M410 105V0 M0 165H270 M0 225H270 M490 165H760 M490 225H760" stroke="#455a64" stroke-width="25"/>
+      <path d="M365 368 C360 295,290 255,280 202 C265 125,330 92,375 89" fill="none" stroke="#ffb000" stroke-width="7" marker-end="url(#arrow)"/>
+      <path d="M395 368 C405 285,480 278,503 218" fill="none" stroke="#00a6a6" stroke-width="7" marker-end="url(#arrow)"/>
+      <text x="22" y="145">LEFT / 1ST EXIT</text><text x="526" y="145">INTERMEDIATE</text>
+      <text x="430" y="26">RIGHT / FULL CIRCLE</text><text x="300" y="374">YOUR APPROACH</text>
+      <text x="18" y="370" class="small">Signs and lane arrows always override this general pattern.</text>
+    </svg>
+<div class="three-grid">
+ <div class="card"><h3>First exit left</h3><p>Unless signs/markings say otherwise: left lane, signal left, keep left and continue the signal to exit.</p></div>
+ <div class="card"><h3>Intermediate</h3><p>Select the marked/appropriate lane; normally no approach signal. Signal left after passing the exit before yours.</p></div>
+ <div class="card"><h3>Right/full circle</h3><p>Unless directed otherwise: right lane and right signal; signal left after the exit before yours, checking before moving left.</p></div>
+</div>
+<div class="callout warn"><b>Order of authority</b><p><b>Traffic lights and police/traffic control → signs → road markings → general roundabout routine.</b> Never cling to a memorised lane when the live markings say something else.</p></div>
+      <footer><span>COLERAINE DRIVING TEST · COMPLETE GUIDE</span><span class="page-num"></span></footer>
+    </article>
+    <article class="page ">
+      <header class="chapter-head"><span>PART 4 · ROUNDABOUTS</span><h2>Roundabout situation cards</h2></header>
+      
+    <section class="situation">
+      <div class="situation-title"><span>SITUATION</span><h3>Taking an intermediate exit</h3></div>
+      <div class="four-grid">
+        <div><h4>1 · BEFORE</h4><ul><li>Read the sign and count exits.</li><li>Check lane arrows before joining.</li><li>Mirrors; normally no approach signal.</li></ul></div>
+        <div><h4>2 · APPROACH</h4><ul><li>Select lane early.</li><li>Reduce to a speed that allows observation.</li><li>Give way to traffic already on the roundabout from the right unless controlled otherwise.</li></ul></div>
+        <div><h4>3 · DURING</h4><ul><li>Stay in lane; follow markings.</li><li>Watch adjacent vehicles and long vehicles.</li><li>After passing the exit before yours: mirrors, then left signal.</li></ul></div>
+        <div><h4>4 · EXIT / FINISH</h4><ul><li>Check left side before crossing any lane.</li><li>Exit into the correct lane.</li><li>Cancel signal and build speed.</li></ul></div>
+      </div>
+      <div class="mistakes"><h4>COMMON MISTAKES</h4><ul><li>❌ Treating 'straight' as always left lane</li><li>❌ Drifting across lane lines</li><li>❌ Late/no exit signal</li></ul></div>
+      <div class="golden"><b>GOLDEN RULE</b> Your lane is chosen by signs and arrows, not by exit number alone.</div>
+    </section>
+    <section class="situation">
+      <div class="situation-title"><span>SITUATION</span><h3>Taking a right-hand exit</h3></div>
+      <div class="four-grid">
+        <div><h4>1 · BEFORE</h4><ul><li>Read sign/markings; identify required lane.</li><li>Interior/right mirror; signal right unless directed otherwise.</li></ul></div>
+        <div><h4>2 · APPROACH</h4><ul><li>Move to lane early and slow progressively.</li><li>Assess signals and traffic from right.</li></ul></div>
+        <div><h4>3 · DURING</h4><ul><li>Hold the correct lane and follow spiral markings.</li><li>After the exit before yours: mirrors, left signal.</li><li>Change lane only when safe.</li></ul></div>
+        <div><h4>4 · EXIT / FINISH</h4><ul><li>Do not force across a vehicle on your left.</li><li>Take the safe exit your lane leads to if blocked.</li></ul></div>
+      </div>
+      <div class="mistakes"><h4>COMMON MISTAKES</h4><ul><li>❌ Cutting left across lanes</li><li>❌ Following another car instead of markings</li><li>❌ Missing left mirror before exit</li></ul></div>
+      <div class="golden"><b>GOLDEN RULE</b> Never trade lane safety for the planned exit.</div>
+    </section>
+      <footer><span>COLERAINE DRIVING TEST · COMPLETE GUIDE</span><span class="page-num"></span></footer>
+    </article>
+    <article class="page ">
+      <header class="chapter-head"><span>PART 4 · ROUNDABOUTS</span><h2>Spiral, multi-lane and mini-roundabouts</h2></header>
+      
+<div class="two-grid">
+ <div class="card"><h3>Spiral / multi-lane</h3><ol><li>Read the large direction sign.</li><li>Read arrows painted in your lane.</li><li>Enter in the correct lane.</li><li>Follow the lane as it spirals outward.</li><li>Check left and signal before exit.</li></ol></div>
+ <div class="card"><h3>Mini-roundabout</h3><ol><li>Approach slowly and give way to the right.</li><li>Go around the centre marking, not over it unless vehicle size makes that unavoidable.</li><li>Avoid signalling so early it misleads at nearby roads.</li><li>Treat linked mini-roundabouts separately.</li></ol></div>
+</div>
+
+    <section class="situation">
+      <div class="situation-title"><span>SITUATION</span><h3>You discover you are in the wrong lane</h3></div>
+      <div class="four-grid">
+        <div><h4>1 · BEFORE</h4><ul><li>Keep steering stable.</li><li>Check mirrors and surrounding traffic.</li></ul></div>
+        <div><h4>2 · APPROACH</h4><ul><li>Do not brake sharply or signal as a demand.</li><li>Assess whether a normal lane change is safely available.</li></ul></div>
+        <div><h4>3 · DURING</h4><ul><li>If safe: mirror, signal, final check, smooth move.</li><li>If not safe: follow your lane.</li></ul></div>
+        <div><h4>4 · EXIT / FINISH</h4><ul><li>Take the exit/direction the lane allows.</li><li>Let the examiner redirect you.</li></ul></div>
+      </div>
+      <div class="mistakes"><h4>COMMON MISTAKES</h4><ul><li>❌ Crossing solid/hatched markings</li><li>❌ Forcing between vehicles</li><li>❌ Stopping on the roundabout</li></ul></div>
+      <div class="golden"><b>GOLDEN RULE</b> Wrong lane: go safely wrong.</div>
+    </section>
+      <footer><span>COLERAINE DRIVING TEST · COMPLETE GUIDE</span><span class="page-num"></span></footer>
+    </article>
+    <article class="page ">
+      <header class="chapter-head"><span>COLERAINE FOCUS · COMPLEX JUNCTION</span><h2>Lodge Road Roundabout</h2></header>
+      
+<p><b>Lodge Road Roundabout</b> is a large, signal-controlled, multi-arm junction connecting the A29 ring-road corridor, A26/Belfast direction, town/Lodge Road and Mountsandel-area movements. Its lane arrangement can vary by approach and may change over time.</p>
+<div class="two-grid">
+ <div class="card"><h3>The safe method</h3><ol><li>On approach, identify the destination—not “second exit.”</li><li>Read overhead/roadside sign and lane arrows.</li><li>Choose a lane while there is still time.</li><li>At signals, stop behind the line and preserve the box/exit.</li><li>Follow the lane line; do not straighten the roundabout.</li><li>Mirrors and left signal before exiting.</li></ol></div>
+ <div class="card"><h3>High-risk moments</h3><ul><li>Late lane choice after the arrows begin</li><li>Adjacent traffic cutting across</li><li>Long vehicles using extra width</li><li>Queue blocking the far side</li><li>Green light with no exit space</li><li>Old memorised instructions conflicting with live markings</li></ul></div>
+</div>
+<div class="callout danger"><b>Do not memorise a universal Lodge Road lane chart</b><p>The correct lane depends on your approach, destination and the live signs/markings. Practise each approach with your ADI and narrate: destination → sign → arrow → lane → exit.</p></div>
+<h3 style="margin-top:5mm">Practice drill</h3><table><tr><th>Pass</th><th>Your task</th></tr><tr><td>1 · Passenger</td><td>Call out destinations, arrows, lights, lane boundaries and pedestrian areas.</td></tr><tr><td>2 · Driver, quiet period</td><td>Drive one planned movement with instructor prompts.</td></tr><tr><td>3 · Driver, independent</td><td>Follow a destination sign; if uncertain, follow the lane safely.</td></tr><tr><td>4 · Debrief</td><td>Sketch only what the current signs showed. Recheck on the next visit.</td></tr></table>
+
+      <footer><span>COLERAINE DRIVING TEST · COMPLETE GUIDE</span><span class="page-num"></span></footer>
+    </article>
+    <article class="page ">
+      <header class="chapter-head"><span>PART 4 · ROUNDABOUTS</span><h2>Other Coleraine roundabout practice</h2></header>
+      
+<table><tr><th>Practice zone</th><th>What to rehearse</th><th>Primary risk</th></tr>
+<tr><td>Bushmills Road / A29 corridor</td><td>Early sign reading, lane arrows, approach speed and following the ring-road destination.</td><td>Late lane choice and faster traffic.</td></tr>
+<tr><td>Ballycastle Road / ring-road area</td><td>Roundabout gap judgement, dual/multi-lane positioning, speed-limit transitions.</td><td>Watching one direction and missing nearby users.</td></tr>
+<tr><td>Strand Road / town approaches</td><td>Urban lanes, lights, crossings, buses and pedestrian planning.</td><td>Lane fixation and blocked junctions.</td></tr>
+<tr><td>Mountsandel / Greenmount areas</td><td>Residential meeting, parked cars, bends, gradients and calm progress.</td><td>Clearance and poor forward planning.</td></tr>
+<tr><td>Gateside / Loughan Hill</td><td>Industrial exits, large vehicles, obscured views and move-off checks.</td><td>Hidden traffic behind vans/HGVs.</td></tr></table>
+<div class="callout warn"><b>Local-route evidence</b><p>DVA does not publish guaranteed Coleraine routes. These are practice zones named by local route resources and the surrounding road network. Any road may be changed, omitted or temporarily unavailable.</p></div>
+<h3 style="margin-top:5mm">The roundabout scorecard</h3><ul class="check"><li>Destination identified before lane choice</li><li>Approach mirrors and useful signal</li><li>Lane selected from live markings</li><li>Speed allows a genuine right-side assessment</li><li>Lane held without drift</li><li>Left mirror before exit signal/movement</li><li>Exit clear and correct lane maintained</li></ul>
+      <footer><span>COLERAINE DRIVING TEST · COMPLETE GUIDE</span><span class="page-num"></span></footer>
+    </article>
+    <article class="page ">
+      <header class="chapter-head"><span>PART 5 · LANES & FASTER ROADS</span><h2>Lane changes and lane discipline</h2></header>
+      
+    <section class="situation">
+      <div class="situation-title"><span>SITUATION</span><h3>Changing lane</h3></div>
+      <div class="four-grid">
+        <div><h4>1 · BEFORE</h4><ul><li>Ask: is the change needed and legal?</li><li>Interior and target-side mirror.</li><li>Check signs, lane lines and the space ahead.</li></ul></div>
+        <div><h4>2 · APPROACH</h4><ul><li>Match speed to a usable gap.</li><li>Signal if it benefits others.</li><li>Final mirror/sideways check.</li></ul></div>
+        <div><h4>3 · DURING</h4><ul><li>Move gradually; do not steer at the vehicle.</li><li>Maintain speed unless conditions require change.</li><li>Cancel signal.</li></ul></div>
+        <div><h4>4 · EXIT / FINISH</h4><ul><li>Rebuild following distance.</li><li>Check mirrors and road ahead.</li><li>Keep left when appropriate.</li></ul></div>
+      </div>
+      <div class="mistakes"><h4>COMMON MISTAKES</h4><ul><li>❌ Signal then assume priority</li><li>❌ Moving into a blind spot</li><li>❌ Changing near a junction unnecessarily</li></ul></div>
+      <div class="golden"><b>GOLDEN RULE</b> A signal asks; a clear gap permits.</div>
+    </section>
+<h3>Blind-spot rule</h3><p>Mirrors do not show everything. Use an effective sideways glance when needed, especially before moving off, changing lanes or when a cycle/motorcycle could be alongside. Keep it brief so the road ahead is not neglected.</p>
+
+      <footer><span>COLERAINE DRIVING TEST · COMPLETE GUIDE</span><span class="page-num"></span></footer>
+    </article>
+    <article class="page ">
+      <header class="chapter-head"><span>PART 5 · LANES & FASTER ROADS</span><h2>Dual carriageways: join, drive, leave</h2></header>
+      
+<div class="two-grid">
+ <div class="card"><h3>Joining</h3><ol><li>Use the slip road to observe and build a suitable speed.</li><li>Interior/right mirror; signal if useful.</li><li>Identify a gap—not a single car.</li><li>Adjust speed to arrive beside the gap.</li><li>Final check; merge smoothly.</li></ol></div>
+ <div class="card"><h3>Leaving</h3><ol><li>Read signs early and move left in time.</li><li>Interior/left mirror; signal at the correct marker.</li><li>Keep speed until established on the slip road, unless signs/traffic require earlier reduction.</li><li>Brake progressively for the new road.</li></ol></div>
+</div>
+<h3 style="margin-top:6mm">On the carriageway</h3>
+<ul><li>Keep left unless overtaking or signs/markings direct otherwise.</li><li>Use a following gap of at least two seconds in good dry conditions; increase substantially in rain/poor visibility.</li><li>Before overtaking: mirrors, road ahead, blind spot as needed, legal space and no closing vehicle.</li><li>After overtaking, return left only when safely clear—do not cut in.</li><li>At a reduced limit, be at or below the new limit by the sign.</li></ul><div class="callout warn"><b>No usable gap on a slip road?</b><p>Do not force into traffic. Adjust early. If the lane ends and no safe merge exists, you may have to stop, but this makes joining harder—planning and speed matching are essential.</p></div>
+      <footer><span>COLERAINE DRIVING TEST · COMPLETE GUIDE</span><span class="page-num"></span></footer>
+    </article>
+    <article class="page ">
+      <header class="chapter-head"><span>PART 6 · HAZARDS & TRAFFIC</span><h2>People, cycles and large vehicles</h2></header>
+      
+<table><tr><th>Hazard</th><th>Early clue</th><th>Safe response</th></tr>
+<tr><td>Pedestrian / child</td><td>Feet under parked cars, school gates, person facing kerb</td><td>Ease off, create lateral space, be ready to stop.</td></tr>
+<tr><td>Cyclist / motorcyclist</td><td>Shoulder check, drain cover, narrowing, filtering</td><td>Hold back; pass only with safe clearance and view.</td></tr>
+<tr><td>Bus</td><td>Indicator, passengers, obscured crossing</td><td>Let it move when safe; expect people in front/behind.</td></tr>
+<tr><td>Large vehicle</td><td>Wide position, trailer cut-in, hidden traffic</td><td>Give room; never enter the space it needs to turn.</td></tr>
+<tr><td>Horse / animal</td><td>Warning sign, rider ahead, open gate</td><td>Slow right down, be quiet, pass wide and patiently.</td></tr>
+<tr><td>Emergency vehicle</td><td>Siren/blue lights reflected before seen</td><td>Plan a legal, safe place; do not cross red or mount kerb.</td></tr></table>
+<div class="callout tip"><b>Vulnerable-user test</b><p>Ask: “Could they move into my path, and can I stop if they do?” If the answer is uncertain, reduce speed now.</p></div>
+      <footer><span>COLERAINE DRIVING TEST · COMPLETE GUIDE</span><span class="page-num"></span></footer>
+    </article>
+    <article class="page ">
+      <header class="chapter-head"><span>PART 6 · HAZARDS & TRAFFIC</span><h2>Parked cars and meeting traffic</h2></header>
+      
+    <svg class="diagram" viewBox="0 0 760 260" role="img" aria-label="Meeting traffic beside parked cars">
+      <rect width="760" height="260" rx="18" fill="#eef4f5"/>
+      <rect y="55" width="760" height="150" fill="#53666e"/>
+      <path d="M0 130H760" stroke="white" stroke-width="3" stroke-dasharray="18 14"/>
+      <g fill="#b7c4c8"><rect x="290" y="65" width="95" height="48" rx="10"/><rect x="400" y="65" width="95" height="48" rx="10"/></g>
+      <rect x="130" y="146" width="100" height="45" rx="10" fill="#00a6a6"/><text x="151" y="175">YOU</text>
+      <rect x="550" y="141" width="110" height="49" rx="10" fill="#ffb000"/><text x="568" y="171">ONCOMING</text>
+      <path d="M240 168 C290 180,325 180,370 169" stroke="#00a6a6" stroke-width="7" fill="none"/>
+      <text x="24" y="35">YOUR OBSTRUCTION = YOUR RESPONSIBILITY TO WAIT</text>
+      <text x="260" y="238" class="small">Leave a door’s width where possible; less space means less speed.</text>
+    </svg>
+    <section class="situation">
+      <div class="situation-title"><span>SITUATION</span><h3>Meeting traffic beside parked cars</h3></div>
+      <div class="four-grid">
+        <div><h4>1 · BEFORE</h4><ul><li>Scan far ahead for the meeting point.</li><li>Identify whose side is obstructed.</li><li>Check mirrors before changing speed/position.</li></ul></div>
+        <div><h4>2 · APPROACH</h4><ul><li>If obstruction is yours, be prepared to wait.</li><li>Choose a hold-back point with space.</li><li>Avoid squeezing into a narrowing.</li></ul></div>
+        <div><h4>3 · DURING</h4><ul><li>Proceed only if both can pass safely.</li><li>Keep door clearance where possible.</li><li>Reduce speed further as space reduces.</li></ul></div>
+        <div><h4>4 · EXIT / FINISH</h4><ul><li>Return left after mirrors when clear.</li><li>Thanking is optional; control comes first.</li></ul></div>
+      </div>
+      <div class="mistakes"><h4>COMMON MISTAKES</h4><ul><li>❌ Racing to the gap</li><li>❌ Stopping opposite another parked car</li><li>❌ Passing too close to doors</li></ul></div>
+      <div class="golden"><b>GOLDEN RULE</b> Less space means less speed; your obstruction usually means your wait.</div>
+    </section>
+      <footer><span>COLERAINE DRIVING TEST · COMPLETE GUIDE</span><span class="page-num"></span></footer>
+    </article>
+    <article class="page ">
+      <header class="chapter-head"><span>PART 6 · HAZARDS & TRAFFIC</span><h2>Weather, roadworks and emergencies</h2></header>
+      
+<div class="two-grid">
+ <div class="card"><h3>Rain / standing water</h3><ul><li>Increase following distance.</li><li>Use dipped headlights if visibility is reduced.</li><li>Brake/steer progressively.</li><li>Avoid deep water if depth is uncertain.</li></ul></div>
+ <div class="card"><h3>Fog / glare / night</h3><ul><li>Use appropriate lights; fog lights only when visibility is seriously reduced.</li><li>Slow to the visible distance.</li><li>Keep glass clean and demisted.</li><li>Do not stare at oncoming lights.</li></ul></div>
+ <div class="card"><h3>Roadworks</h3><ul><li>Obey temporary limits/lights.</li><li>Do not “follow through” a red temporary signal.</li><li>Watch workers, cones and changing lanes.</li><li>Merge in turn only where safe and appropriate.</li></ul></div>
+ <div class="card"><h3>Emergency vehicle</h3><ul><li>Check all around and plan.</li><li>Do not panic or brake blindly.</li><li>Do not cross a red light to help.</li><li>Resume only after rechecking.</li></ul></div>
+</div>
+<div class="callout warn"><b>Test cancellation</b><p>DVA may cancel tests locally in adverse weather. Follow contact details/updates on your booking and allow extra travel time; do not assume cancellation.</p></div>
+      <footer><span>COLERAINE DRIVING TEST · COMPLETE GUIDE</span><span class="page-num"></span></footer>
+    </article>
+    <article class="page ">
+      <header class="chapter-head"><span>PART 7 · MANOEUVRES</span><h2>Manoeuvre principles</h2></header>
+      
+    <svg class="diagram" viewBox="0 0 760 310" role="img" aria-label="Six observation zones for reversing manoeuvres">
+      <rect width="760" height="310" rx="18" fill="#eef4f5"/>
+      <rect x="315" y="110" width="130" height="82" rx="15" fill="#00a6a6"/>
+      <text x="360" y="158" fill="white">CAR</text>
+      <g stroke="#ffb000" stroke-width="5" stroke-dasharray="10 8">
+       <path d="M350 110L250 35"/><path d="M410 110L510 35"/><path d="M315 150L150 150"/>
+       <path d="M445 150L610 150"/><path d="M350 192L250 275"/><path d="M410 192L510 275"/>
+      </g>
+      <g fill="#263238"><text x="165" y="32">front-left</text><text x="505" y="32">front-right</text>
+      <text x="50" y="145">left side</text><text x="620" y="145">right side</text>
+      <text x="145" y="292">rear-left</text><text x="515" y="292">rear-right</text></g>
+      <text x="195" y="235">Move slowly enough to stop immediately for anyone.</text>
+    </svg>
+<p>DVA currently lists one reversing exercise chosen from: <b>reversing around a corner, turning in the road, or reverse parking on-road or into a parking bay.</b> The reference points depend on your car and seating position; the safety principles do not.</p>
+<div class="three-grid">
+ <div class="card"><h3>Control</h3><p>Very slow movement, accurate steering, no mounting kerb or loss of control.</p></div>
+ <div class="card"><h3>Observation</h3><p>Continuous all-round checks, with special attention in the direction of travel.</p></div>
+ <div class="card"><h3>Judgement</h3><p>Stop for people/vehicles and resume only after a fresh complete check.</p></div>
+</div>
+<div class="callout tip"><b>Correction is allowed</b><p>If the position is going wrong, stop, observe, select a safer correction and complete it under control. A calm correction is better than continuing into danger.</p></div>
+      <footer><span>COLERAINE DRIVING TEST · COMPLETE GUIDE</span><span class="page-num"></span></footer>
+    </article>
+    <article class="page ">
+      <header class="chapter-head"><span>PART 7 · MANOEUVRES</span><h2>Reverse parking</h2></header>
+      
+    <section class="situation">
+      <div class="situation-title"><span>SITUATION</span><h3>Reverse parking—road or bay</h3></div>
+      <div class="four-grid">
+        <div><h4>1 · BEFORE</h4><ul><li>Confirm the place is legal/suitable.</li><li>All-round observation before moving.</li><li>Set a slow, controllable starting position.</li></ul></div>
+        <div><h4>2 · APPROACH</h4><ul><li>Use the car-specific reference taught by your ADI.</li><li>Select reverse; check all around again.</li><li>Move at walking pace or slower.</li></ul></div>
+        <div><h4>3 · DURING</h4><ul><li>Steer accurately but keep scanning.</li><li>Pause immediately for anyone approaching.</li><li>Use mirrors as aids—not substitutes for direct observation.</li></ul></div>
+        <div><h4>4 · EXIT / FINISH</h4><ul><li>Straighten and secure the car.</li><li>Check final position and reasonable spacing.</li><li>Correct only after full observation.</li></ul></div>
+      </div>
+      <div class="mistakes"><h4>COMMON MISTAKES</h4><ul><li>❌ Fixating on one mirror</li><li>❌ Moving while a pedestrian approaches</li><li>❌ Rushing the final adjustment</li></ul></div>
+      <div class="golden"><b>GOLDEN RULE</b> The car may move only while the whole area remains safe.</div>
+    </section>
+<div class="two-grid"><div class="card"><h3>Parallel parking aim</h3><p>Finish reasonably close and parallel to the kerb, without contact, while controlling the front swing and traffic.</p></div><div class="card"><h3>Bay parking aim</h3><p>Finish within the bay and under control. Check both sides and protect pedestrians/vehicles behind.</p></div></div>
+
+      <footer><span>COLERAINE DRIVING TEST · COMPLETE GUIDE</span><span class="page-num"></span></footer>
+    </article>
+    <article class="page ">
+      <header class="chapter-head"><span>PART 7 · MANOEUVRES</span><h2>Corner reverse and turn in the road</h2></header>
+      
+    <section class="situation">
+      <div class="situation-title"><span>SITUATION</span><h3>Reversing around a corner</h3></div>
+      <div class="four-grid">
+        <div><h4>1 · BEFORE</h4><ul><li>Choose a safe, suitable side road.</li><li>Observe all around; check the road you will reverse into.</li><li>Position close and parallel without blocking.</li></ul></div>
+        <div><h4>2 · APPROACH</h4><ul><li>Reverse slowly toward the turning point.</li><li>Look mainly through the rear window/direction of travel.</li><li>Pause for any road user.</li></ul></div>
+        <div><h4>3 · DURING</h4><ul><li>Steer to follow the kerb without touching it.</li><li>Repeatedly scan front swing, sides and rear.</li><li>Straighten as the car aligns.</li></ul></div>
+        <div><h4>4 · EXIT / FINISH</h4><ul><li>Finish reasonably close/parallel.</li><li>Stop and secure if instructed.</li><li>Fresh observation before moving away.</li></ul></div>
+      </div>
+      <div class="mistakes"><h4>COMMON MISTAKES</h4><ul><li>❌ Watching only the kerb mirror</li><li>❌ Front swinging into traffic</li><li>❌ Continuing when another vehicle appears</li></ul></div>
+      <div class="golden"><b>GOLDEN RULE</b> Reverse looking where the car is going; stop whenever the scene changes.</div>
+    </section>
+    <section class="situation">
+      <div class="situation-title"><span>SITUATION</span><h3>Turning in the road</h3></div>
+      <div class="four-grid">
+        <div><h4>1 · BEFORE</h4><ul><li>Assess width, camber, kerbs, driveways and traffic.</li><li>All-round observation.</li><li>Use the full safe width without mounting kerbs.</li></ul></div>
+        <div><h4>2 · APPROACH</h4><ul><li>Move slowly; steer briskly when the car moves.</li><li>Observe before every direction change.</li></ul></div>
+        <div><h4>3 · DURING</h4><ul><li>Control rollback and front/rear swing.</li><li>Stop for all road users; do not wave them through blindly.</li></ul></div>
+        <div><h4>4 · EXIT / FINISH</h4><ul><li>Complete facing the opposite direction.</li><li>Straighten, secure, final observation.</li><li>Move off only when safe.</li></ul></div>
+      </div>
+      <div class="mistakes"><h4>COMMON MISTAKES</h4><ul><li>❌ Dry steering</li><li>❌ Missing blind-spot checks</li><li>❌ Rushing because traffic waits</li></ul></div>
+      <div class="golden"><b>GOLDEN RULE</b> Every direction change needs a new all-round check.</div>
+    </section>
+      <footer><span>COLERAINE DRIVING TEST · COMPLETE GUIDE</span><span class="page-num"></span></footer>
+    </article>
+    <article class="page ">
+      <header class="chapter-head"><span>PART 8 · MOVING & STOPPING</span><h2>Moving off safely</h2></header>
+      
+    <section class="situation">
+      <div class="situation-title"><span>SITUATION</span><h3>Moving off from the kerb</h3></div>
+      <div class="four-grid">
+        <div><h4>1 · BEFORE</h4><ul><li>Prepare seat, belt, mirrors and controls.</li><li>Select gear and set a controlled bite/drive.</li><li>Check all around, finishing in the blind spot toward traffic.</li></ul></div>
+        <div><h4>2 · APPROACH</h4><ul><li>Signal only if someone benefits.</li><li>Wait for a safe gap.</li><li>Check again if you have waited.</li></ul></div>
+        <div><h4>3 · DURING</h4><ul><li>Release brake and move smoothly.</li><li>Steer away without swinging wide.</li><li>Build speed appropriately.</li></ul></div>
+        <div><h4>4 · EXIT / FINISH</h4><ul><li>Cancel signal.</li><li>Interior mirror check.</li><li>Adopt normal road position.</li></ul></div>
+      </div>
+      <div class="mistakes"><h4>COMMON MISTAKES</h4><ul><li>❌ Mirror-only observation</li><li>❌ Signal used as a demand</li><li>❌ Moving after the gap has changed</li></ul></div>
+      <div class="golden"><b>GOLDEN RULE</b> Last look, then move—if you wait, look again.</div>
+    </section>
+<div class="two-grid"><div class="card"><h3>Uphill</h3><p>Use sufficient power and clutch/bite control or the automatic-car method taught for your vehicle. Prevent rollback; release parking brake only when ready.</p></div><div class="card"><h3>Behind an obstruction</h3><p>Observe early; move far enough out to see, but do not emerge into an unsafe gap. Account for the vehicle’s front corner.</p></div></div>
+
+      <footer><span>COLERAINE DRIVING TEST · COMPLETE GUIDE</span><span class="page-num"></span></footer>
+    </article>
+    <article class="page ">
+      <header class="chapter-head"><span>PART 8 · MOVING & STOPPING</span><h2>Stopping, parking and emergency stop</h2></header>
+      
+    <section class="situation">
+      <div class="situation-title"><span>SITUATION</span><h3>Pulling up safely at the left</h3></div>
+      <div class="four-grid">
+        <div><h4>1 · BEFORE</h4><ul><li>Choose a legal, safe, convenient place.</li><li>Avoid junctions, crossings, driveways and severe bends.</li><li>Interior and left mirror.</li></ul></div>
+        <div><h4>2 · APPROACH</h4><ul><li>Signal if useful.</li><li>Ease left progressively.</li><li>Reduce speed smoothly.</li></ul></div>
+        <div><h4>3 · DURING</h4><ul><li>Keep checking the nearside and kerb.</li><li>Straighten before stopping.</li><li>Finish reasonably close and parallel.</li></ul></div>
+        <div><h4>4 · EXIT / FINISH</h4><ul><li>Parking brake; neutral/park as appropriate.</li><li>Cancel signal.</li><li>Secure the vehicle and await instruction.</li></ul></div>
+      </div>
+      <div class="mistakes"><h4>COMMON MISTAKES</h4><ul><li>❌ Stopping too close to junction</li><li>❌ Kerb contact</li><li>❌ Late harsh braking</li></ul></div>
+      <div class="golden"><b>GOLDEN RULE</b> Choose the place first; then perform the stop.</div>
+    </section>
+    <section class="situation">
+      <div class="situation-title"><span>SITUATION</span><h3>Emergency stop</h3></div>
+      <div class="four-grid">
+        <div><h4>1 · BEFORE</h4><ul><li>Drive normally until instructed.</li><li>Keep both hands ready for firm control.</li></ul></div>
+        <div><h4>2 · APPROACH</h4><ul><li>On signal: react promptly.</li><li>Brake firmly and progressively; clutch at the appropriate point in a manual.</li><li>Keep steering straight and controlled.</li></ul></div>
+        <div><h4>3 · DURING</h4><ul><li>Do not make a routine mirror check before the emergency braking.</li><li>Secure the vehicle after stopping.</li></ul></div>
+        <div><h4>4 · EXIT / FINISH</h4><ul><li>Before moving again, perform full all-round observation.</li><li>Move only when safe.</li></ul></div>
+      </div>
+      <div class="mistakes"><h4>COMMON MISTAKES</h4><ul><li>❌ Delayed reaction</li><li>❌ Clutch before brake reducing control</li><li>❌ Moving away without observations</li></ul></div>
+      <div class="golden"><b>GOLDEN RULE</b> Stop first; observe before restarting.</div>
+    </section>
+      <footer><span>COLERAINE DRIVING TEST · COMPLETE GUIDE</span><span class="page-num"></span></footer>
+    </article>
+    <article class="page ">
+      <header class="chapter-head"><span>PART 9 · TRAFFIC INFORMATION</span><h2>Signs, markings and signals</h2></header>
+      
+<div class="three-grid">
+ <div class="card"><h3>Red circles</h3><p>Mostly prohibitions: speed limit, no entry, width/weight limits. Treat “must not” signs as hard constraints.</p></div>
+ <div class="card"><h3>Blue circles</h3><p>Mostly mandatory directions: turn left, keep left, route for particular users.</p></div>
+ <div class="card"><h3>Triangles</h3><p>Warnings: junction, bend, crossing, school, animals or road condition ahead.</p></div>
+ <div class="card"><h3>Rectangles</h3><p>Information and directions. Read route number, destination and diagram—not colour alone.</p></div>
+ <div class="card"><h3>Road arrows</h3><p>Choose early and stay in lane. A lane arrow can override your generic roundabout plan.</p></div>
+ <div class="card"><h3>Lines/hatched areas</h3><p>Understand broken vs solid boundaries. Do not enter areas bounded by a solid line except where legally permitted.</p></div>
+</div>
+<h3 style="margin-top:6mm">Signal discipline</h3>
+<table><tr><th>Good signal</th><th>Bad signal</th></tr><tr><td>Useful, timely, unambiguous, cancelled</td><td>Too early near another turn, too late, left running, used to claim priority</td></tr></table>
+
+      <footer><span>COLERAINE DRIVING TEST · COMPLETE GUIDE</span><span class="page-num"></span></footer>
+    </article>
+    <article class="page ">
+      <header class="chapter-head"><span>PART 9 · TRAFFIC INFORMATION</span><h2>Crossings, bus lanes and restrictions</h2></header>
+      
+<table><tr><th>Type</th><th>Recognition</th><th>Driver plan</th></tr>
+<tr><td>Zebra</td><td>Black/white stripes; flashing beacons</td><td>Approach ready to stop. Give way to pedestrians on the crossing; be alert to those waiting/approaching.</td></tr>
+<tr><td>Signal-controlled</td><td>Vehicle signals; pedestrian indicators may vary</td><td>Obey the vehicle signal. Never proceed because pedestrians appear finished if your light is red.</td></tr>
+<tr><td>Toucan / cycle crossing</td><td>Pedestrians and cyclists may cross</td><td>Expect faster entry by cycles and check both sides.</td></tr>
+<tr><td>School / uncontrolled</td><td>Signs, patrol, refuge or dropped kerb</td><td>Reduce speed and be ready to stop; do not invite someone across without checking all traffic.</td></tr></table>
+<div class="two-grid">
+ <div class="card"><h3>Bus/cycle lanes</h3><p>Read operating times and permitted users. Do not enter a mandatory lane when active; do not stay out of an available lane without reason when it is not active.</p></div>
+ <div class="card"><h3>Yellow lines</h3><p>They regulate waiting, not necessarily loading or stopping in every circumstance. For the test, choose an obviously lawful, safe stop and follow examiner instructions.</p></div>
+</div>
+<div class="callout warn"><b>Never wave a pedestrian into hidden danger</b><p>Your job is to slow or stop safely. A friendly gesture can be misunderstood by them or by traffic approaching from another direction.</p></div>
+      <footer><span>COLERAINE DRIVING TEST · COMPLETE GUIDE</span><span class="page-num"></span></footer>
+    </article>
+    <article class="page ">
+      <header class="chapter-head"><span>PART 10 · LOCAL FOCUS</span><h2>Coleraine Test Centre</h2></header>
+      
+<div class="two-grid">
+ <div class="card"><h3>Official centre</h3><p><b>Coleraine Test Centre</b><br>2 Loughan Hill Industrial Estate<br>Gateside Road, Loughan Hill<br>Coleraine BT52 2NJ</p></div>
+ <div class="card"><h3>Immediate environment</h3><p>Expect an industrial setting: large vehicles, business entrances, parked vans, changing sightlines and people walking between vehicles. Treat this as live traffic, not a “test-centre bubble.”</p></div>
+</div>
+
+    <section class="situation">
+      <div class="situation-title"><span>SITUATION</span><h3>Leaving the test-centre area</h3></div>
+      <div class="four-grid">
+        <div><h4>1 · BEFORE</h4><ul><li>Set seat/mirrors before being called.</li><li>Know the car’s handbrake, demister and safety controls.</li><li>Observe the car park/yard and exit.</li></ul></div>
+        <div><h4>2 · APPROACH</h4><ul><li>Move at very low speed.</li><li>Check for pedestrians and reversing vehicles.</li><li>At the road, assess hidden traffic beyond vans/HGVs.</li></ul></div>
+        <div><h4>3 · DURING</h4><ul><li>Use an effective stop/creep where visibility is blocked.</li><li>Do not let a waiting driver pressure you.</li></ul></div>
+        <div><h4>4 · EXIT / FINISH</h4><ul><li>Join without affecting road traffic.</li><li>Mirrors, normal position and progress.</li></ul></div>
+      </div>
+      <div class="mistakes"><h4>COMMON MISTAKES</h4><ul><li>❌ Treating car park as empty</li><li>❌ Looking only right</li><li>❌ Rushing because test just began</li></ul></div>
+      <div class="golden"><b>GOLDEN RULE</b> The first minute is ordinary driving: slow eyes, calm hands.</div>
+    </section>
+      <footer><span>COLERAINE DRIVING TEST · COMPLETE GUIDE</span><span class="page-num"></span></footer>
+    </article>
+    <article class="page ">
+      <header class="chapter-head"><span>PART 10 · LOCAL FOCUS</span><h2>Four Coleraine practice loops</h2></header>
+      
+<p>These are <b>practice loops, not claimed test routes</b>. Your instructor should adapt them for temporary restrictions, lesson goals and safe legal access. Do not follow this page while driving.</p>
+<table><tr><th>Loop</th><th>Areas to combine</th><th>Skills to score</th></tr>
+<tr><td>A · Industrial → urban</td><td>Loughan Hill/Gateside → Bushmills Road approaches → town streets → return</td><td>Obscured emergence, lights, crossings, lanes, safe stop.</td></tr>
+<tr><td>B · Ring-road decisions</td><td>Gateside area → A29/Bushmills Road area → Ballycastle Road area → suitable return</td><td>Signs, roundabouts, speed transitions, lane discipline.</td></tr>
+<tr><td>C · Mixed residential</td><td>Mountsandel/Greenmount streets → major-road turns → Lodge Road vicinity</td><td>Meeting traffic, parked cars, hills, right turns, complex junction.</td></tr>
+<tr><td>D · Faster-road plan</td><td>Instructor-selected A26/A29 section with safe joining/leaving points</td><td>Acceleration, gaps, following distance, lane change, deceleration.</td></tr></table>
+<h3 style="margin-top:5mm">Score each drive 0–2</h3>
+<p><b>0</b> needed intervention · <b>1</b> safe but prompted/inconsistent · <b>2</b> independent and repeatable</p>
+<ul class="check"><li>Observations acted upon</li><li>Speed appropriate and limits recognised</li><li>Lane/position planned early</li><li>Junction gaps safe without undue delay</li><li>Signals useful and cancelled</li><li>Clearance from parked/vulnerable users</li><li>Recovery after a mistake</li><li>Independent sign reading</li></ul>
+      <footer><span>COLERAINE DRIVING TEST · COMPLETE GUIDE</span><span class="page-num"></span></footer>
+    </article>
+    <article class="page ">
+      <header class="chapter-head"><span>PART 10 · LOCAL FOCUS</span><h2>Coleraine risk-area playbook</h2></header>
+      
+<table><tr><th>Risk area</th><th>Trigger phrase</th><th>Action</th></tr>
+<tr><td>Blocked Gateside view</td><td>“Hidden road”</td><td>Effective observation; creep only under full control.</td></tr>
+<tr><td>Lodge Road approach</td><td>“Destination, arrow, lane”</td><td>Read live information and commit early.</td></tr>
+<tr><td>Ring-road transition</td><td>“New sign, new speed”</td><td>Mirrors, sign check, smooth speed adjustment.</td></tr>
+<tr><td>Town crossing</td><td>“Both pavements”</td><td>Ease off and scan each side, including hidden pedestrians.</td></tr>
+<tr><td>Residential parked cars</td><td>“Door, child, meeting point”</td><td>Create clearance, reduce speed, decide who waits.</td></tr>
+<tr><td>Wrong lane</td><td>“Safely wrong”</td><td>Follow lane unless a fully safe normal change exists.</td></tr></table>
+<div class="callout tip"><b>No “known fail spot” causes a fail by itself</b><p>The examiner marks your response to the situation. A difficult junction can be handled well; an apparently easy road can expose poor observation.</p></div>
+      <footer><span>COLERAINE DRIVING TEST · COMPLETE GUIDE</span><span class="page-num"></span></footer>
+    </article>
+    <article class="page ">
+      <header class="chapter-head"><span>PART 11 · RECOVERY</span><h2>Mistakes and safe recovery</h2></header>
+      
+<table><tr><th>What happened</th><th>Immediate response</th><th>Do not</th></tr>
+<tr><td>Missed turn / wrong exit</td><td>Continue safely and say so briefly.</td><td>Brake, reverse or cut across.</td></tr>
+<tr><td>Wrong lane</td><td>Follow it unless a normal safe lane change exists.</td><td>Use the signal as a demand.</td></tr>
+<tr><td>Stall</td><td>Secure if needed, neutral, restart, full observation.</td><td>Panic-restart while rolling.</td></tr>
+<tr><td>Signalled too early</td><td>Cancel promptly; reassess and signal at the right time.</td><td>Continue misleading others.</td></tr>
+<tr><td>Hesitated</td><td>Reassess; take the next genuinely safe gap.</td><td>Compensate with a risky gap.</td></tr>
+<tr><td>Speed too high</td><td>Mirrors; ease/brake progressively to appropriate speed.</td><td>Stare at speedometer or brake blindly.</td></tr>
+<tr><td>Manoeuvre off line</td><td>Stop, observe, correct slowly.</td><td>Continue toward kerb/vehicle.</td></tr>
+<tr><td>Other driver cuts in</td><td>Create space; avoid conflict.</td><td>Protect “your right of way.”</td></tr></table>
+<h3 style="margin-top:5mm">When not to correct</h3><p>Do not correct a navigational mistake if the correction itself is unsafe, illegal or abrupt. Do not reverse after missing a turn. Do not swerve across lane markings. Do not stop where following traffic cannot react.</p>
+
+      <footer><span>COLERAINE DRIVING TEST · COMPLETE GUIDE</span><span class="page-num"></span></footer>
+    </article>
+    <article class="page ">
+      <header class="chapter-head"><span>PART 11 · RECOVERY</span><h2>Staying calm under pressure</h2></header>
+      
+<div class="two-grid">
+ <div class="card"><h3>Before the test</h3><ul><li>Normal meal and hydration.</li><li>No last-minute “tour of every route.”</li><li>Arrive as instructed, with margin.</li><li>Use the toilet and silence phone.</li><li>Two slow exhales before entering car.</li></ul></div>
+ <div class="card"><h3>During the test</h3><ul><li>Listen; ask if unclear.</li><li>Break each instruction into one road at a time.</li><li>At stops, soften grip and breathe.</li><li>After error: stabilise → scan → reset.</li><li>Drive for safety, not examiner approval.</li></ul></div>
+</div>
+<h3 style="margin-top:7mm">Useful internal commentary</h3>
+<div class="three-grid"><div class="card"><h3>“What changes?”</h3><p>Limit, lane, surface, traffic, visibility?</p></div><div class="card"><h3>“What is hidden?”</h3><p>Child, cycle, car, crossing, exit?</p></div><div class="card"><h3>“Where can I stop?”</h3><p>Is my speed compatible with that distance?</p></div></div>
+<div class="callout tip"><b>Nerves are not a fault</b><p>The examiner assesses the driving they see. You may pause, breathe and ask for an instruction to be repeated. Calm comes from giving yourself time and space.</p></div>
+      <footer><span>COLERAINE DRIVING TEST · COMPLETE GUIDE</span><span class="page-num"></span></footer>
+    </article>
+    <article class="page cheat">
+      <header class="chapter-head"><span>PART 12 · QUICK REFERENCE</span><h2>Five-second checklists</h2></header>
+      
+<div class="two-grid">
+ <div class="card"><h3>5-second junction</h3><ol><li>Sign/marking?</li><li>Mirrors/signal?</li><li>Position/speed?</li><li>Right–left–right?</li><li>Gap + new road clear?</li></ol></div>
+ <div class="card"><h3>5-second roundabout</h3><ol><li>Destination?</li><li>Sign/arrows?</li><li>Lane/signal?</li><li>Speed/give way?</li><li>Hold lane; mirror-left-exit.</li></ol></div>
+ <div class="card"><h3>Move-off</h3><ol><li>Prepare.</li><li>All round.</li><li>Blind spot.</li><li>Signal if useful.</li><li>Gap still safe? Move.</li></ol></div>
+ <div class="card"><h3>Manoeuvre</h3><ol><li>Safe place.</li><li>All-round check.</li><li>Very slow.</li><li>Keep scanning.</li><li>Stop if scene changes.</li></ol></div>
+</div>
+<div class="golden" style="margin-top:7mm"><b>MASTER RULE</b> If you need more time, create it early with speed—not late with panic.</div>
+
+      <footer><span>COLERAINE DRIVING TEST · COMPLETE GUIDE</span><span class="page-num"></span></footer>
+    </article>
+    <article class="page cheat">
+      <header class="chapter-head"><span>PART 12 · QUICK REFERENCE</span><h2>Decision tree and examiner language</h2></header>
+      
+<div class="card"><h3>“What do I do here?”</h3>
+<div class="step"><b>1</b><p><b>Is there a legal instruction?</b> Light, sign, marking or examiner direction. Obey it unless doing so would be unsafe; examiner directions never override law/signs.</p></div>
+<div class="step"><b>2</b><p><b>Could anyone enter my path?</b> If yes/hidden, ease off and prepare to stop.</p></div>
+<div class="step"><b>3</b><p><b>Do I need to change speed or direction?</b> Use relevant mirrors, useful signal, safe position.</p></div>
+<div class="step"><b>4</b><p><b>Is the space definitely available?</b> Gap, lane, exit and stopping distance. If not, wait/follow lane.</p></div>
+<div class="step"><b>5</b><p><b>After the action:</b> cancel signal, mirrors, normal position and progress.</p></div>
+</div>
+<h3 style="margin-top:6mm">Common examiner instructions</h3>
+<table><tr><th>Instruction</th><th>Meaning</th></tr><tr><td>“Follow the road ahead unless signs or markings direct otherwise.”</td><td>Continue naturally; read the road. It does not mean ignore lane arrows.</td></tr><tr><td>“Pull up on the left in a safe place.”</td><td>You choose the place; take time to avoid restrictions and hazards.</td></tr><tr><td>“Take the next road on the right/left.”</td><td>Use full MSPSL; if unsafe or prohibited, continue and explain.</td></tr><tr><td>“Drive on when you are ready.”</td><td>No rush: prepare and complete fresh all-round observation.</td></tr></table>
+
+      <footer><span>COLERAINE DRIVING TEST · COMPLETE GUIDE</span><span class="page-num"></span></footer>
+    </article>
+    <article class="page cheat">
+      <header class="chapter-head"><span>PART 12 · QUICK REFERENCE</span><h2>Final-day cheat sheet</h2></header>
+      
+<div class="two-grid">
+ <div><h3>Night before</h3><ul class="check"><li>Documents together</li><li>Vehicle/legal checks complete</li><li>Weather and travel checked</li><li>One short review—not a cram</li><li>Normal sleep routine</li></ul></div>
+ <div><h3>Before starting</h3><ul class="check"><li>Seat, steering, head restraint</li><li>Seatbelt</li><li>Mirrors</li><li>Doors secure / warning lights clear</li><li>Know demisters and controls</li><li>One slow exhale</li></ul></div>
+</div>
+<h3 style="margin-top:6mm">Top ten reminders</h3>
+<ol><li>Read signs and lane arrows early.</li><li>Check the mirror that matters, then act on it.</li><li>Less view or space means less speed.</li><li>A speed limit is a maximum, not a target.</li><li>At roundabouts: destination → sign → arrow → lane.</li><li>Before exiting: interior/left mirror, then left signal.</li><li>Do not let another driver choose your gap.</li><li>Wrong lane? Go safely wrong.</li><li>During reversing, stop whenever the scene changes.</li><li>One mistake ends when the next safe decision begins.</li></ol>
+<div class="golden" style="margin-top:7mm"><b>FINAL MANTRA</b> SAFE · LEGAL · OBSERVED · UNHURRIED</div>
+
+      <footer><span>COLERAINE DRIVING TEST · COMPLETE GUIDE</span><span class="page-num"></span></footer>
+    </article>
+    <article class="page ">
+      <header class="chapter-head"><span>REFERENCE · AUGUST 2026</span><h2>Sources and important limits</h2></header>
+      
+<p>This guide was checked against official Northern Ireland sources available in August 2026. Use these pages to confirm late changes.</p>
+<ol class="sources">
+ <li><b>About the practical test for cars</b> — nidirect.gov.uk/articles/about-practical-test-cars</li>
+ <li><b>Independent driving</b> — nidirect.gov.uk/articles/independent-driving</li>
+ <li><b>Reporting for your practical test</b> — nidirect.gov.uk/articles/reporting-your-practical-test</li>
+ <li><b>Minimum requirements for test vehicles</b> — nidirect.gov.uk/articles/minimum-requirements-test-vehicles</li>
+ <li><b>Vehicle safety questions for car tests</b> — nidirect.gov.uk/publications/vehicle-safety-questions-car-tests</li>
+ <li><b>Driving and vehicle test centres</b> — nidirect.gov.uk/articles/driving-and-vehicle-test-centres</li>
+ <li><b>The Official Highway Code for Northern Ireland</b> — nidirect.gov.uk/articles/highway-code</li>
+ <li><b>Using the road (rules 159–203), including roundabouts</b> — nidirect.gov.uk/articles/using-road-159-203</li>
+ <li><b>Speed limits and penalties</b> — nidirect.gov.uk/articles/speed-limits-and-penalties-breaking-them</li>
+</ol>
+<div class="callout warn"><b>Local information</b><p>The official source confirms the centre address. References to likely practice roads come from the surrounding network and third-party route guides; they are not DVA guarantees. Always obey current signs, markings, closures and your instructor.</p></div>
+<div class="rule"></div><p class="tiny">Educational summary only. It does not replace the Highway Code, professional instruction, vehicle handbook, appointment letter or legal advice. Diagrams are deliberately schematic and not to scale.</p>
+
+      <footer><span>COLERAINE DRIVING TEST · COMPLETE GUIDE</span><span class="page-num"></span></footer>
+    </article></body></html>
