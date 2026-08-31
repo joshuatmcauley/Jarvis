@@ -30,7 +30,11 @@ npm run build
 mkdir -p "$WEB_ROOT"
 rsync -a --delete "${REPO_DIR}/dist/" "$WEB_ROOT/"
 
-sed "s/DOMAIN_NAME/${DOMAIN}/g" "${REPO_DIR}/deploy/nginx.conf" > "$SITE_AVAIL"
+if [[ "$DOMAIN" == "_" ]]; then
+  sed "s/DOMAIN_NAME www.DOMAIN_NAME/_/g" "${REPO_DIR}/deploy/nginx.conf" > "$SITE_AVAIL"
+else
+  sed "s/DOMAIN_NAME/${DOMAIN}/g" "${REPO_DIR}/deploy/nginx.conf" > "$SITE_AVAIL"
+fi
 ln -sfn "$SITE_AVAIL" "$SITE_EN"
 rm -f /etc/nginx/sites-enabled/default
 

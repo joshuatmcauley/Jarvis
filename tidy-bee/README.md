@@ -12,6 +12,8 @@ npm run dev
 
 Open the printed local URL. Production build:
 
+To put it on a Raspberry Pi with your own domain, see [deploy/HOSTING.md](deploy/HOSTING.md).
+
 ```bash
 npm run build
 npm run preview
