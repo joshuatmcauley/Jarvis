@@ -14,6 +14,8 @@ Open the printed local URL. Production build:
 
 To put it on a Raspberry Pi with your own domain, see [deploy/HOSTING.md](deploy/HOSTING.md).
 
+To host it in the cloud (Vercel / GitHub Pages, no Pi), see [deploy/CLOUD.md](deploy/CLOUD.md).
+
 ```bash
 npm run build
 npm run preview

@@ -17,6 +17,8 @@ import {
 
 gsap.registerPlugin(ScrollTrigger, SplitText, MotionPathPlugin)
 
+const brand = (file: string) => `${import.meta.env.BASE_URL}brand/${file}`
+
 const BOOK_TEXT =
   'Hi, I would like to book a clean with The Tidy Bee please.'
 
@@ -220,7 +222,7 @@ export default function App() {
 
       <header className={navSolid ? 'nav is-solid' : 'nav'}>
         <a className="nav-brand" href="#top">
-          <img src="/brand/logo.jpg" alt="The Tidy Bee" />
+          <img src={brand('logo.jpg')} alt="The Tidy Bee" />
           <span>The Tidy Bee</span>
         </a>
         <button
@@ -276,7 +278,7 @@ export default function App() {
             </ul>
           </div>
           <div className="hero-visual">
-            <img className="hero-logo" src="/brand/logo.jpg" alt="The Tidy Bee logo" />
+            <img className="hero-logo" src={brand('logo.jpg')} alt="The Tidy Bee logo" />
             <Bee className="hero-bee" title="The Tidy Bee mascot" />
             <div className="offer-chip">10% off your first clean</div>
           </div>
@@ -377,15 +379,15 @@ export default function App() {
           </div>
           <div className="polaroids">
             <figure className="polaroid rot-left">
-              <img src="/brand/bathroom.jpg" alt="A bright kitchen and bathroom after a thorough clean" />
+              <img src={brand('bathroom.jpg')} alt="A bright kitchen and bathroom after a thorough clean" />
               <figcaption>Sparkling kitchens</figcaption>
             </figure>
             <figure className="polaroid rot-right">
-              <img src="/brand/living.jpg" alt="A calm living room with fresh linens and plants" />
+              <img src={brand('living.jpg')} alt="A calm living room with fresh linens and plants" />
               <figcaption>Beautiful homes</figcaption>
             </figure>
             <figure className="polaroid">
-              <img src="/brand/intro-flyer.jpg" alt="The Tidy Bee introductory flyer" />
+              <img src={brand('intro-flyer.jpg')} alt="The Tidy Bee introductory flyer" />
               <figcaption>From the studio</figcaption>
             </figure>
           </div>
