@@ -6,7 +6,10 @@ A simple desktop application for Raspberry Pi that serves as the foundation for 
 - Raspberry Pi 5
 - Elecrow 7-inch display (optional)
 - Pi Camera module 3 (for future features)
-- Arduino ESP32 (for future features)
+- Keysstudio ESP32 WROOM-32D (for RF control)
+- CIACHIP RX480E 433 MHz RF receiver
+- TX118SA 433 MHz RF transmitter
+- Energizer remote control smart plugs
 
 ## Features (Current)
 - 🖥️ Desktop application with GUI
@@ -62,13 +65,24 @@ JARVIS/
 └── README.md             # This file
 ```
 
+## Current Features
+
+### ESP32 RF Smart Plug Control (NEW!)
+- 🔌 Control Energizer smart plugs with ESP32
+- 📡 433 MHz RF transmitter/receiver system
+- 🌐 Web-based control interface
+- 🖥️ Serial command control
+- 🏠 Integration with JARVIS system
+
+See the complete setup guide in [`esp32-rf-control/`](esp32-rf-control/)
+
 ## Future Features (Coming Soon)
 - 🎤 Voice recognition and speech synthesis
 - 📷 Camera integration
 - 🌐 Weather information
 - 📰 News updates
 - 🎵 Music control
-- 🏠 Home automation
+- 🏠 Advanced home automation
 
 ## Troubleshooting
 

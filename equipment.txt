@@ -1,0 +1,41 @@
+# JARVIS Project Equipment Inventory
+
+## Raspberry Pi System
+- Raspberry Pi 5
+- Elecrow 7-inch display
+- Pi Camera Module 3
+
+## ESP32 RF Control System
+- Keysstudio ESP32 WROOM-32D development board
+- CIACHIP RX480E 433 MHz RF receiver module
+- TX118SA 433 MHz RF transmitter (4 channel)
+- Energizer remote control smart plugs
+
+## Cables & Connectors
+- Micro-USB cable (for ESP32 programming)
+- Female-to-female jumper wires
+
+## Software Setup
+- Arduino IDE with ESP32 support
+- RCSwitch library for RF communication
+- Python 3 with requests library (for integration)
+
+## Project Status
+✅ Raspberry Pi JARVIS interface - Operational
+✅ ESP32 RF control system - Setup complete
+⏳ Integration between systems - In progress
+⏳ Voice control - Planned
+⏳ Camera integration - Planned
+
+## Notes
+- ESP32 and Raspberry Pi should be on same network for integration
+- RF modules use 433 MHz frequency
+- Smart plugs can be controlled via web interface or serial commands
+- Original remote control still functional
+
+## Documentation Locations
+- Main project: /workspace/README.md
+- ESP32 RF system: /workspace/esp32-rf-control/README.md
+- Quick start guide: /workspace/esp32-rf-control/QUICK_START.md
+- Wiring guide: /workspace/esp32-rf-control/WIRING_GUIDE.md
+- Python integration: /workspace/esp32-rf-control/jarvis_integration.py
