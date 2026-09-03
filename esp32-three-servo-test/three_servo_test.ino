@@ -1,6 +1,5 @@
 /*
-  Faster 10s product demo with bigger motion.
-  Pins 18, 19, 12 on Keyestudio ESP32 PLUS.
+  Funny 3-servo bit. Pins 18, 19, 12 on Keyestudio ESP32 PLUS.
 */
 
 #include <ESP32Servo.h>
@@ -58,45 +57,68 @@ void setup() {
   lean.write(CENTER);
   panPos = tiltPos = leanPos = CENTER;
   delay(200);
-  Serial.println("Demo fast");
+  Serial.println("Funny");
 }
 
 void loop() {
+  // pretending to be chill
   goAll(CENTER, CENTER, CENTER, 5);
+  hold(400);
+
+  // wait... what?
+  goAll(48, 78, 90, 6);
+  hold(500);
+  goAll(52, 78, 90, 12);     // tiny second glance
+  hold(180);
+  goAll(128, 62, 70, 3);     // DOUBLE TAKE
+  hold(250);
+
+  // lean in like "you did NOT just say that"
+  goAll(118, 55, 65, 4);
+  hold(350);
+
+  // follow a fly... then lose it
+  goAll(50, 60, 90, 7);
+  goAll(70, 55, 90, 7);
+  goAll(100, 58, 90, 7);
+  goAll(125, 70, 90, 4);
   hold(120);
+  goAll(90, 50, 90, 3);      // fly went UP
+  hold(200);
+  goAll(90, 120, 90, 3);     // bonk, look down
+  hold(250);
 
-  goAll(50, 70, 110, 4);     // snap-curious left
+  // fake sneeze
+  goAll(90, 58, 100, 10);
+  hold(280);
+  goAll(90, 58, 80, 10);
   hold(180);
-
-  goAll(130, 68, 70, 4);     // whip to right
-  hold(160);
-
-  goAll(90, 55, 90, 4);      // look way up
+  goAll(85, 128, 90, 2);     // ACHOO
   hold(150);
-
-  goAll(90, 125, 90, 3);     // nod
-  goAll(90, 58, 90, 3);
-  goAll(90, 125, 90, 3);
-  goAll(90, 70, 90, 3);
-  hold(80);
-
-  goAll(70, 80, 118, 4);     // big tilts
-  hold(180);
-  goAll(110, 80, 62, 4);
-  hold(180);
-
-  goAll(50, 90, 90, 3);      // no
-  goAll(130, 90, 90, 3);
-  goAll(50, 90, 90, 3);
-  goAll(130, 90, 90, 3);
-
-  goAll(90, 128, 90, 4);     // bow
+  goAll(90, 70, 90, 4);
   hold(200);
-  goAll(90, 60, 90, 4);      // pop up
-  hold(100);
 
-  goAll(55, 75, 115, 4);     // last look around
-  goAll(125, 75, 65, 4);
+  // embarrassed shake
+  goAll(55, 100, 90, 3);
+  goAll(125, 100, 90, 3);
+  goAll(55, 100, 90, 3);
+  goAll(125, 100, 90, 3);
+
+  // peek-a-boo
+  goAll(50, 110, 118, 4);    // hide
+  hold(280);
+  goAll(90, 70, 90, 3);      // BOO
+  hold(220);
+  goAll(130, 110, 62, 4);    // hide other side
+  hold(220);
+  goAll(90, 65, 90, 3);
+  hold(180);
+
+  // dramatic too-low bow, then "oops" pop up
+  goAll(90, 130, 90, 5);
+  hold(300);
+  goAll(90, 55, 90, 3);
+  hold(150);
   goAll(CENTER, CENTER, CENTER, 5);
-  hold(200);
+  hold(300);
 }
