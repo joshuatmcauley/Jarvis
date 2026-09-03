@@ -2,6 +2,15 @@
 
 A simple desktop application for Raspberry Pi that serves as the foundation for your JARVIS AI assistant.
 
+## Talk from iPhone (same agent, stored memory)
+
+Use **one** Cursor agent every day. Do not tap + for a new agent.
+
+- Open: [Iphone cursor agent](https://cursor.com/agents/bc-552ac9dc-5afe-44f5-bf2b-9ee0d966172e)
+- Speak with the mic in the Cursor iOS app
+- Lasting notes are saved in [`memory/`](memory/) so they survive overnight
+- Siri / Home Screen setup: [`iphone/README.md`](iphone/README.md)
+
 ## Hardware Requirements
 - Raspberry Pi 5
 - Elecrow 7-inch display (optional)

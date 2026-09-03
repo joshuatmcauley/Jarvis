@@ -41,6 +41,9 @@ videos/
 *.log
 config/weather_config.json
 config/settings.json
+.env
+.cursor-api-key
+iphone/.api-key
 
 # Temporary files
 *.tmp
