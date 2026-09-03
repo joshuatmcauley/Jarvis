@@ -23,6 +23,19 @@ Vercel will show DNS records. At the shop where you bought the domain, create wh
 
 Wait 5–30 minutes. HTTPS is automatic.
 
+## Hidden stats page (`/hive`)
+
+The public site has a private dashboard at `https://thetidybee.co.uk/hive` (not linked in the nav). It shows visits, unique people, referrers, countries, devices, and a recent-activity feed.
+
+1. Vercel project → **Storage** → create **Upstash Redis** (free) and connect it to `the-tidy-bee`. That sets `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN`.
+2. **Settings → Environment Variables** → add `TIDY_BEE_ADMIN_SECRET` = a long password only you two know.
+3. Redeploy.
+4. Open `/hive`, enter that password.
+
+Without Redis, the page still works locally (`npm run dev`, password `local-dev-only` unless you set the env var). On Vercel, visits will not persist until Redis is connected.
+
+IPs are hashed, not stored. Search engines are told to skip `/hive` via `robots.txt`.
+
 ## GitHub Pages (no extra account)
 
 After this workflow has run at least once:

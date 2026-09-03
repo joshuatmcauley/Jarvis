@@ -16,6 +16,8 @@ To put it on a Raspberry Pi with your own domain, see [deploy/HOSTING.md](deploy
 
 To host it in the cloud (Vercel / GitHub Pages, no Pi), see [deploy/CLOUD.md](deploy/CLOUD.md).
 
+Private visit stats live at `/hive` (password + Redis on Vercel). Not linked from the public site.
+
 ```bash
 npm run build
 npm run preview
