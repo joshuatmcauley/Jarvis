@@ -85,6 +85,11 @@ This file is a lightweight log of hardware purchases for your home projects (gat
 - Nankadf programmable DC power supply
 - Elegoo MB-V2 breadboard power module
 - Solderless breadboard
+- Fermerry silicone tinned copper hookup wire kit (6 colors, 22AWG, 10FT each)
+- Vogenzek PCB prototyping kit (20 pcs total: 12× double-sided PCB prototype boards + 8× nylon columns/standoffs)
+- Lead-free rosin-core solder wire (Sn99.3/Cu0.7), 0.8mm, 50g spool
+- 5mm LED diode assortment kit (120 pcs, 6 colors / 20 each, diffused)
+- STEBRUAM wet & dry sandpaper set (120–3000 grit, 42 sheets)
 - Assorted jumper wires (every type you listed)
 - Resistor assortment:
   - 10 Ω
