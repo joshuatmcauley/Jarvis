@@ -1,0 +1,81 @@
+Category,Subcategory,Group,Item
+Microcontrollers / dev boards,,,Arduino UNO R4
+Microcontrollers / dev boards,,,Keyestudio Arduino ESP32 Plus
+Microcontrollers / dev boards,,,ESP32 terminal / breakout adapter
+Sensor kits,Elegoo 37 Sensor Kit,,Joystick
+Sensor kits,Elegoo 37 Sensor Kit,,Flame sensor
+Sensor kits,Elegoo 37 Sensor Kit,,RGB LED
+Sensor kits,Elegoo 37 Sensor Kit,,Heartbeat sensor
+Sensor kits,Elegoo 37 Sensor Kit,,Light cup
+Sensor kits,Elegoo 37 Sensor Kit,,Relay
+Sensor kits,Elegoo 37 Sensor Kit,,Hall magnetic sensor
+Sensor kits,Elegoo 37 Sensor Kit,,Linear Hall sensor
+Sensor kits,Elegoo 37 Sensor Kit,,SMD RGB LED
+Sensor kits,Elegoo 37 Sensor Kit,,Seven-colour flashing LED
+Sensor kits,Elegoo 37 Sensor Kit,,Tilt switch
+Sensor kits,Elegoo 37 Sensor Kit,,Temperature sensor
+Sensor kits,Elegoo 37 Sensor Kit,,Big sound sensor
+Sensor kits,Elegoo 37 Sensor Kit,,Touch sensor
+Sensor kits,Elegoo 37 Sensor Kit,,Two-colour LED
+Sensor kits,Elegoo 37 Sensor Kit,,Laser emitter
+Sensor kits,Elegoo 37 Sensor Kit,,Ball switch
+Sensor kits,Elegoo 37 Sensor Kit,,Analogue temperature sensor
+Sensor kits,Elegoo 37 Sensor Kit,,Small sound sensor
+Sensor kits,Elegoo 37 Sensor Kit,,Digital temperature sensor
+Sensor kits,Elegoo 37 Sensor Kit,,Mini two-colour LED
+Sensor kits,Elegoo 37 Sensor Kit,,Button
+Sensor kits,Elegoo 37 Sensor Kit,,Photoresistor
+Sensor kits,Elegoo 37 Sensor Kit,,IR emitter
+Sensor kits,Elegoo 37 Sensor Kit,,Tracking sensor
+Sensor kits,Elegoo 37 Sensor Kit,,Active buzzer
+Sensor kits,Elegoo 37 Sensor Kit,,Reed switch
+Sensor kits,Elegoo 37 Sensor Kit,,Shock sensor
+Sensor kits,Elegoo 37 Sensor Kit,,Temperature and humidity sensor
+Sensor kits,Elegoo 37 Sensor Kit,,IR receiver
+Sensor kits,Elegoo 37 Sensor Kit,,Obstacle-avoidance sensor
+Sensor kits,Elegoo 37 Sensor Kit,,Passive buzzer
+Sensor kits,Elegoo 37 Sensor Kit,,Mini reed switch
+Sensor kits,Elegoo 37 Sensor Kit,,Rotary encoder
+Sensor kits,Elegoo 37 Sensor Kit,,Analogue Hall sensor
+Sensor kits,Elegoo 37 Sensor Kit,,Tap module
+Sensor kits,Elegoo 37 Sensor Kit,,Light-blocking / photo-interrupter module
+Smart home kits,Keyestudio Smart Home Kit,,6812 RGB module
+Smart home kits,Keyestudio Smart Home Kit,,Analogue gas sensor
+Smart home kits,Keyestudio Smart Home Kit,,Button module
+Smart home kits,Keyestudio Smart Home Kit,,RFID module
+Smart home kits,Keyestudio Smart Home Kit,,Passive buzzer module
+Smart home kits,Keyestudio Smart Home Kit,,130 DC motor
+Smart home kits,Keyestudio Smart Home Kit,,Steam / water sensor
+Smart home kits,Keyestudio Smart Home Kit,,XHT11 temperature and humidity sensor
+Smart home kits,Keyestudio Smart Home Kit,,PIR motion sensor
+Smart home kits,Keyestudio Smart Home Kit,,Yellow LED module
+Smart home kits,Keyestudio Smart Home Kit,,Servo motor
+Smart home kits,Keyestudio Smart Home Kit,,I2C 1602 LCD module
+Radio / remote equipment,,,QIACHIP TX118SA 433 MHz transmitter
+Radio / remote equipment,,,QIACHIP RX480E four-channel 433 MHz receiver
+Radio / remote equipment,,,433 MHz spring antennas
+Motors / control,,,L298N motor driver *(listed as L289N)*
+Motors / control,,,5 V USB mini fans ×3
+Power / prototyping,,,Nankadf programmable DC power supply
+Power / prototyping,,,Elegoo MB-V2 breadboard power module
+Power / prototyping,,,Solderless breadboard
+Power / prototyping,,,"Fermerry silicone tinned copper hookup wire kit (6 colors, 22AWG, 10FT each)"
+Power / prototyping,,,Vogenzek PCB prototyping kit (20 pcs total: 12× double-sided PCB prototype boards + 8× nylon columns/standoffs)
+Power / prototyping,,,"Lead-free rosin-core solder wire (Sn99.3/Cu0.7), 0.8mm, 50g spool"
+Power / prototyping,,,"5mm LED diode assortment kit (120 pcs, 6 colors / 20 each, diffused)"
+Power / prototyping,,,"STEBRUAM wet & dry sandpaper set (120–3000 grit, 42 sheets)"
+Power / prototyping,,,Assorted jumper wires (every type you listed)
+Power / prototyping,,Resistor assortment,10 Ω
+Power / prototyping,,Resistor assortment,100 Ω
+Power / prototyping,,Resistor assortment,220 Ω
+Power / prototyping,,Resistor assortment,330 Ω
+Power / prototyping,,Resistor assortment,1 kΩ
+Power / prototyping,,Resistor assortment,2 kΩ
+Power / prototyping,,Resistor assortment,5 kΩ
+Power / prototyping,,Resistor assortment,10 kΩ
+Power / prototyping,,Resistor assortment,100 kΩ
+Power / prototyping,,Resistor assortment,1 MΩ
+Power / prototyping,,Resistor assortment,XL830L digital multimeter
+Other equipment,,,Raspberry Pi Camera Module 2
+Other equipment,,,Bambu Lab P1S
+Other equipment,,,Spare Bambu Lab P1S chamber light
