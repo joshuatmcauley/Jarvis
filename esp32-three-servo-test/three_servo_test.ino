@@ -1,5 +1,6 @@
 /*
-  Fast dance only. Pins 18, 19, 12 on Keyestudio ESP32 PLUS.
+  Slow "conscious idle" for 3 servos. At least ~20 seconds per cycle.
+  Pins 18, 19, 12 on Keyestudio ESP32 PLUS.
 */
 
 #include <ESP32Servo.h>
@@ -11,11 +12,24 @@ const int PIN_LEAN = 12;
 const int CENTER = 90;
 
 Servo pan, tilt, lean;
+int panPos = CENTER;
+int tiltPos = CENTER;
+int leanPos = CENTER;
 
-void beat(int panA, int tiltA, int leanA, int ms) {
-  pan.write(constrain(panA, 60, 120));
-  tilt.write(constrain(tiltA, 70, 115));
-  lean.write(constrain(leanA, 75, 110));
+void goOne(Servo &servo, int &current, int target, int stepDelay) {
+  target = constrain(target, 70, 110);
+  int dir = (target > current) ? 1 : -1;
+  while (current != target) {
+    current += dir;
+    servo.write(current);
+    delay(stepDelay);
+  }
+}
+
+void rest(int ms) {
+  pan.write(panPos);
+  tilt.write(tiltPos);
+  lean.write(leanPos);
   delay(ms);
 }
 
@@ -30,34 +44,70 @@ void setup() {
   tilt.attach(PIN_TILT, 500, 2500);
   lean.attach(PIN_LEAN, 500, 2500);
 
-  beat(CENTER, CENTER, CENTER, 400);
-  Serial.println("Dance");
+  pan.write(CENTER);
+  tilt.write(CENTER);
+  lean.write(CENTER);
+  panPos = tiltPos = leanPos = CENTER;
+  delay(1000);
+  Serial.println("Idle");
 }
 
 void loop() {
-  // side to side
-  for (int i = 0; i < 6; i++) {
-    beat(70, 100, 78, 120);
-    beat(110, 80, 102, 120);
-  }
+  unsigned long start = millis();
 
-  // bounce
-  for (int i = 0; i < 6; i++) {
-    beat(90, 75, 90, 100);
-    beat(90, 110, 90, 100);
-  }
+  // settle, then notice something to the left
+  rest(1800);
+  goOne(pan, panPos, 78, 28);
+  rest(1200);
+  goOne(tilt, tiltPos, 84, 32);
+  rest(900);
 
-  // twist
-  for (int i = 0; i < 6; i++) {
-    beat(75, 90, 108, 110);
-    beat(105, 90, 72, 110);
-  }
+  // think, tiny lean
+  goOne(lean, leanPos, 98, 36);
+  rest(1400);
+  goOne(tilt, tiltPos, 90, 30);
+  rest(800);
 
-  // shake
-  for (int i = 0; i < 8; i++) {
-    beat(82, 85, 82, 80);
-    beat(98, 95, 98, 80);
-  }
+  // glance up, back down
+  goOne(tilt, tiltPos, 80, 34);
+  rest(1100);
+  goOne(pan, panPos, 86, 30);
+  rest(700);
 
-  beat(CENTER, CENTER, CENTER, 250);
+  // look across the room, slowly
+  goOne(lean, leanPos, 90, 32);
+  goOne(pan, panPos, 108, 30);
+  rest(1600);
+  goOne(tilt, tiltPos, 94, 32);
+  rest(1000);
+
+  // second thought, small correction
+  goOne(pan, panPos, 102, 28);
+  rest(900);
+  goOne(lean, leanPos, 84, 34);
+  rest(1300);
+
+  // breathe
+  goOne(tilt, tiltPos, 88, 40);
+  rest(600);
+  goOne(tilt, tiltPos, 96, 40);
+  rest(700);
+  goOne(tilt, tiltPos, 90, 40);
+  rest(1500);
+
+  // come back to center and rest
+  goOne(lean, leanPos, CENTER, 32);
+  goOne(pan, panPos, CENTER, 30);
+  goOne(tilt, tiltPos, CENTER, 32);
+  rest(2200);
+
+  // fidget, then still
+  goOne(pan, panPos, 93, 36);
+  rest(500);
+  goOne(pan, panPos, CENTER, 36);
+  rest(1800);
+
+  while (millis() - start < 20000) {
+    rest(200);
+  }
 }
