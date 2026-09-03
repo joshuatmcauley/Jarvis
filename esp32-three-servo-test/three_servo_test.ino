@@ -1,5 +1,5 @@
 /*
-  Slow "conscious idle" for 3 servos. At least ~20 seconds per cycle.
+  ~10 second product demo: a few distinct expressions, then loop.
   Pins 18, 19, 12 on Keyestudio ESP32 PLUS.
 */
 
@@ -16,17 +16,26 @@ int panPos = CENTER;
 int tiltPos = CENTER;
 int leanPos = CENTER;
 
-void goOne(Servo &servo, int &current, int target, int stepDelay) {
-  target = constrain(target, 70, 110);
-  int dir = (target > current) ? 1 : -1;
-  while (current != target) {
-    current += dir;
-    servo.write(current);
+void goAll(int p, int t, int l, int stepDelay) {
+  p = constrain(p, 55, 125);
+  t = constrain(t, 60, 120);
+  l = constrain(l, 70, 115);
+
+  while (panPos != p || tiltPos != t || leanPos != l) {
+    if (panPos < p) panPos++;
+    else if (panPos > p) panPos--;
+    if (tiltPos < t) tiltPos++;
+    else if (tiltPos > t) tiltPos--;
+    if (leanPos < l) leanPos++;
+    else if (leanPos > l) leanPos--;
+    pan.write(panPos);
+    tilt.write(tiltPos);
+    lean.write(leanPos);
     delay(stepDelay);
   }
 }
 
-void rest(int ms) {
+void hold(int ms) {
   pan.write(panPos);
   tilt.write(tiltPos);
   lean.write(leanPos);
@@ -48,66 +57,58 @@ void setup() {
   tilt.write(CENTER);
   lean.write(CENTER);
   panPos = tiltPos = leanPos = CENTER;
-  delay(1000);
-  Serial.println("Idle");
+  delay(400);
+  Serial.println("Demo");
 }
 
 void loop() {
-  unsigned long start = millis();
+  // 1. hello / center
+  goAll(CENTER, CENTER, CENTER, 12);
+  hold(250);
 
-  // settle, then notice something to the left
-  rest(1800);
-  goOne(pan, panPos, 78, 28);
-  rest(1200);
-  goOne(tilt, tiltPos, 84, 32);
-  rest(900);
+  // 2. curious look left
+  goAll(62, 78, 100, 10);
+  hold(400);
 
-  // think, tiny lean
-  goOne(lean, leanPos, 98, 36);
-  rest(1400);
-  goOne(tilt, tiltPos, 90, 30);
-  rest(800);
+  // 3. scan to the right
+  goAll(118, 82, 80, 9);
+  hold(350);
 
-  // glance up, back down
-  goOne(tilt, tiltPos, 80, 34);
-  rest(1100);
-  goOne(pan, panPos, 86, 30);
-  rest(700);
+  // 4. notice something up
+  goAll(100, 68, 90, 10);
+  hold(300);
 
-  // look across the room, slowly
-  goOne(lean, leanPos, 90, 32);
-  goOne(pan, panPos, 108, 30);
-  rest(1600);
-  goOne(tilt, tiltPos, 94, 32);
-  rest(1000);
+  // 5. yes (nod)
+  goAll(90, 108, 90, 8);
+  hold(80);
+  goAll(90, 72, 90, 8);
+  hold(80);
+  goAll(90, 108, 90, 8);
+  hold(80);
+  goAll(CENTER, CENTER, CENTER, 10);
+  hold(200);
 
-  // second thought, small correction
-  goOne(pan, panPos, 102, 28);
-  rest(900);
-  goOne(lean, leanPos, 84, 34);
-  rest(1300);
+  // 6. cute head tilt
+  goAll(84, 88, 112, 10);
+  hold(450);
 
-  // breathe
-  goOne(tilt, tiltPos, 88, 40);
-  rest(600);
-  goOne(tilt, tiltPos, 96, 40);
-  rest(700);
-  goOne(tilt, tiltPos, 90, 40);
-  rest(1500);
+  // 7. other-side tilt
+  goAll(96, 88, 72, 10);
+  hold(350);
 
-  // come back to center and rest
-  goOne(lean, leanPos, CENTER, 32);
-  goOne(pan, panPos, CENTER, 30);
-  goOne(tilt, tiltPos, CENTER, 32);
-  rest(2200);
+  // 8. no (small shake)
+  goAll(70, 90, 90, 8);
+  hold(70);
+  goAll(110, 90, 90, 8);
+  hold(70);
+  goAll(70, 90, 90, 8);
+  hold(70);
 
-  // fidget, then still
-  goOne(pan, panPos, 93, 36);
-  rest(500);
-  goOne(pan, panPos, CENTER, 36);
-  rest(1800);
-
-  while (millis() - start < 20000) {
-    rest(200);
-  }
+  // 9. bow, then face camera
+  goAll(90, 118, 90, 11);
+  hold(350);
+  goAll(90, 80, 90, 10);
+  hold(200);
+  goAll(CENTER, CENTER, CENTER, 12);
+  hold(400);
 }
