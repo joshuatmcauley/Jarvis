@@ -1,5 +1,5 @@
 /*
-  ~10 second product demo: a few distinct expressions, then loop.
+  Faster 10s product demo with bigger motion.
   Pins 18, 19, 12 on Keyestudio ESP32 PLUS.
 */
 
@@ -17,9 +17,9 @@ int tiltPos = CENTER;
 int leanPos = CENTER;
 
 void goAll(int p, int t, int l, int stepDelay) {
-  p = constrain(p, 55, 125);
-  t = constrain(t, 60, 120);
-  l = constrain(l, 70, 115);
+  p = constrain(p, 45, 135);
+  t = constrain(t, 50, 130);
+  l = constrain(l, 60, 120);
 
   while (panPos != p || tiltPos != t || leanPos != l) {
     if (panPos < p) panPos++;
@@ -57,58 +57,46 @@ void setup() {
   tilt.write(CENTER);
   lean.write(CENTER);
   panPos = tiltPos = leanPos = CENTER;
-  delay(400);
-  Serial.println("Demo");
+  delay(200);
+  Serial.println("Demo fast");
 }
 
 void loop() {
-  // 1. hello / center
-  goAll(CENTER, CENTER, CENTER, 12);
-  hold(250);
+  goAll(CENTER, CENTER, CENTER, 5);
+  hold(120);
 
-  // 2. curious look left
-  goAll(62, 78, 100, 10);
-  hold(400);
+  goAll(50, 70, 110, 4);     // snap-curious left
+  hold(180);
 
-  // 3. scan to the right
-  goAll(118, 82, 80, 9);
-  hold(350);
+  goAll(130, 68, 70, 4);     // whip to right
+  hold(160);
 
-  // 4. notice something up
-  goAll(100, 68, 90, 10);
-  hold(300);
+  goAll(90, 55, 90, 4);      // look way up
+  hold(150);
 
-  // 5. yes (nod)
-  goAll(90, 108, 90, 8);
+  goAll(90, 125, 90, 3);     // nod
+  goAll(90, 58, 90, 3);
+  goAll(90, 125, 90, 3);
+  goAll(90, 70, 90, 3);
   hold(80);
-  goAll(90, 72, 90, 8);
-  hold(80);
-  goAll(90, 108, 90, 8);
-  hold(80);
-  goAll(CENTER, CENTER, CENTER, 10);
+
+  goAll(70, 80, 118, 4);     // big tilts
+  hold(180);
+  goAll(110, 80, 62, 4);
+  hold(180);
+
+  goAll(50, 90, 90, 3);      // no
+  goAll(130, 90, 90, 3);
+  goAll(50, 90, 90, 3);
+  goAll(130, 90, 90, 3);
+
+  goAll(90, 128, 90, 4);     // bow
   hold(200);
+  goAll(90, 60, 90, 4);      // pop up
+  hold(100);
 
-  // 6. cute head tilt
-  goAll(84, 88, 112, 10);
-  hold(450);
-
-  // 7. other-side tilt
-  goAll(96, 88, 72, 10);
-  hold(350);
-
-  // 8. no (small shake)
-  goAll(70, 90, 90, 8);
-  hold(70);
-  goAll(110, 90, 90, 8);
-  hold(70);
-  goAll(70, 90, 90, 8);
-  hold(70);
-
-  // 9. bow, then face camera
-  goAll(90, 118, 90, 11);
-  hold(350);
-  goAll(90, 80, 90, 10);
+  goAll(55, 75, 115, 4);     // last look around
+  goAll(125, 75, 65, 4);
+  goAll(CENTER, CENTER, CENTER, 5);
   hold(200);
-  goAll(CENTER, CENTER, CENTER, 12);
-  hold(400);
 }
