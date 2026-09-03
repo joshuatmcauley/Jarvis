@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 JARVIS - Simple App Skeleton
-A basic desktop application for Raspberry Pi
+A basic desktop application for Raspberry Pi with RF remote control
 """
 
 import tkinter as tk
@@ -12,12 +12,86 @@ import json
 from datetime import datetime
 import threading
 import time
+import serial
+import glob
+
+class RFController:
+    """Handle RF remote control communication with ESP32/Arduino"""
+    
+    def __init__(self):
+        self.ser = None
+        self.port = None
+        self.connected = False
+        
+    def find_device(self):
+        """Auto-detect the ESP32/Arduino serial port"""
+        possible_ports = glob.glob('/dev/ttyUSB*') + glob.glob('/dev/ttyACM*')
+        
+        for port in possible_ports:
+            try:
+                test_ser = serial.Serial(port, 115200, timeout=1)
+                time.sleep(2)
+                test_ser.write(b'STATUS\n')
+                response = test_ser.readline().decode().strip()
+                test_ser.close()
+                
+                if response == 'OK':
+                    return port
+            except:
+                continue
+        
+        return None
+    
+    def connect(self, port=None):
+        """Connect to the RF controller"""
+        try:
+            if port is None:
+                port = self.find_device()
+            
+            if port is None:
+                return False
+            
+            self.ser = serial.Serial(port, 115200, timeout=1)
+            self.port = port
+            time.sleep(2)
+            self.connected = True
+            return True
+            
+        except Exception as e:
+            print(f"Error connecting to RF controller: {e}")
+            self.connected = False
+            return False
+    
+    def send_command(self, command):
+        """Send a command to the RF controller"""
+        if not self.connected or self.ser is None:
+            return False, "Not connected"
+        
+        try:
+            self.ser.write(f"{command}\n".encode())
+            response = self.ser.readline().decode().strip()
+            return True, response
+        except Exception as e:
+            return False, str(e)
+    
+    def control_plug(self, plug_number, turn_on):
+        """Control a specific plug"""
+        action = "ON" if turn_on else "OFF"
+        command = f"PLUG{plug_number}_{action}"
+        return self.send_command(command)
+    
+    def disconnect(self):
+        """Disconnect from the RF controller"""
+        if self.ser:
+            self.ser.close()
+        self.connected = False
 
 class JARVISApp:
     def __init__(self):
         """Initialize JARVIS application"""
         self.root = tk.Tk()
         self.setup_window()
+        self.rf_controller = RFController()
         self.create_interface()
         self.running = True
         
@@ -25,7 +99,19 @@ class JARVISApp:
         self.status_thread = threading.Thread(target=self.update_status, daemon=True)
         self.status_thread.start()
         
+        # Try to connect to RF controller
+        self.connect_rf_controller()
+        
         print("JARVIS initialized successfully")
+    
+    def connect_rf_controller(self):
+        """Attempt to connect to RF controller"""
+        if self.rf_controller.connect():
+            print(f"RF Controller connected on {self.rf_controller.port}")
+            self.update_status_text(f"RF Controller connected: {self.rf_controller.port}")
+        else:
+            print("RF Controller not found - RF controls will be disabled")
+            self.update_status_text("RF Controller not connected")
     
     def setup_window(self):
         """Setup the main window"""
@@ -132,6 +218,7 @@ class JARVISApp:
         # Action buttons
         actions = [
             ("System Status", self.show_system_status),
+            ("RF Plug Control", self.show_rf_control),
             ("Weather", self.show_weather),
             ("Time", self.show_time),
             ("Camera", self.take_photo),
@@ -278,20 +365,152 @@ Settings configuration coming soon!"""
         self.update_info(settings_info)
         self.update_status_text("Settings displayed")
     
+    def show_rf_control(self):
+        """Show RF plug control interface"""
+        # Clear the info area and create custom controls
+        self.info_text.config(state=tk.NORMAL)
+        self.info_text.delete(1.0, tk.END)
+        self.info_text.config(state=tk.DISABLED)
+        
+        # Create a custom frame for RF controls
+        for widget in self.info_text.master.winfo_children():
+            if isinstance(widget, tk.Frame) and hasattr(widget, 'rf_frame'):
+                widget.destroy()
+        
+        rf_frame = tk.Frame(self.info_text.master, bg='#1a1a1a')
+        rf_frame.rf_frame = True
+        rf_frame.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
+        
+        # Title
+        title = tk.Label(
+            rf_frame,
+            text="⚡ RF Plug Control",
+            font=('Arial', 18, 'bold'),
+            fg='#00ff00',
+            bg='#1a1a1a'
+        )
+        title.pack(pady=10)
+        
+        # Connection status
+        status_color = '#00ff00' if self.rf_controller.connected else '#ff0000'
+        status_text = f"Connected: {self.rf_controller.port}" if self.rf_controller.connected else "Not Connected"
+        
+        status_label = tk.Label(
+            rf_frame,
+            text=status_text,
+            font=('Arial', 12),
+            fg=status_color,
+            bg='#1a1a1a'
+        )
+        status_label.pack(pady=5)
+        
+        if not self.rf_controller.connected:
+            reconnect_btn = tk.Button(
+                rf_frame,
+                text="Reconnect",
+                font=('Arial', 12),
+                bg='#333333',
+                fg='white',
+                command=self.reconnect_rf,
+                width=20,
+                height=2
+            )
+            reconnect_btn.pack(pady=10)
+        
+        # Plug 1 controls
+        self.create_plug_control(rf_frame, 1)
+        
+        # Plug 2 controls
+        self.create_plug_control(rf_frame, 2)
+        
+        self.update_status_text("RF Control panel displayed")
+    
+    def create_plug_control(self, parent, plug_number):
+        """Create control buttons for a single plug"""
+        frame = tk.Frame(parent, bg='#2a2a2a')
+        frame.pack(fill=tk.X, pady=10, padx=20)
+        
+        # Plug label
+        label = tk.Label(
+            frame,
+            text=f"🔌 Plug {plug_number}",
+            font=('Arial', 16, 'bold'),
+            fg='white',
+            bg='#2a2a2a'
+        )
+        label.pack(pady=10)
+        
+        # Button frame
+        btn_frame = tk.Frame(frame, bg='#2a2a2a')
+        btn_frame.pack(pady=5)
+        
+        # ON button
+        on_btn = tk.Button(
+            btn_frame,
+            text="Turn ON",
+            font=('Arial', 14, 'bold'),
+            bg='#00ff00',
+            fg='black',
+            activebackground='#00cc00',
+            command=lambda: self.control_plug(plug_number, True),
+            width=12,
+            height=2
+        )
+        on_btn.pack(side=tk.LEFT, padx=10)
+        
+        # OFF button
+        off_btn = tk.Button(
+            btn_frame,
+            text="Turn OFF",
+            font=('Arial', 14, 'bold'),
+            bg='#ff0000',
+            fg='white',
+            activebackground='#cc0000',
+            command=lambda: self.control_plug(plug_number, False),
+            width=12,
+            height=2
+        )
+        off_btn.pack(side=tk.LEFT, padx=10)
+    
+    def control_plug(self, plug_number, turn_on):
+        """Control a specific plug"""
+        if not self.rf_controller.connected:
+            self.update_status_text("ERROR: RF Controller not connected")
+            return
+        
+        action = "ON" if turn_on else "OFF"
+        self.update_status_text(f"Sending {action} command to Plug {plug_number}...")
+        
+        success, response = self.rf_controller.control_plug(plug_number, turn_on)
+        
+        if success:
+            self.update_status_text(f"Plug {plug_number} turned {action} successfully")
+        else:
+            self.update_status_text(f"ERROR: {response}")
+    
+    def reconnect_rf(self):
+        """Attempt to reconnect to RF controller"""
+        self.update_status_text("Reconnecting to RF controller...")
+        self.connect_rf_controller()
+        self.show_rf_control()
+    
     def show_about(self):
         """Show about information"""
         about_info = """JARVIS - Personal AI Assistant
-Version: 1.0.0 (Skeleton)
+Version: 1.1.0 (with RF Control)
 
 Hardware:
 - Raspberry Pi 5
 - Elecrow 7-inch display
 - Pi Camera module 3
 - Arduino ESP32
+- 433MHz RF Transmitter/Receiver
+- Energizer RF Remote Plugs
 
 Features:
 - Desktop application
 - System monitoring
+- RF remote control
 - Extensible architecture
 - Touchscreen support
 
@@ -305,6 +524,11 @@ More features will be added gradually!"""
         """Handle application closing"""
         self.running = False
         print("JARVIS shutting down...")
+        
+        # Disconnect RF controller
+        if self.rf_controller:
+            self.rf_controller.disconnect()
+        
         self.root.destroy()
     
     def run(self):
