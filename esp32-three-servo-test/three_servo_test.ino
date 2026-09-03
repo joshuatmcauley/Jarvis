@@ -1,5 +1,6 @@
 /*
-  Funny 3-servo bit. Pins 18, 19, 12 on Keyestudio ESP32 PLUS.
+  Funny bit, but it recenters after every gag so it does not sit in a bow
+  or scan forever. Pins 18, 19, 12.
 */
 
 #include <ESP32Servo.h>
@@ -16,9 +17,9 @@ int tiltPos = CENTER;
 int leanPos = CENTER;
 
 void goAll(int p, int t, int l, int stepDelay) {
-  p = constrain(p, 45, 135);
-  t = constrain(t, 50, 130);
-  l = constrain(l, 60, 120);
+  p = constrain(p, 55, 125);
+  t = constrain(t, 70, 110);
+  l = constrain(l, 70, 115);
 
   while (panPos != p || tiltPos != t || leanPos != l) {
     if (panPos < p) panPos++;
@@ -41,6 +42,11 @@ void hold(int ms) {
   delay(ms);
 }
 
+void homePose(int ms) {
+  goAll(CENTER, CENTER, CENTER, 5);
+  hold(ms);
+}
+
 void setup() {
   Serial.begin(115200);
 
@@ -52,73 +58,53 @@ void setup() {
   tilt.attach(PIN_TILT, 500, 2500);
   lean.attach(PIN_LEAN, 500, 2500);
 
-  pan.write(CENTER);
-  tilt.write(CENTER);
-  lean.write(CENTER);
-  panPos = tiltPos = leanPos = CENTER;
-  delay(200);
-  Serial.println("Funny");
+  homePose(800);
+  Serial.println("Funny v2");
 }
 
 void loop() {
-  // pretending to be chill
-  goAll(CENTER, CENTER, CENTER, 5);
+  Serial.println("chill");
+  homePose(700);
+
+  Serial.println("side eye");
+  goAll(68, 90, 108, 4);
   hold(400);
+  homePose(250);
 
-  // wait... what?
-  goAll(48, 78, 90, 6);
-  hold(500);
-  goAll(52, 78, 90, 12);     // tiny second glance
-  hold(180);
-  goAll(128, 62, 70, 3);     // DOUBLE TAKE
-  hold(250);
-
-  // lean in like "you did NOT just say that"
-  goAll(118, 55, 65, 4);
+  Serial.println("double take");
+  goAll(62, 90, 90, 6);
+  hold(450);
+  goAll(120, 82, 78, 3);
   hold(350);
+  homePose(300);
 
-  // follow a fly... then lose it
-  goAll(50, 60, 90, 7);
-  goAll(70, 55, 90, 7);
-  goAll(100, 58, 90, 7);
-  goAll(125, 70, 90, 4);
-  hold(120);
-  goAll(90, 50, 90, 3);      // fly went UP
-  hold(200);
-  goAll(90, 120, 90, 3);     // bonk, look down
-  hold(250);
+  Serial.println("nod yes");
+  goAll(90, 105, 90, 4);
+  hold(90);
+  goAll(90, 78, 90, 4);
+  hold(90);
+  goAll(90, 105, 90, 4);
+  hold(90);
+  homePose(300);
 
-  // fake sneeze
-  goAll(90, 58, 100, 10);
+  Serial.println("confused tilt");
+  goAll(90, 88, 115, 4);
+  hold(500);
+  goAll(90, 88, 72, 4);
+  hold(350);
+  homePose(300);
+
+  Serial.println("sneeze");
+  goAll(90, 78, 90, 8);
   hold(280);
-  goAll(90, 58, 80, 10);
+  goAll(90, 108, 90, 2);
   hold(180);
-  goAll(85, 128, 90, 2);     // ACHOO
-  hold(150);
-  goAll(90, 70, 90, 4);
-  hold(200);
+  homePose(400);
 
-  // embarrassed shake
-  goAll(55, 100, 90, 3);
-  goAll(125, 100, 90, 3);
-  goAll(55, 100, 90, 3);
-  goAll(125, 100, 90, 3);
-
-  // peek-a-boo
-  goAll(50, 110, 118, 4);    // hide
+  Serial.println("peek");
+  goAll(58, 98, 112, 4);
+  hold(320);
+  goAll(90, 82, 90, 3);
   hold(280);
-  goAll(90, 70, 90, 3);      // BOO
-  hold(220);
-  goAll(130, 110, 62, 4);    // hide other side
-  hold(220);
-  goAll(90, 65, 90, 3);
-  hold(180);
-
-  // dramatic too-low bow, then "oops" pop up
-  goAll(90, 130, 90, 5);
-  hold(300);
-  goAll(90, 55, 90, 3);
-  hold(150);
-  goAll(CENTER, CENTER, CENTER, 5);
-  hold(300);
+  homePose(600);
 }
