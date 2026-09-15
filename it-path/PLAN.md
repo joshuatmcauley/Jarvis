@@ -10,7 +10,7 @@ Legend: **Must** = non-negotiable · **Lab** = GitHub evidence · **Job** = appl
 
 **Must**
 - [ ] Timed A+ Core 1 practice. Write the 3 weakest objective codes in [FAULT-DIARY.md](FAULT-DIARY.md) (study section).
-- [ ] Book Core 1 on Pearson VUE (aim for week 3–4, not “someday”).
+- [/] Book Core 1 on Pearson VUE (aim for week 3–4, not “someday”).
 - [ ] Send **5** applications (helpdesk, service desk, desktop, IT technician, junior network support). Log them in [APPLICATIONS.md](APPLICATIONS.md).
 
 **Lab**
