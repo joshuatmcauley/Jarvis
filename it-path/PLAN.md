@@ -29,7 +29,7 @@ Legend: **Must** = non-negotiable · **Lab** = GitHub evidence · **Job** = appl
 - [ ] 5 more applications.
 
 **Lab**
-- [ ] Follow [labs/02-break-fix/README.md](labs/02-break-fix/README.md): **bad DNS on the Windows PC only**. Fill the table. Save the file on GitHub the same night.
+- [x] Follow [labs/02-break-fix/README.md](labs/02-break-fix/README.md): **bad DNS on the Windows PC only**. Fill the table. Save the file on GitHub the same night.
 
 **Tools (one evening)**
 - [ ] [TOOLS.md](TOOLS.md) — run the Windows list, then the Pi list. You are done when you can point at IP, gateway, and DNS.

@@ -65,33 +65,36 @@ Proof: `ping google.com` works, Chrome loads, `nslookup google.com` shows an ans
 
 ## Fill this in (this *is* the lab)
 
-**Status:** in progress / done  
+**Status:** done (15 Sep 2026, DESKTOP-UT50TBB)
 
-**Fault I chose:** bad DNS  
+**Fault I chose:** bad DNS (IPv4 `127.0.0.1` + IPv6 `::1` on Ethernet)
 
-**Symptom (user words):** e.g. “Internet is up but Google will not load.”
+**Symptom (user words):** Internet feels up but Google will not resolve.
 
 ### Ladder
 
 | Step | Command or check | Result |
 |------|------------------|--------|
-| 1 Physical | Lights / cable into TL-SG108S | |
-| 2 Local IP | `ipconfig /all` | IP / mask / gateway / DNS = |
-| 3 Gateway | `ping <gateway>` | |
-| 4 DNS | `ping 1.1.1.1` vs `ping google.com` and `nslookup google.com` | |
-| 5 Routing | skipped / `tracert` | |
-| 6 Firewall | n/a | |
-| 7 App | Chrome | |
+| 1 Physical | Cable into TL-SG108S | First `ipconfig` showed Ethernet APIPA `169.254.x.x` (no DHCP). After seating/link: Ethernet `192.168.1.103`. |
+| 2 Local IP | `ipconfig /all` | Ethernet `192.168.1.103/24`, DHCP yes, suffix `home`. |
+| 3 Gateway | Default gateway on Ethernet | `192.168.1.254` (BT Hub). `ping 1.1.1.1` 20ms — WAN OK. |
+| 4 DNS | `ping 1.1.1.1` vs `ping google.com` / `nslookup` | After Wi-Fi off + DNS `::1`/`127.0.0.1`: `nslookup` → `No response from server` (server `::1`). `ping 1.1.1.1` still OK. `ping google.com` still worked until `ipconfig /flushdns`, then `could not find host google.com`. |
+| 5 Routing | skipped | WAN already proven by `1.1.1.1`. |
+| 6 Firewall | n/a | Not this fault. |
+| 7 App | names | Failure was resolution, not Chrome. |
 
-**Cause:**
+**Cause:** Manual DNS pointed at this PC (`127.0.0.1` / `::1`), which is not a DNS server. Cached names hid it until flush.
 
-**Fix:**
+**Fix:** Ethernet DNS back to Automatic. `nslookup` answered via `bthub.home`. `ping google.com` replies again.
 
-**How I proved it:**
+**How I proved it:** `nslookup google.com` returned A/AAAA from the hub; ping to google.com succeeded.
 
-**Diary date:**
+**Diary date:** 2026-09-15
 
-Put screenshots in `images/` (no Wi-Fi passwords).
+**Gotchas (keep these):**
+- Breaking DNS on Ethernet does nothing if **Wi-Fi is still up** with the hub as DNS.
+- IPv6 DNS (`fe80::…` on the hub) will ignore an IPv4-only `127.0.0.1` break.
+- `ping google.com` can succeed after DNS is dead because of **cache** — always `ipconfig /flushdns`.
 
 ---
 

@@ -30,14 +30,14 @@ Copy a blank block for each incident. Newest at the top. Redact names, IPs of ot
 
 ## Log
 
-### 2026-09-15 — example (delete when you have a real one)
+### 2026-09-15 — bad DNS lab (Windows Ethernet)
 
-- **Symptom (user words):** Pi has Wi-Fi icon but cannot load GitHub
-- **Scope:** Pi only; phone on same SSID works
-- **Ladder steps run:** 1 2 3 4 — DNS on the Pi pointed at a dead forwarder
-- **Evidence:** `ping 1.1.1.1` OK, `ping github.com` fail, `resolvectl query github.com` timeout
-- **Cause:** stale DNS on the Pi
-- **Fix:** set DNS to the hub / 1.1.1.1, reboot resolve
-- **How I proved it:** name lookup succeeded; page loaded
-- **What I would do faster next time:** ping IP vs name before rebooting
-- **GitHub:** n/a
+- **Symptom (user words):** Can ping 1.1.1.1 but cannot find host google.com
+- **Scope:** this PC only (Ethernet on TL-SG108S)
+- **Ladder steps run:** 1 2 3 **4** (5 skipped)
+- **Evidence:** DNS `::1` + `127.0.0.1`; `nslookup` no response; after `ipconfig /flushdns`, ping name failed; IP ping still 20ms
+- **Cause:** DNS pointed at localhost; Wi-Fi + IPv6 DNS + cache delayed the symptom
+- **Fix:** DNS Automatic; `nslookup` via `bthub.home`
+- **How I proved it:** google.com resolved and pinged again
+- **What I would do faster next time:** Wi-Fi off, break IPv4 and IPv6 DNS, flush cache before declaring “it still works”
+- **GitHub:** `it-path/labs/02-break-fix/`
