@@ -29,12 +29,10 @@ Legend: **Must** = non-negotiable · **Lab** = GitHub evidence · **Job** = appl
 - [ ] 5 more applications.
 
 **Lab**
-- [ ] `labs/02-break-fix/` — pick **one**: wrong gateway, bad DNS, APIPA, or no DHCP. Recreate on a VM or the Pi. Write the ladder from [TROUBLESHOOTING.md](TROUBLESHOOTING.md).
-- [ ] Commit the write-up the same night you finish.
+- [ ] Follow [labs/02-break-fix/README.md](labs/02-break-fix/README.md): **bad DNS on the Windows PC only**. Fill the table. Save the file on GitHub the same night.
 
 **Tools (one evening)**
-- [ ] On Windows: `ipconfig /all`, `ping`, `tracert`, `nslookup`, `Get-NetIPConfiguration`.
-- [ ] On the Pi: `ip a`, `ip r`, `ping`, `traceroute`/`tracepath`, `resolvectl` or `cat /etc/resolv.conf`.
+- [ ] [TOOLS.md](TOOLS.md) — run the Windows list, then the Pi list. You are done when you can point at IP, gateway, and DNS.
 
 ---
 
