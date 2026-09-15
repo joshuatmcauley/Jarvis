@@ -14,11 +14,11 @@ Legend: **Must** = non-negotiable · **Lab** = GitHub evidence · **Job** = appl
 - [ ] Send **5** applications (helpdesk, service desk, desktop, IT technician, junior network support). Log them in [APPLICATIONS.md](APPLICATIONS.md).
 
 **Lab**
-- [ ] Photograph / sketch the real rack: BT Hub → Wi-Fi disk → TL-SG108S → Pi 5. Drop the sketch into [homelab](https://github.com/joshuatmcauley/homelab) `docs/network.md` **or** `labs/01-vlan-intervlan/topology.md` here.
+- [/] Photograph / sketch the real rack: BT Hub → Wi-Fi disk → TL-SG108S → Pi 5. Drop the sketch into [homelab](https://github.com/joshuatmcauley/homelab) `docs/network.md` **or** `labs/01-vlan-intervlan/topology.md` here.
 - [ ] First fault-diary row: anything you already fixed (Wi-Fi, Pi, printer, family PC).
 
 **Life**
-- [ ] Driving lessons / mock as scheduled. Do not pause job hunt for the car.
+- [/] Driving lessons / mock as scheduled. Do not pause job hunt for the car.
 
 ---
 
