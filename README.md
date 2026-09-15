@@ -2,6 +2,8 @@
 
 A simple desktop application for Raspberry Pi that serves as the foundation for your JARVIS AI assistant.
 
+**Homelab / home network:** cold-start, topology, inventory, and what to add next are in [`homelab/`](homelab/README.md). Hardware is also tracked in [joshuatmcauley/homelab](https://github.com/joshuatmcauley/homelab).
+
 ## Hardware Requirements
 - Raspberry Pi 5
 - Elecrow 7-inch display (optional)
