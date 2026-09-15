@@ -129,3 +129,39 @@ Tracing route to 1.1.1.1 over a maximum of 30 hops
 
 Trace complete.
 PS C:\Users\Owner>
+
+
+
+
+
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+PS C:\Users\Owner> Get-NetIPConfiguration
+
+
+InterfaceAlias       : Ethernet
+InterfaceIndex       : 10
+InterfaceDescription : Realtek Gaming 2.5GbE Family Controller
+NetProfile.Name      : BT-NNAW99
+IPv6Address          : 2a00:23cc:fd2d:8201:280d:ea49:c177:8714
+IPv4Address          : 192.168.1.103
+IPv6DefaultGateway   : fe80::32b1:b5ff:fe75:6a35
+IPv4DefaultGateway   : 192.168.1.254
+DNSServer            : fe80::32b1:b5ff:fe75:6a35
+                       fe80::32b1:b5ff:fe75:6a35
+                       192.168.1.254
+
+InterfaceAlias       : WiFi
+InterfaceIndex       : 7
+InterfaceDescription : RZ616 Wi-Fi 6E 160MHz
+NetAdapter.Status    : Disconnected
+
+InterfaceAlias       : Bluetooth Network Connection
+InterfaceIndex       : 3
+InterfaceDescription : Bluetooth Device (Personal Area Network)
+NetAdapter.Status    : Disconnected
+
+
+
+PS C:\Users\Owner>
