@@ -43,11 +43,11 @@ Legend: **Must** = non-negotiable · **Lab** = GitHub evidence · **Job** = appl
 - [ ] 5 applications. Include NICS / local councils / MSPs around Ballymoney, Coleraine, Ballymena if live.
 
 **Lab**
-- [ ] Start Packet Tracer (or GNS3) file for `labs/01-vlan-intervlan/`: two VLANs, SVI or router-on-a-stick, DHCP, one ACL.
-- [ ] Save the `.pkt` (or screenshots if file is huge) and a text IP plan. **No** “I’ll document later.”
+- [/] Start Packet Tracer (or GNS3) file for `labs/01-vlan-intervlan/`: two VLANs, SVI or router-on-a-stick, DHCP, one ACL.
+- [/] Save the `.pkt` (or screenshots if file is huge) and a text IP plan. **No** “I’ll document later.”
 
 **Life**
-- [ ] Confirm Pearson VUE ID, payment, and travel/online exam setup.
+- [/] Confirm Pearson VUE ID, payment, and travel/online exam setup.
 
 ---
 
