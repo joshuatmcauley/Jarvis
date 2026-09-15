@@ -14,9 +14,10 @@ Hardware inventory lives in [homelab](https://github.com/joshuatmcauley/homelab)
 2. [TROUBLESHOOTING.md](TROUBLESHOOTING.md) — use this on every fault, including family IT.
 3. [FAULT-DIARY.md](FAULT-DIARY.md) — log the fault. Ten real rows beat another video playlist.
 4. [labs/](labs/) — one project at a time. Finish and commit before starting the next.
-5. [STAR-STORIES.md](STAR-STORIES.md) — interview answers built from the diary and labs.
-6. [APPLICATIONS.md](APPLICATIONS.md) — jobs you have actually sent.
-7. [GITHUB.md](GITHUB.md) — how to pin this, write a profile README, and not dump secrets.
+5. [TOOLS.md](TOOLS.md) — Windows + Pi commands (IP, gateway, DNS).
+6. [STAR-STORIES.md](STAR-STORIES.md) — interview answers built from the diary and labs.
+7. [APPLICATIONS.md](APPLICATIONS.md) — jobs you have actually sent.
+8. [GITHUB.md](GITHUB.md) — how to pin this, write a profile README, and not dump secrets.
 
 ## Weekly rhythm (keep this even on chef weeks)
 
