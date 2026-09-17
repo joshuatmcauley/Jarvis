@@ -65,3 +65,8 @@ Add rows when you add Pi-hole, Home Assistant, Jarvis APIs, etc. **Do not** comm
 
 - Blur serials, public IP, Wi-Fi key, Hub admin.
 - Show: this topology, `ip a` / `ip r`, switch link lights, `docker ps`.
+
+
+Pi Ethernet: 192.168.1.150
+Pi Wi-Fi: 192.168.1.160
+SSH: jt@192.168.1.150  or  jt@raspberrypi.local
