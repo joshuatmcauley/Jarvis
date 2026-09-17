@@ -1,15 +1,15 @@
 # Put this on GitHub so people can see it
 
-Jarvis is public. Treat everything in `it-path/` as **interview-visible**.
+Jarvis is public. Prefer **homelab** and **ad-lab** for employers. This `it-path/` folder is a working notebook; do not treat agent PRs as the CV.
 
 ## 1. What to pin
 
 On github.com/joshuatmcauley → **Customize your pins** (up to 6):
 
-1. [Jarvis](https://github.com/joshuatmcauley/Jarvis) — this repo (Pi app + IT path folder)
-2. [homelab](https://github.com/joshuatmcauley/homelab) — rack, switch, Pi, ESP32
+1. [homelab](https://github.com/joshuatmcauley/homelab) — rack, switch, Pi
+2. [ad-lab](https://github.com/joshuatmcauley/ad-lab) — Hyper-V AD DS helpdesk lab (when README is honest)
 3. One shipping project: [the-tidy-bee](https://github.com/joshuatmcauley/the-tidy-bee) **or** [defect-detection-systemv1](https://github.com/joshuatmcauley/defect-detection-systemv1)
-4. After lab 01 is filled: it will already sit inside Jarvis — do not create empty stub repos
+4. Do not pin Jarvis as the IT CV unless you want the Pi GUI on the front page
 
 Optional later: a profile README repo named `joshuatmcauley/joshuatmcauley` (does not exist yet). Paste the profile draft below into `README.md` there if you create it.
 

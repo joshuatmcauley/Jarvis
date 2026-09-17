@@ -2,6 +2,8 @@
 
 Tick boxes in GitHub as you finish them. If a week is brutal at work, do the **must** line only. Do not skip applications.
 
+A+ Core 1 passed (Sep 2026). Core 2 next. AD helpdesk GitHub plan: [PORTFOLIO.md](PORTFOLIO.md). Pause DC01 for Packet Tracer if needed; resume at CSV + script.
+
 Legend: **Must** = non-negotiable · **Lab** = GitHub evidence · **Job** = applications · **Life** = licence / money / energy.
 
 ---
