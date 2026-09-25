@@ -492,7 +492,20 @@ button, input, select, textarea { font: inherit; color: inherit; }
   .shot-tall, .shot-wide { grid-column: span 2; grid-row: span 1; height: 320px; }
   .shot-tall { height: 420px; }
   .offer-inner { padding: 1.2rem 0; }
-  .price-nav { flex-direction: row; flex-wrap: wrap; gap: 0.4rem 0.9rem; }
+  .price-nav {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 0;
+    overflow-x: auto;
+    width: 100%;
+    padding-bottom: 0.4rem;
+    -webkit-overflow-scrolling: touch;
+  }
+  .price-nav button {
+    flex: 0 0 auto;
+    padding: 0.55rem 0.85rem 0.55rem 0;
+    margin-right: 0.85rem;
+  }
   .visits-photo img { min-height: 240px; }
 }
 
