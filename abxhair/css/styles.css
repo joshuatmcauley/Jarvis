@@ -570,7 +570,7 @@ h1, h2, h3 {
   position: relative;
   max-width: 1040px;
   margin: 0 auto;
-  padding: clamp(1.5rem, 4vw, 3.2rem) clamp(1.5rem, 4vw, 3.2rem) 4.5rem;
+  padding: clamp(1.5rem, 4vw, 3.2rem);
   overflow: hidden;
   border: 1px solid var(--line);
   background:
@@ -627,20 +627,6 @@ h1, h2, h3 {
   margin-top: 1rem;
   color: var(--muted);
   font-size: 0.92rem;
-}
-
-.flourish {
-  position: absolute;
-  right: 0.8rem;
-  bottom: 0.4rem;
-  width: 92px;
-  color: var(--gold);
-  opacity: 0.75;
-  pointer-events: none;
-}
-
-.flourish path:not(:first-child) {
-  fill: currentColor;
 }
 
 .fridays {
@@ -1223,8 +1209,7 @@ dialog figcaption {
 
 @media (max-width: 899px) {
   .header-phone,
-  .header-book,
-  .flourish {
+  .header-book {
     display: none;
   }
 
@@ -1301,7 +1286,6 @@ dialog figcaption {
   .hero-visual,
   .mobile-bar,
   .fridays .star,
-  .flourish,
   .book-form,
   .model,
   .gallery,
