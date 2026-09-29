@@ -1,0 +1,25 @@
+{
+  "about": "B&C McKeown Ltd is a trusted and long-established supplier located in Downpatrick, County Down, Northern Ireland. With over 30 years of industry experience, we proudly serve a diverse clientele, including homeowners, contractors, developers, and commercial enterprises across the region. Our reputation is built on reliability, quality, and exceptional customer service. We specialize in providing high-quality outdoor building materials that are designed to enhance both the functionality and aesthetic of any property. From durable roofing solutions and precision-cut roof cladding to elegant granite paving, innovative composite decking, fencing systems, and secure mesh fencing options—we offer a comprehensive range of products to meet all your exterior building needs. Whether you're undertaking a residential project or a large-scale commercial development, B&C McKeown Ltd is your go-to partner for dependable materials and expert guidance.",
+  "testimonials": [
+    {
+      "title": "Comprehensive Roofing & Cladding Solutions",
+      "quote": "The site clearly presents B&C McKeown’s expertise in roofing solutions—highlighting both metal roof cladding and polycarbonate sheeting, with detailed specs like UV resistance and cut-to-size options. Their product range is well organized and visually engaging.",
+      "by": "Laura Harrington, Building Materials Analyst"
+    },
+    {
+      "title": "Granite & Landscaping Range: Quality Meets Choice",
+      "quote": "The granite and landscaping sections showcase a broad selection—steps, kerbs, cobbles, gate posts—primarily in G603 silver granite. Prices are transparent, and stock availability is easy to check. The interface supports various filters and multiple currencies, making it user‑friendly.",
+      "by": "Darren Murphy, Landscape Architect"
+    },
+    {
+      "title": "Stylish Composite Decking & Cladding Panels",
+      "quote": "B&C McKeown offers composite materials in contemporary finishes—grey, teak, anthracite. Decking and slatted cladding panels are described clearly, and installation specs (e.g. 2.9 m panels, 125 mm coverage) help buyers plan better.",
+      "by": "Sophie MacDonald, Outdoor Living Specialist"
+    },
+    {
+      "title": "Security & Gate Solutions Made Simple",
+      "quote": "Their security mesh fencing and mesh gate kits are well detailed—highlighting strong, low-maintenance features and inclusive package details (posts, fittings, lock). The pedestrian gate dimensions are explicit, and modern powder-coated finishes are a plus.",
+      "by": "Eoin Campbell, Security Product Reviewer"
+    }
+  ]
+}
