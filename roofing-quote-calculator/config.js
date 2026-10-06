@@ -15,7 +15,7 @@ const QUOTE_CONFIG = {
   version: 2,
   meta: { sample: false },
   theme: {
-    accent: "#1e428b",
+    accent: "#222222",
     ink: "#333333",
   },
   company: {
