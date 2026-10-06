@@ -1,6 +1,6 @@
 "use strict";
 
-const CAT_KEY = "roofQuote.catalogue.v6";
+const CAT_KEY = "roofQuote.catalogue.v7";
 const DRAFT_KEY = "roofQuote.draft.v1";
 const SAVED_KEY = "roofQuote.saved.v1";
 
@@ -2280,9 +2280,14 @@ function ensurePick(id) {
   return product;
 }
 
-function goNext(id) {
+function nextStepId(afterId) {
   const ids = visibleSteps().map((step) => step.id);
-  const next = ids[ids.indexOf(id) + 1];
+  const at = ids.indexOf(afterId);
+  return at >= 0 ? ids[at + 1] || "" : "";
+}
+
+function goNext(id) {
+  const next = nextStepId(id);
   if (!next) return;
   ui.closed[next] = false;
   pendingScroll = next;
@@ -2642,7 +2647,7 @@ function onClick(event) {
       }
     }
     ui.added = false;
-    pendingScroll = nextId === "roof" ? "type" : "size";
+    pendingScroll = nextStepId("job") || "size";
     render();
     return;
   }
@@ -2778,7 +2783,7 @@ function onClick(event) {
   if (action === "select-colour") {
     quote.colourId = el.dataset.id;
     ui.added = false;
-    pendingScroll = "dripstop";
+    pendingScroll = nextStepId("colour") || "type";
     render();
     return;
   }
