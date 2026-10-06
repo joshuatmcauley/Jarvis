@@ -347,7 +347,7 @@ function saveCatalogue() {
 }
 
 function loadDraft() {
-  const raw = storageGet(DRAFT_KEY);
+  const raw = storageGet(draftKey());
   const base = defaultQuote();
   if (!raw) return base;
   try {
@@ -974,8 +974,25 @@ function selectedFill() {
   return hex ? hexToRgba(hex, 0.78) : "rgba(30,66,139,0.22)";
 }
 
+function pageMode() {
+  return document.body && document.body.dataset.page === "other" ? "other" : "roof";
+}
+
+function draftKey() {
+  return pageMode() === "other" ? "roofQuote.draft.other" : "roofQuote.draft.roof";
+}
+
+function applyPageMode() {
+  if (!quote) return;
+  if (pageMode() === "roof") {
+    quote.jobId = "roof";
+    return;
+  }
+  if (quote.jobId === "roof") quote.jobId = null;
+}
+
 function renderJobStep() {
-  const jobs = config.jobs || [];
+  const jobs = (config.jobs || []).filter((job) => pageMode() === "roof" || job.id !== "roof");
   if (!jobs.length) return `<p class="muted">No calculators are set up yet.</p>`;
   return `<div class="choices">${jobs.map((job) => `
     <button type="button" class="choice${quote.jobId === job.id ? " is-selected" : ""}" data-action="select-job" data-id="${esc(job.id)}">
@@ -1638,6 +1655,7 @@ function visibleSteps() {
     if (step.enabled === false) return false;
     const kind = step.kind || step.id;
     if (kind === "extras") return false;
+    if (pageMode() === "roof" && kind === "job") return false;
     if (ROOF_KINDS.includes(kind)) return jobId === "roof";
     if (kind === "size") return !!jobId && jobId !== "roof";
     if (kind === "job-colour") return jobColours(currentJobProduct()).length > 1;
@@ -1800,6 +1818,9 @@ function renderHeader() {
   return `<header class="top no-print"><div class="top-inner">
     <div class="brand">${logo}<div><strong>${esc(config.company.name || "Quote calculator")}</strong>${phone}</div></div>
     <div class="top-actions">
+      ${pageMode() === "roof"
+        ? `<a class="page-link" href="other.html">Other calculators</a>`
+        : `<a class="page-link" href="index.html">Roofing calculator</a>`}
       <button type="button" class="${ui.view === "quote" ? "is-on" : ""}" data-action="view" data-view="quote">Calculator</button>
       <button type="button" class="${ui.view === "edit" ? "is-on" : ""}" data-action="view" data-view="edit">Edit products & prices</button>
     </div>
@@ -1819,10 +1840,15 @@ function renderBanners() {
 }
 
 function renderQuotePage() {
+  const roofPage = pageMode() === "roof";
+  const title = roofPage ? "Roofing quote" : "Other calculators";
+  const lede = roofPage
+    ? "Choose the sheet, the thickness, and the colour, then enter the roof size."
+    : "Decking, cladding, fencing, paving, kerbs, and the other size calculators.";
   return `${renderHeader()}
     <section class="calc-intro">
-      <h1>${esc(config.copy.headline)}</h1>
-      <p>${esc(config.copy.subheading)}</p>
+      <h1>${esc(title)}</h1>
+      <p>${esc(lede)}</p>
     </section>
     <div class="wrap no-print">${renderBanners()}</div>
     <div class="layout">
@@ -2130,6 +2156,7 @@ function variantProductList(listKey, items, factory, showRecommend) {
 
 function render() {
   try {
+    applyPageMode();
     normalizeQuote();
     applyTheme();
     document.title = (config.copy && config.copy.headline) || "Roofing Quote Calculator";
@@ -2150,7 +2177,7 @@ function render() {
     } else if (y != null) {
       window.scrollTo(0, y);
     }
-    try { localStorage.setItem(DRAFT_KEY, JSON.stringify(quote)); } catch (err) { /* keep going */ }
+    try { localStorage.setItem(draftKey(), JSON.stringify(quote)); } catch (err) { /* keep going */ }
   } catch (err) {
     console.error(err);
     document.getElementById("app").innerHTML = `<div class="wrap fatal"><h1>The calculator hit an error</h1><p>${esc(err.message)}</p><button type="button" class="primary" data-action="reset-catalogue">Reset saved edits</button></div>`;
@@ -2911,6 +2938,7 @@ function onClick(event) {
   }
   if (action === "start-over") {
     quote = defaultQuote();
+    applyPageMode();
     ui.added = false;
     ui.showErrors = false;
     ui.modal = null;
