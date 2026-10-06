@@ -16,10 +16,10 @@ const JOBS = [
   {
     id: "decking",
     name: "Composite decking",
-    blurb: "3.6m boards, 140mm cover, £24 inc VAT each.",
+    blurb: "3.6m boards, 140mm wide, 23mm thick, £24 inc VAT each.",
     mode: "area",
     wasteDefault: 10,
-    note: "Boards are sold whole at 3.6m. This counts how many boards cover the deck. A shorter gap does not get a cheaper, cut board. Length is the way the boards run. Width is across them.",
+    note: "Boards are sold whole at 3.6m × 140mm × 23mm. The website gives the board width, not a separate cover width, so 140mm is used. A shorter gap does not get a cheaper, cut board. Length is the way the boards run. Width is across them.",
     products: [
       {
         id: "deck-board",
@@ -27,7 +27,7 @@ const JOBS = [
         lengthM: 3.6,
         coverM: 0.14,
         price: 20,
-        note: "3.6m × 140mm cover. £24 inc VAT. The colour is chosen on the next step.",
+        note: "3600 × 140 × 23mm. £24 inc VAT. The colour is chosen on the next step.",
         colours: [
           { id: "deck-white", name: "Quartz white", hex: "#E4DECC", price: 20 },
           { id: "deck-grey", name: "Woodgrain grey", hex: "#5C6065", price: 20 },
@@ -66,7 +66,76 @@ const JOBS = [
     wasteDefault: 0,
     note: "Boards are sold whole at 3.6m. Height is stacked in 170mm courses. This does not cut a board down, and it does not include posts, rails, or a ready-made fence bay.",
     products: [
-      { id: "fence-tg", name: "Black tongue and groove fence board", lengthM: 3.6, coverM: 0.17, price: 22.92, swatch: "#2A2A2A", note: "3.6m × 170mm cover." },
+      { id: "fence-tg", name: "Black tongue and groove fence board", lengthM: 3.6, coverM: 0.17, price: 22.92, swatch: "#2A2A2A", shopifyHandle: "black-composite-fencing-board-tongue-groove-3-6m-x-170mm", note: "3.6m × 170mm cover. £27.50 inc VAT. The shop export shows 0 in stock." },
+    ],
+  },
+  {
+    id: "fence-bay",
+    name: "Composite fence bays",
+    blurb: "1.8m wide bays, £240 inc VAT.",
+    mode: "run",
+    note: "Each bay is 1.8m wide and includes one post. A straight run is one post short, so allow an extra end post. That end post is not a separate price on the website.",
+    products: [
+      {
+        id: "fence-antique",
+        name: "Antique slatted bay 1.8 × 1.8m",
+        lengthM: 1.8,
+        price: 200,
+        swatch: "#8A6A45",
+        shopifyHandle: "antique-slatted-composite-fencing-1-8mx1-8m-6ftx6ft",
+        note: "£240 inc VAT. Includes 1 post, 12 composite boards, top rail, bottom rail, and a post cap.",
+      },
+      {
+        id: "fence-standard",
+        name: "Composite fence bay 1.8 × 1.8m",
+        lengthM: 1.8,
+        price: 200,
+        swatch: "#5C6065",
+        shopifyHandle: "composite-fencing",
+        note: "£240 inc VAT. 10 panels (180 × 1750 × 20mm), one 2.4m post (80 × 80mm, 500mm in the ground), cap, and rails.",
+      },
+    ],
+  },
+  {
+    id: "vmesh",
+    name: "V mesh fence bays",
+    blurb: "Bay kits from the run length. Black and green are the same price.",
+    mode: "run",
+    note: "Each kit is one panel and one dig-in post. A straight run needs one extra end post, which is not sold on its own.",
+    products: [
+      {
+        id: "vmesh-12",
+        name: "1.2m high × 2.5m bay",
+        lengthM: 2.5,
+        price: 40,
+        note: "£48 inc VAT. Post in the kit is 60 × 60 × 1730mm.",
+        colours: [
+          { id: "vmesh-12-black", name: "Black", hex: "#1a1c1e", price: 40, shopifyHandle: "security-fencing-v-mesh-kit-4-feet-high-1-2m-x-8-20-feet-2-5m-wide-in-green-copy" },
+          { id: "vmesh-12-green", name: "Green", hex: "#2f4a3c", price: 40, shopifyHandle: "security-fencing-v-mesh-kit-4-feet-high-1-2m-x-8-20-feet-2-5m-wide-in-green" },
+        ],
+      },
+      {
+        id: "vmesh-18",
+        name: "1.8m high × 3m bay",
+        lengthM: 3,
+        price: 70,
+        note: "£84 inc VAT. Post in the kit is 60 × 60 × 2330mm.",
+        colours: [
+          { id: "vmesh-18-black", name: "Black", hex: "#1a1c1e", price: 70, shopifyHandle: "security-fencing-v-mesh-kit-6-feet-high-1-8m-x-9-84-feet-3m-wide-in-black" },
+          { id: "vmesh-18-green", name: "Green", hex: "#2f4a3c", price: 70, shopifyHandle: "security-fencing-v-mesh-kit-6-feet-high-1-8m-x-9-84-feet-3m-wide-in-black-copy" },
+        ],
+      },
+      {
+        id: "vmesh-24",
+        name: "2.4m high × 3m bay",
+        lengthM: 3,
+        price: 80,
+        note: "£96 inc VAT. Post in the kit is 60 × 60 × 3000mm.",
+        colours: [
+          { id: "vmesh-24-black", name: "Black", hex: "#1a1c1e", price: 80, shopifyHandle: "security-fencing-v-mesh-kit-8-feet-high-2-4m-x-9-84-feet-3m-wide-in-green-copy" },
+          { id: "vmesh-24-green", name: "Green", hex: "#2f4a3c", price: 80, shopifyHandle: "security-fencing-v-mesh-kit-8-feet-high-2-4m-x-9-84-feet-3m-wide-in-green" },
+        ],
+      },
     ],
   },
   {
@@ -115,7 +184,25 @@ const JOBS = [
     products: [
       { id: "kerb-g603", name: "G603 silver kerb 1000 × 150 × 90mm", lengthM: 1, price: 20, swatch: "#C5C7C4", note: "£24 inc VAT each." },
       { id: "kerb-split", name: "Natural split kerb 1200 × 225 × 75mm", lengthM: 1.2, price: 30, swatch: "#B7B3A8", note: "£36 inc VAT each." },
-      { id: "kerb-natural", name: "Natural granite kerb 900 × 255 × 300mm", lengthM: 0.9, price: 60, swatch: "#A9A59C", note: "£72 inc VAT each." },
+      { id: "kerb-natural", name: "Natural granite kerb 900 × 255 × 300mm", lengthM: 0.9, price: 60, swatch: "#A9A59C", shopifyHandle: "natural-granite-kerb-stone", note: "£72 inc VAT each. Size on the website is 255 × 300 × 900mm." },
+    ],
+  },
+  {
+    id: "radius",
+    name: "Radius kerbs",
+    blurb: "Eight G603 kerbs make one full circle, £42 inc VAT each.",
+    mode: "circles",
+    note: "The website says eight 98 × 90 × 115mm kerbs fit one complete circle. This does not price a straight kerb run.",
+    products: [
+      {
+        id: "kerb-radius",
+        name: "G603 silver radius kerb",
+        price: 35,
+        perCircle: 8,
+        swatch: "#C5C7C4",
+        shopifyHandle: "silver-g603-granite-radius-kerbs-98x90x115mm",
+        note: "£42 inc VAT each.",
+      },
     ],
   },
   {

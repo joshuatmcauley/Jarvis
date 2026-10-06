@@ -1,6 +1,6 @@
 "use strict";
 
-const CAT_KEY = "roofQuote.catalogue.v4";
+const CAT_KEY = "roofQuote.catalogue.v5";
 const DRAFT_KEY = "roofQuote.draft.v1";
 const SAVED_KEY = "roofQuote.saved.v1";
 
@@ -314,6 +314,7 @@ function ensureConfig(data) {
   if (!Array.isArray(next.fixings)) next.fixings = [];
   if (!Array.isArray(next.extras)) next.extras = [];
   next.jobs = clone(originalConfig.jobs || []);
+  next.extras = clone(originalConfig.extras || []);
   next.dripstop = { ...clone(originalConfig.dripstop), ...(next.dripstop || {}) };
   next.profiles.forEach(tidyProfile);
   next.fixings.forEach(tidyVariantProduct);
@@ -753,6 +754,7 @@ function renderPick(product) {
   const chooser = variants.length > 1
     ? `<label class="field"><span>Option</span><select id="var_${esc(product.id)}" data-action="variant" data-id="${esc(product.id)}">${options}</select></label>`
     : `<p><strong>${incMoney(variant.price)}</strong></p>`;
+  const stockNote = Number(variant.stock) === 0 ? `<p class="muted">Out of stock on bcmckeown.net when this list was exported.</p>` : "";
   let suggestText = "";
   if (suggested) {
     const pack = Number(variant.packSize) > 0 ? Number(variant.packSize) : 1;
@@ -765,6 +767,7 @@ function renderPick(product) {
     <div>
       <strong>${esc(product.name)}</strong>
       ${chooser}
+      ${stockNote}
       ${suggestText}
       <div class="stepper">
         <button type="button" data-action="qty" data-id="${esc(product.id)}" data-dir="-1" aria-label="Decrease">−</button>
@@ -3233,9 +3236,6 @@ function init() {
     originalConfig.jobs = JOBS;
   }
   config = loadCatalogue();
-  (config.steps || []).forEach((step) => {
-    if (step.kind === "extras") step.enabled = false;
-  });
   config.theme.accent = "#1e428b";
   config.theme.ink = "#333333";
   quote = loadDraft();
