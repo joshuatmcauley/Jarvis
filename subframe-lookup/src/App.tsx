@@ -5,7 +5,7 @@ import {
   lookupManual,
   lookupRegistration,
   type LookupResult,
-} from './lib/lookup'
+} from './services/lookup'
 import {
   modelsForMake,
   uniqueMakes,
