@@ -1,6 +1,6 @@
 "use strict";
 
-const CAT_KEY = "roofQuote.catalogue.v7";
+const CAT_KEY = "roofQuote.catalogue.v8";
 const DRAFT_KEY = "roofQuote.draft.v1";
 const SAVED_KEY = "roofQuote.saved.v1";
 
@@ -441,7 +441,10 @@ function warnHtml(step) {
 
 function thumb(src, label) {
   const safe = safeSrc(src);
-  if (safe) return `<div class="media"><img src="${esc(safe)}" alt=""></div>`;
+  if (safe) {
+    const pattern = /\.svg(?:$|[?#])/i.test(safe);
+    return `<div class="media${pattern ? " pattern" : ""}"><img src="${esc(safe)}" alt=""></div>`;
+  }
   const letter = esc(String(label || "?").trim().charAt(0).toUpperCase() || "?");
   return `<div class="media"><span class="letter">${letter}</span></div>`;
 }
@@ -605,7 +608,7 @@ function renderProfileStep() {
     <button type="button" class="choice${quote.profileId === profile.id ? " is-selected" : ""}" data-action="select-profile" data-id="${esc(profile.id)}">
       ${thumb(profile.image, profile.name)}
       <strong>${esc(profile.name)}</strong>
-      <p>From ${esc(incMoney(profileFromPrice(profile)))} / m · cover ${trimNum(profile.coverWidthM)} m</p>
+      <p>From ${esc(incMoney(profileFromPrice(profile)))}&nbsp;/&nbsp;m · cover&nbsp;${trimNum(profile.coverWidthM)}&nbsp;m</p>
     </button>`).join("")}</div>`;
   }).join("");
 }
