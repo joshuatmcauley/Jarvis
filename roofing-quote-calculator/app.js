@@ -339,7 +339,9 @@ function ensureConfig(data) {
   const freshProfiles = new Map((originalConfig.profiles || []).map((profile) => [profile.id, profile]));
   next.profiles.forEach((profile) => {
     const fresh = freshProfiles.get(profile.id);
-    if (!fresh || !Array.isArray(fresh.colours)) return;
+    if (!fresh) return;
+    if (fresh.image) profile.image = fresh.image;
+    if (!Array.isArray(fresh.colours)) return;
     const byId = new Map((profile.colours || []).filter((colour) => colour && colour.id).map((colour) => [colour.id, colour]));
     const ordered = fresh.colours.map((colour) => {
       const current = byId.get(colour.id) || {};
