@@ -49,7 +49,7 @@ const QUOTE_CONFIG = {
     { id: "size", kind: "size", title: "Enter the Size", hint: "Quantities use the size and price published on the website.", enabled: true, required: false },
     { id: "job-colour", kind: "job-colour", title: "Select Colour", hint: "Swatches are sampled from the product photos on bcmckeown.net.", enabled: true, required: false },
     { id: "clad-wall", kind: "clad-wall", title: "Enter the wall", hint: "Add each wall on its own. Vertical and horizontal boards are counted differently.", enabled: true, required: false },
-    { id: "extras", kind: "extras", title: "Full Product Range", hint: "Every live bcmckeown.net product. Prices match the shop export, including VAT.", enabled: true, required: false },
+    { id: "extras", kind: "extras", title: "Full Product Range", hint: "Not shown in the quote. Gates, sheds, and other whole items stay in the catalogue file.", enabled: false, required: false },
     { id: "type", kind: "type", title: "Select Roof Type", hint: "Only needed if you want sheet quantities worked out from a roof size.", enabled: true, required: false },
     { id: "measure", kind: "measure", title: "Enter Your Measurements", hint: "Use metres.", enabled: true, required: false },
     { id: "profile", kind: "profile", title: "Choose Your Sheet", hint: "Cover width is how much of the roof one sheet covers.", enabled: true, required: false },
