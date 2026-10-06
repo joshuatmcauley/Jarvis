@@ -191,6 +191,7 @@ function normalizeQuote() {
   quote.customer = { ...base.customer, ...(quote.customer || {}) };
   quote.customNotes = { ...(quote.customNotes || {}) };
   if (typeof quote.apexSame !== "boolean") quote.apexSame = true;
+  if (quote.roofTypeId === "roof-apex-mono") quote.roofTypeId = null;
   if (!Array.isArray(quote.walls)) quote.walls = [];
   if (!quote.wallDraft || typeof quote.wallDraft !== "object") quote.wallDraft = blankWall();
   if (!Array.isArray(quote.wallDraft.windows)) quote.wallDraft.windows = [];
@@ -310,6 +311,7 @@ function ensureConfig(data) {
   });
   next.steps = normaliseSteps(next.steps);
   if (!Array.isArray(next.roofTypes)) next.roofTypes = [];
+  next.roofTypes = next.roofTypes.filter((roof) => roof && roof.id !== "roof-apex-mono");
   if (!Array.isArray(next.profiles)) next.profiles = [];
   if (!Array.isArray(next.fixings)) next.fixings = [];
   if (!Array.isArray(next.extras)) next.extras = [];
@@ -325,6 +327,10 @@ function ensureConfig(data) {
       if (typeof roof[key] !== "boolean") roof[key] = false;
     });
   });
+  const typeStep = (next.steps || []).find((step) => step.id === "type" || step.kind === "type");
+  if (typeStep && /lean-to/i.test(String(typeStep.hint || ""))) {
+    typeStep.hint = "An apex roof or a single slope.";
+  }
   return next;
 }
 
