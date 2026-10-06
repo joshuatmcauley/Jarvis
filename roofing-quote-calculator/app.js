@@ -525,6 +525,230 @@ function renderTypeStep() {
     </button>`).join("")}</div>`;
 }
 
+function hexChannels(hex) {
+  const raw = safeHex(hex).slice(1);
+  const full = raw.length === 3 ? raw.split("").map((ch) => ch + ch).join("") : raw;
+  const n = parseInt(full, 16);
+  return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+}
+
+function mixHex(hex, toward, amount) {
+  const a = hexChannels(hex);
+  const b = hexChannels(toward);
+  const t = Math.max(0, Math.min(1, Number(amount) || 0));
+  return "#" + a.map((v, i) => Math.round(v + (b[i] - v) * t).toString(16).padStart(2, "0")).join("");
+}
+
+function hexLuma(hex) {
+  const [r, g, b] = hexChannels(hex);
+  return (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
+}
+
+function roofPatternKind(profile) {
+  const id = profile && profile.id;
+  if (id === "profile-tile") return "tile";
+  if (id === "profile-corr-clear" || id === "profile-corr-bronze") return "corr";
+  if (id === "profile-diamond") return "diamond";
+  if (id === "profile-poly") return "flat";
+  if (id === "profile-box" || id === "profile-clear-box" || id === "profile-frp" || id === "profile-sandwich") return "box";
+  return "plain";
+}
+
+function roofSurface(profile, colour) {
+  if (!profile) return "plain";
+  const profileName = String(profile.name || "");
+  const colourName = String(colour && colour.name || "");
+  if (/bronze/i.test(profileName) || /bronze/i.test(colourName)) return "bronze";
+  const clearIds = ["profile-poly", "profile-corr-clear", "profile-frp", "profile-clear-box", "profile-diamond"];
+  if (clearIds.includes(profile.id) || /\bclear\b/i.test(profileName) || /\bclear\b/i.test(colourName)) return "clear";
+  return "metal";
+}
+
+function roofLook() {
+  const profile = currentProfile();
+  const finish = profile && (profile.finishes || []).find((item) => item.id === quote.finishId) || null;
+  const colour = profile && (profile.colours || []).find((item) => item.id === quote.colourId) || null;
+  return {
+    profile,
+    finish,
+    colour,
+    kind: roofPatternKind(profile),
+    surface: roofSurface(profile, colour),
+    hex: colour ? safeHex(colour.hex) : "#9bb0c4",
+  };
+}
+
+function roofMaterialCaption(look) {
+  const chosen = [look.profile && look.profile.name, look.finish && look.finish.name, look.colour && look.colour.name].filter(Boolean);
+  const missing = [];
+  if (!look.profile) missing.push("sheet");
+  if (!look.finish) missing.push("thickness");
+  if (!look.colour) missing.push("colour");
+  if (!look.profile) return "Sheet, thickness, and colour are not chosen yet, so the plan stays a plain fill.";
+  const list = missing.length === 1
+    ? missing[0]
+    : missing.length === 2
+      ? `${missing[0]} and ${missing[1]}`
+      : missing.length
+        ? `${missing.slice(0, -1).join(", ")}, and ${missing[missing.length - 1]}`
+        : "";
+  let text = `${chosen.join(", ")}.`;
+  if (list) text += ` ${list.charAt(0).toUpperCase()}${list.slice(1)} not chosen yet.`;
+  return text;
+}
+
+function roofBackedText(x, y, text, anchor, size) {
+  const label = String(text);
+  const font = size || 13;
+  const textW = Math.max(28, label.length * font * 0.56);
+  const ax = anchor === "middle" ? x - textW / 2 : anchor === "end" ? x - textW : x;
+  return `<rect x="${svgNum(ax - 3)}" y="${svgNum(y - font)}" width="${svgNum(textW + 6)}" height="${svgNum(font + 5)}" fill="#ffffff" fill-opacity="0.92"/>
+    <text x="${svgNum(x)}" y="${svgNum(y)}" text-anchor="${anchor || "start"}" font-size="${font}" font-family="Lato, sans-serif" fill="#1e428b">${esc(label)}</text>`;
+}
+
+function roofShadeStops(look) {
+  const hex = look.hex;
+  if (look.surface === "clear") {
+    return [
+      [0, "#5d98ad", 0.62],
+      [0.16, hex, 0.3],
+      [0.4, "#ffffff", 0.95],
+      [0.52, "#f4fbfe", 0.72],
+      [0.7, hex, 0.34],
+      [1, "#3d7f96", 0.66],
+    ];
+  }
+  if (look.surface === "bronze") {
+    const deep = mixHex(hex, "#1a1008", 0.42);
+    const warm = mixHex(hex, "#f6e6d0", 0.48);
+    return [
+      [0, deep, 0.88],
+      [0.18, hex, 0.7],
+      [0.4, warm, 0.82],
+      [0.5, "#fff6ea", 0.5],
+      [0.68, hex, 0.74],
+      [1, deep, 0.88],
+    ];
+  }
+  const light = hexLuma(hex) > 0.62;
+  const hi = light ? "#ffffff" : mixHex(hex, "#ffffff", 0.78);
+  const lo = light ? mixHex(hex, "#1a2126", 0.45) : mixHex(hex, "#000000", 0.42);
+  return [
+    [0, lo, 1],
+    [0.18, hex, 1],
+    [0.42, hi, 1],
+    [0.55, hex, 1],
+    [0.82, lo, 1],
+    [1, lo, 1],
+  ];
+}
+
+function roofGradient(id, stops) {
+  return `<linearGradient id="${id}" x1="0" y1="0" x2="1" y2="0">${stops.map(([offset, color, opacity]) =>
+    `<stop offset="${Math.round(offset * 100)}%" stop-color="${color}" stop-opacity="${opacity}"/>`
+  ).join("")}</linearGradient>`;
+}
+
+function roofDiamond(cx, cy, stroke) {
+  const rx = 3.15;
+  const ry = 2.9;
+  const outline = `M${svgNum(cx)} ${svgNum(cy - ry)} L${svgNum(cx + rx)} ${svgNum(cy)} L${svgNum(cx)} ${svgNum(cy + ry)} L${svgNum(cx - rx)} ${svgNum(cy)} Z`;
+  return `<path d="M${svgNum(cx)} ${svgNum(cy - ry)} L${svgNum(cx + rx)} ${svgNum(cy)} L${svgNum(cx)} ${svgNum(cy)} Z" fill="#ffffff" fill-opacity="0.78"/>
+    <path d="M${svgNum(cx)} ${svgNum(cy)} L${svgNum(cx + rx)} ${svgNum(cy)} L${svgNum(cx)} ${svgNum(cy + ry)} L${svgNum(cx - rx)} ${svgNum(cy)} Z" fill="${stroke}" fill-opacity="0.22"/>
+    <path d="${outline}" fill="none" stroke="${stroke}" stroke-width="0.6"/>`;
+}
+
+function roofSheetDefs(key, look) {
+  if (!look.profile) return "";
+  const hex = look.hex;
+  const light = hexLuma(hex) > 0.62;
+  const face = `sheet-face-${key}`;
+  const hatch = `sheet-hatch-${key}`;
+  const shade = `sheet-shade-${key}`;
+  let width = 8;
+  let height = 8;
+  let extra = "";
+  let inner = "";
+  if (look.kind === "box") {
+    width = 22;
+    height = 10;
+    if (look.surface === "clear") {
+      inner = `<rect width="22" height="10" fill="${hex}" fill-opacity="0.38"/>
+        <rect x="17" width="5" height="10" fill="#ffffff" fill-opacity="0.62"/>
+        <rect x="17" width="1.15" height="10" fill="#ffffff"/>
+        <rect x="21" width="1" height="10" fill="#3d7f96" fill-opacity="0.7"/>
+        <rect x="5" width="0.8" height="10" fill="#ffffff" fill-opacity="0.55"/>`;
+    } else if (look.surface === "bronze") {
+      inner = `<rect width="22" height="10" fill="${hex}" fill-opacity="0.74"/>
+        <rect x="17" width="5" height="10" fill="${mixHex(hex, "#f4e4cc", 0.5)}" fill-opacity="0.9"/>
+        <rect x="17" width="1.15" height="10" fill="#fff4e4" fill-opacity="0.8"/>
+        <rect x="21" width="1" height="10" fill="#2a1c10" fill-opacity="0.5"/>`;
+    } else {
+      const rib = light ? mixHex(hex, "#1a2126", 0.4) : mixHex(hex, "#ffffff", 0.55);
+      const edge = light ? mixHex(hex, "#14181c", 0.7) : mixHex(hex, "#ffffff", 0.9);
+      const shadow = mixHex(hex, "#000000", light ? 0.35 : 0.55);
+      inner = `<rect width="22" height="10" fill="${hex}"/>
+        <rect x="17" width="5" height="10" fill="${rib}"/>
+        <rect x="17" width="1.2" height="10" fill="${edge}"/>
+        <rect x="21" width="1" height="10" fill="${shadow}"/>`;
+    }
+  } else if (look.kind === "tile") {
+    width = 24;
+    height = 16;
+    const band = light ? mixHex(hex, "#1a2126", 0.34) : mixHex(hex, "#ffffff", 0.42);
+    const line = light ? mixHex(hex, "#14181c", 0.72) : mixHex(hex, "#ffffff", 0.92);
+    const lip = light ? mixHex(hex, "#ffffff", 0.5) : mixHex(hex, "#000000", 0.35);
+    inner = `<rect width="24" height="16" fill="${look.surface === "metal" ? hex : hexToRgba(hex, 0.78)}"/>
+      <path d="M0 13.2 C4 13.2 4 7.2 8 7.2 C12 7.2 12 13.2 16 13.2 C20 13.2 20 7.2 24 7.2 L24 16 L0 16 Z" fill="${band}"/>
+      <path d="M0 12.2 C4 12.2 4 6.2 8 6.2 C12 6.2 12 12.2 16 12.2 C20 12.2 20 6.2 24 6.2" fill="none" stroke="${line}" stroke-width="1.6"/>
+      <path d="M0 2.4 H24" fill="none" stroke="${lip}" stroke-width="1.15"/>`;
+  } else if (look.kind === "corr" || look.kind === "diamond") {
+    width = look.kind === "diamond" ? 16 : 14;
+    height = look.kind === "diamond" ? 16 : 8;
+    extra = roofGradient(shade, roofShadeStops(look));
+    inner = `<rect width="${width}" height="${height}" fill="url(#${shade})"/>`;
+    if (look.kind === "corr") {
+      const crest = look.surface === "bronze" ? "#fff1df" : "#ffffff";
+      inner += `<line x1="5.6" y1="0" x2="5.6" y2="8" stroke="${crest}" stroke-width="0.9" stroke-opacity="0.85"/>`;
+    } else {
+      const stroke = look.surface === "bronze" ? "#4a3018" : "#1f6f8a";
+      inner += [4, 12].map((cx) => roofDiamond(cx, 4, stroke)).join("");
+      inner += [0, 8, 16].map((cx) => roofDiamond(cx, 12, stroke)).join("");
+    }
+  } else if (look.kind === "flat") {
+    width = 46;
+    height = 46;
+    const sheen = `sheet-sheen-${key}`;
+    const opacity = look.surface === "bronze" ? 0.72 : look.surface === "clear" ? 0.42 : 1;
+    extra = `<linearGradient id="${sheen}" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.08"/>
+      <stop offset="46%" stop-color="#ffffff" stop-opacity="0.05"/>
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.88"/>
+      <stop offset="54%" stop-color="#ffffff" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.16"/>
+    </linearGradient>`;
+    inner = `<rect width="46" height="46" fill="${hex}" fill-opacity="${opacity}"/>
+      <rect width="46" height="46" fill="url(#${sheen})"/>`;
+  } else {
+    const opacity = look.surface === "metal" ? 1 : look.surface === "bronze" ? 0.72 : 0.45;
+    inner = `<rect width="8" height="8" fill="${hex}" fill-opacity="${opacity}"/>`;
+  }
+  const hatchWash = look.surface === "metal" ? (light ? 0.16 : 0.22) : look.surface === "bronze" ? 0.4 : 0.36;
+  const hatchStroke = look.surface === "metal"
+    ? (light ? "rgba(20,24,28,0.55)" : "rgba(255,255,255,0.72)")
+    : look.surface === "bronze"
+      ? "rgba(255,236,214,0.72)"
+      : "rgba(31,111,138,0.55)";
+  return `<defs>
+    ${extra}
+    <pattern id="${face}" width="${width}" height="${height}" patternUnits="userSpaceOnUse">${inner}</pattern>
+    <pattern id="${hatch}" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(32)">
+      <rect width="8" height="8" fill="${hex}" fill-opacity="${hatchWash}"/>
+      <line x1="0" y1="0" x2="0" y2="8" stroke="${hatchStroke}" stroke-width="2.2"/>
+    </pattern>
+  </defs>`;
+}
+
 function renderRoofDiagram(mode) {
   const apex = mode === "apex";
   const length = val(apex ? quote.apexA : quote.monoA);
@@ -533,7 +757,8 @@ function renderRoofDiagram(mode) {
   if (!(length > 0) || !(span > 0)) {
     return `<div class="scale-diagram"><h3>To scale</h3><p class="muted">Enter the eaves length and the span to draw this roof.</p></div>`;
   }
-  const profile = currentProfile();
+  const look = roofLook();
+  const profile = look.profile;
   const cover = profile ? Number(profile.coverWidthM) || 0 : 0;
   const sheets = cover > 0 ? sheetCount(length, cover) : 0;
   const key = apex ? "apex" : "mono";
@@ -547,7 +772,8 @@ function renderRoofDiagram(mode) {
   const drawW = length * scale;
   const fullW = worldW * scale;
   const drawH = span * scale;
-  const parts = [];
+  const face = profile ? `url(#sheet-face-${key})` : "rgba(155,176,196,0.45)";
+  const parts = [roofSheetDefs(key, look)];
   const bands = apex ? [0, span / 2, span] : [0, span];
   if (sheets > 0) {
     for (let band = 0; band < bands.length - 1; band += 1) {
@@ -556,23 +782,38 @@ function renderRoofDiagram(mode) {
       for (let col = 0; col < sheets; col += 1) {
         const x = x0 + col * cover * scale;
         const w = cover * scale;
-        parts.push(`<rect x="${svgNum(x)}" y="${svgNum(yA)}" width="${svgNum(w)}" height="${svgNum(yB - yA)}" fill="url(#offcut-hatch-${key})" stroke="#1e428b" stroke-width="1"/>`);
+        parts.push(`<rect x="${svgNum(x)}" y="${svgNum(yA)}" width="${svgNum(w)}" height="${svgNum(yB - yA)}" fill="${face}"/>`);
+        if (x + w > x0 + drawW + 0.4) {
+          const hx = Math.max(x, x0 + drawW);
+          parts.push(`<rect x="${svgNum(hx)}" y="${svgNum(yA)}" width="${svgNum(x + w - hx)}" height="${svgNum(yB - yA)}" fill="url(#sheet-hatch-${key})"/>`);
+        }
       }
     }
+    for (let band = 0; band < bands.length - 1; band += 1) {
+      const yA = y0 + bands[band] * scale;
+      const yB = y0 + bands[band + 1] * scale;
+      for (let col = 0; col < sheets; col += 1) {
+        const x = x0 + col * cover * scale;
+        const w = cover * scale;
+        parts.push(`<rect x="${svgNum(x)}" y="${svgNum(yA)}" width="${svgNum(w)}" height="${svgNum(yB - yA)}" fill="none" stroke="#1e428b" stroke-width="1"/>`);
+      }
+    }
+  } else {
+    parts.push(`<rect x="${svgNum(x0)}" y="${svgNum(y0)}" width="${svgNum(drawW)}" height="${svgNum(drawH)}" fill="${face}"/>`);
   }
-  parts.push(`<rect x="${svgNum(x0)}" y="${svgNum(y0)}" width="${svgNum(drawW)}" height="${svgNum(drawH)}" fill="rgba(155,176,196,0.45)" stroke="#1e428b" stroke-width="2.4"/>`);
+  parts.push(`<rect x="${svgNum(x0)}" y="${svgNum(y0)}" width="${svgNum(drawW)}" height="${svgNum(drawH)}" fill="none" stroke="#1e428b" stroke-width="2.4"/>`);
   if (apex) {
     const ridge = y0 + drawH / 2;
     parts.push(`<line x1="${svgNum(x0)}" y1="${svgNum(ridge)}" x2="${svgNum(x0 + drawW)}" y2="${svgNum(ridge)}" stroke="#1e428b" stroke-width="1.6" stroke-dasharray="5 4"/>`);
-    parts.push(`<text x="${svgNum(x0 + 8)}" y="${svgNum(ridge - 6)}" font-size="12" font-family="Lato, sans-serif" fill="#1e428b">Ridge</text>`);
+    parts.push(roofBackedText(x0 + 8, ridge - 6, "Ridge", "start", 12));
   }
   if (slope > 0) {
-    parts.push(`<text x="${svgNum(x0 + drawW / 2)}" y="${svgNum(y0 + (apex ? drawH / 4 : drawH / 2))}" text-anchor="middle" font-size="13" font-family="Lato, sans-serif" fill="#1e428b">${esc(`${trimNum(slope)} m up the slope`)}</text>`);
+    parts.push(roofBackedText(x0 + drawW / 2, y0 + (apex ? drawH / 4 : drawH / 2), `${trimNum(slope)} m up the slope`, "middle", 13));
   }
   parts.push(dimAcross(x0, x0 + drawW, y0 + drawH + 24, `${trimNum(length)} m eaves`, key));
   if (longer) parts.push(dimAcross(x0, x0 + fullW, y0 + drawH + 50, `${trimNum(covered)} m of covers`, key));
   parts.push(dimDown(x0 - 8, y0, y0 + drawH, `${trimNum(span)} m span`, key));
-  let caption = `Plan of the ${apex ? "apex" : "single slope"}. The filled area is ${trimNum(length)} m along the eaves by ${trimNum(span)} m across.`;
+  let caption = `Plan of the ${apex ? "apex" : "single slope"}: ${roofMaterialCaption(look)} The filled area is ${trimNum(length)} m along the eaves by ${trimNum(span)} m across.`;
   if (sheets > 0) caption += ` ${sheets} sheet${sheets === 1 ? "" : "s"} cover the eaves at ${trimNum(cover)} m cover. Hatched sheet past the eaves is still a whole cover width.`;
   else caption += " Choose a sheet to see the covers along the eaves.";
   if (slope > 0) caption += ` Each sheet follows the ${trimNum(slope)} m eave-to-ridge length.`;
