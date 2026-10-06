@@ -331,6 +331,30 @@ function ensureConfig(data) {
   if (typeStep && /lean-to/i.test(String(typeStep.hint || ""))) {
     typeStep.hint = "An apex roof or a single slope.";
   }
+  const colourStep = (next.steps || []).find((step) => step.kind === "colour");
+  if (colourStep && /box profile is (black, green|juniper green)/i.test(String(colourStep.hint || ""))) {
+    const freshHint = ((originalConfig.steps || []).find((step) => step.kind === "colour") || {}).hint;
+    if (freshHint) colourStep.hint = freshHint;
+  }
+  const freshProfiles = new Map((originalConfig.profiles || []).map((profile) => [profile.id, profile]));
+  next.profiles.forEach((profile) => {
+    const fresh = freshProfiles.get(profile.id);
+    if (!fresh || !Array.isArray(fresh.colours)) return;
+    const byId = new Map((profile.colours || []).filter((colour) => colour && colour.id).map((colour) => [colour.id, colour]));
+    const ordered = fresh.colours.map((colour) => {
+      const current = byId.get(colour.id) || {};
+      byId.delete(colour.id);
+      return {
+        ...current,
+        id: colour.id,
+        name: colour.name,
+        hex: colour.hex,
+        image: colour.image || current.image || "",
+      };
+    });
+    byId.forEach((colour) => ordered.push(colour));
+    profile.colours = ordered;
+  });
   return next;
 }
 
@@ -630,17 +654,25 @@ function renderFinishStep() {
     </button>`).join("");
 }
 
+function colourChip(colour) {
+  const src = safeSrc(colour.image);
+  if (src) return `<img class="chip" src="${esc(src)}" alt="">`;
+  const hex = safeHex(colour.hex);
+  const name = String(colour.name || "").toLowerCase();
+  if (/\bclear\b/.test(name)) return `<span class="chip is-clear" style="--swatch:${hex}"></span>`;
+  if (/bronze/.test(name)) return `<span class="chip is-bronze" style="--swatch:${hex}"></span>`;
+  return `<span class="chip" style="background:${hex}"></span>`;
+}
+
 function renderColourStep() {
   const profile = currentProfile();
   if (!profile) return `<p class="muted">${esc(config.copy.needProfile)}</p>`;
   if (!profile.colours.length) return `<p class="muted">${esc(config.copy.emptyProducts)}</p>`;
-  return `<div class="swatches">${profile.colours.map((colour) => {
-    const src = safeSrc(colour.image);
-    const chip = src
-      ? `<img src="${esc(src)}" alt="" style="width:100%;height:64px;object-fit:cover;border-radius:10px">`
-      : `<span class="chip" style="background:${safeHex(colour.hex)}"></span>`;
-    return `<button type="button" class="swatch${quote.colourId === colour.id ? " is-selected" : ""}" data-action="select-colour" data-id="${esc(colour.id)}">${chip}<strong>${esc(colour.name)}</strong></button>`;
-  }).join("")}</div>`;
+  return `<div class="swatches roof-colours">${profile.colours.map((colour) => `
+    <button type="button" class="swatch${quote.colourId === colour.id ? " is-selected" : ""}" data-action="select-colour" data-id="${esc(colour.id)}">
+      ${colourChip(colour)}
+      <strong>${esc(colour.name)}</strong>
+    </button>`).join("")}</div>`;
 }
 
 function renderDripstopStep() {
