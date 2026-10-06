@@ -1,20 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 160">
-  <ellipse cx="146" cy="142" rx="90" ry="8" fill="#1b2430" opacity="0.09"/>
-  <path d="M 58.0 72.0 L 22.0 54.0 L 22.0 84.0 L 58.0 102.0 Z" fill="#c6a456"/>
-  <path d="M 58.0 102.0 L 22.0 84.0 L 22.0 90.0 L 58.0 108.0 Z" fill="#eceae4"/>
-  <path d="M 58.0 72.0 L 206.0 72.0 L 206.0 102.0 L 58.0 102.0 Z" fill="#d2b15e"/>
-  <line x1="64.0" y1="79.0" x2="200.0" y2="79.0" stroke="#b99645" stroke-width="1.1" opacity="0.85"/>
-  <line x1="64.0" y1="85.0" x2="200.0" y2="85.0" stroke="#b99645" stroke-width="1.1" opacity="0.85"/>
-  <line x1="64.0" y1="91.0" x2="200.0" y2="91.0" stroke="#b99645" stroke-width="1.1" opacity="0.85"/>
-  <line x1="64.0" y1="97.0" x2="200.0" y2="97.0" stroke="#b99645" stroke-width="1.1" opacity="0.85"/>
-  <path d="M 58.0 102.0 L 206.0 102.0 L 206.0 108.0 L 58.0 108.0 Z" fill="#f7f7f5"/>
-  <path d="M 58.0 72.0 L 94.0 72.0 L 58.0 54.0 L 22.0 54.0 Z" fill="#e7e4d8"/>
-  <path d="M 94.0 72.0 L 104.0 62.0 L 68.0 44.0 L 58.0 54.0 Z" fill="#cfd3cf"/>
-  <path d="M 104.0 62.0 L 122.0 62.0 L 86.0 44.0 L 68.0 44.0 Z" fill="#fbfaf6"/>
-  <path d="M 122.0 62.0 L 132.0 72.0 L 96.0 54.0 L 86.0 44.0 Z" fill="#cfd3cf"/>
-  <path d="M 132.0 72.0 L 168.0 72.0 L 132.0 54.0 L 96.0 54.0 Z" fill="#e7e4d8"/>
-  <path d="M 168.0 72.0 L 178.0 62.0 L 142.0 44.0 L 132.0 54.0 Z" fill="#cfd3cf"/>
-  <path d="M 178.0 62.0 L 196.0 62.0 L 160.0 44.0 L 142.0 44.0 Z" fill="#fbfaf6"/>
-  <path d="M 196.0 62.0 L 206.0 72.0 L 170.0 54.0 L 160.0 44.0 Z" fill="#cfd3cf"/>
-  <path d="M 58.0 72.0 L 94.0 72.0 L 104.0 62.0 L 122.0 62.0 L 132.0 72.0 L 168.0 72.0 L 178.0 62.0 L 196.0 62.0 L 206.0 72.0" fill="none" stroke="#8d897c" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="140" cy="136" rx="74" ry="6.5" fill="#1b2430" opacity="0.10"/>
+  <g transform="translate(13.0 -10.5)">
+    <path d="M 58.0 84.0 L 96.0 84.0 L 56.0 62.0 L 18.0 62.0 Z" fill="#e6e3d7"/>
+    <path d="M 96.0 84.0 L 104.0 76.0 L 64.0 54.0 L 56.0 62.0 Z" fill="#cfd3ce"/>
+    <path d="M 104.0 76.0 L 120.0 76.0 L 80.0 54.0 L 64.0 54.0 Z" fill="#fbfaf6"/>
+    <path d="M 120.0 76.0 L 128.0 84.0 L 88.0 62.0 L 80.0 54.0 Z" fill="#cfd3ce"/>
+    <path d="M 128.0 84.0 L 166.0 84.0 L 126.0 62.0 L 88.0 62.0 Z" fill="#e6e3d7"/>
+    <path d="M 166.0 84.0 L 174.0 76.0 L 134.0 54.0 L 126.0 62.0 Z" fill="#cfd3ce"/>
+    <path d="M 174.0 76.0 L 190.0 76.0 L 150.0 54.0 L 134.0 54.0 Z" fill="#fbfaf6"/>
+    <path d="M 190.0 76.0 L 198.0 84.0 L 158.0 62.0 L 150.0 54.0 Z" fill="#cfd3ce"/>
+    <path d="M 198.0 84.0 L 236.0 84.0 L 196.0 62.0 L 158.0 62.0 Z" fill="#e6e3d7"/>
+    <path d="M 58.0 84.0 L 96.0 84.0 L 104.0 76.0 L 120.0 76.0 L 128.0 84.0 L 166.0 84.0 L 174.0 76.0 L 190.0 76.0 L 198.0 84.0 L 236.0 84.0" fill="none" stroke="#8a8678" stroke-width="1.15" stroke-linejoin="round" stroke-linecap="round"/>
+    <path d="M 58.0 84.0 L 236.0 84.0 L 236.0 110.0 L 58.0 110.0 Z" fill="#c9ae62"/>
+    <path d="M 66.0 90.0 L 228.0 90.0" fill="none" stroke="#b09145" stroke-width="1.05" stroke-linejoin="round" stroke-linecap="round" opacity="0.8"/>
+    <path d="M 66.0 96.0 L 228.0 96.0" fill="none" stroke="#b09145" stroke-width="1.05" stroke-linejoin="round" stroke-linecap="round" opacity="0.8"/>
+    <path d="M 66.0 102.0 L 228.0 102.0" fill="none" stroke="#b09145" stroke-width="1.05" stroke-linejoin="round" stroke-linecap="round" opacity="0.8"/>
+    <path d="M 58.0 110.0 L 236.0 110.0 L 236.0 115.0 L 58.0 115.0 Z" fill="#f4f3ef"/>
+    <path d="M 58.0 84.0 L 18.0 62.0 L 18.0 88.0 L 58.0 110.0 Z" fill="#b89850"/>
+    <path d="M 58.0 110.0 L 18.0 88.0 L 18.0 93.0 L 58.0 115.0 Z" fill="#e7e4da"/>
+  </g>
 </svg>

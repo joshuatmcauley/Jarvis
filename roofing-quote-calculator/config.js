@@ -147,7 +147,7 @@ const QUOTE_CONFIG = {
       name: "24/1000 box profile",
       coverWidthM: 1,
       cutToSize: true,
-      image: "images/profiles/box.svg",
+      image: "images/profiles/box.svg?v=2",
       allowsDripstop: false,
       finishes: [
         { id: "box-05", name: "0.5mm", pricePerMetre: 7.1, allowsDripstop: false },
@@ -170,7 +170,7 @@ const QUOTE_CONFIG = {
       name: "Tile effect",
       coverWidthM: 1,
       cutToSize: true,
-      image: "images/profiles/tile.svg",
+      image: "images/profiles/tile.svg?v=2",
       allowsDripstop: false,
       finishes: [
         { id: "tile-05", name: "0.5mm", pricePerMetre: 12.5, allowsDripstop: false },
@@ -195,7 +195,7 @@ const QUOTE_CONFIG = {
       coverWidthM: 1,
       cutToSize: false,
       stockLengthsM: [3, 4, 5, 6, 7],
-      image: "images/profiles/sandwich.svg",
+      image: "images/profiles/sandwich.svg?v=2",
       allowsDripstop: false,
       finishes: [
         { id: "sandwich-50", name: "50mm", pricePerMetre: 25, allowsDripstop: false },
@@ -214,7 +214,7 @@ const QUOTE_CONFIG = {
       coverWidthM: 0.688,
       cutToSize: false,
       stockLengthsM: [4, 5, 5.8],
-      image: "images/profiles/flat.svg",
+      image: "images/profiles/flat.svg?v=2",
       allowsDripstop: false,
       finishes: [
         { id: "poly-3", name: "3mm", pricePerMetre: 16, allowsDripstop: false },
@@ -234,7 +234,7 @@ const QUOTE_CONFIG = {
       coverWidthM: 0.95,
       cutToSize: false,
       stockLengthsM: [2.8, 4, 5, 5.8],
-      image: "images/profiles/corrugated.svg",
+      image: "images/profiles/corrugated.svg?v=2",
       allowsDripstop: false,
       finishes: [
         { id: "corr-clear", name: "1.2mm", pricePerMetre: 10.4167, allowsDripstop: false },
@@ -253,7 +253,7 @@ const QUOTE_CONFIG = {
       coverWidthM: 0.95,
       cutToSize: false,
       stockLengthsM: [3, 5.8],
-      image: "images/profiles/corrugated-bronze.svg",
+      image: "images/profiles/corrugated-bronze.svg?v=2",
       allowsDripstop: false,
       finishes: [
         { id: "corr-bronze", name: "1.2mm", pricePerMetre: 10.4167, allowsDripstop: false },
@@ -272,7 +272,7 @@ const QUOTE_CONFIG = {
       coverWidthM: 1,
       cutToSize: false,
       stockLengthsM: [2, 2.8, 3, 4, 5],
-      image: "images/profiles/frp.svg",
+      image: "images/profiles/frp.svg?v=2",
       allowsDripstop: false,
       finishes: [
         { id: "frp-m", name: "Per metre", pricePerMetre: 8.3333, allowsDripstop: false },
@@ -291,7 +291,7 @@ const QUOTE_CONFIG = {
       coverWidthM: 1,
       cutToSize: false,
       stockLengthsM: [4],
-      image: "images/profiles/clear-box.svg",
+      image: "images/profiles/clear-box.svg?v=2",
       allowsDripstop: false,
       finishes: [
         { id: "clear-box-4", name: "1.5mm, 4m sheets", pricePerMetre: 14.5833, allowsDripstop: false },
@@ -310,7 +310,7 @@ const QUOTE_CONFIG = {
       coverWidthM: 0.988,
       cutToSize: false,
       stockLengthsM: [5],
-      image: "images/profiles/diamond.svg",
+      image: "images/profiles/diamond.svg?v=2",
       allowsDripstop: false,
       finishes: [
         { id: "diamond-5", name: "2.8mm, 5m sheets", pricePerMetre: 25, allowsDripstop: false },
