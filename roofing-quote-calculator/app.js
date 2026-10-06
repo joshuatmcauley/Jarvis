@@ -607,7 +607,7 @@ function profileFromPrice(profile) {
 function renderProfileStep() {
   if (!config.profiles.length) return `<p class="muted">${esc(config.copy.emptyProducts)}</p>`;
   const groups = ["Metal roofing", "Clear roofing"];
-  return `<p class="note">Pick the product first. Tile effect 0.5mm Non Drip is £18 a metre, on the next step.</p>` + groups.map((name) => {
+  return `<p class="note">Metal sheets first, then clear sheets. Tile effect 0.5mm Non Drip is £18 a metre, on the next step.</p>` + groups.map((name) => {
     const profiles = config.profiles.filter((profile) => profileGroup(profile) === name);
     if (!profiles.length) return "";
     return `<h3>${esc(name)}</h3><div class="choices">${profiles.map((profile) => `
@@ -1672,7 +1672,7 @@ function visibleSteps() {
     return true;
   });
   if (jobId !== "roof") return steps;
-  const rank = { job: 0, profile: 1, finish: 2, colour: 3, type: 4, measure: 5, review: 8, export: 9 };
+  const rank = { job: 0, type: 1, profile: 2, finish: 3, colour: 4, measure: 5, review: 8, export: 9 };
   return steps.slice().sort((a, b) => (rank[a.kind || a.id] ?? 6) - (rank[b.kind || b.id] ?? 6));
 }
 
@@ -1865,7 +1865,7 @@ function renderQuotePage() {
   const roofPage = pageMode() === "roof";
   const title = roofPage ? "Roofing quote" : "Other calculators";
   const lede = roofPage
-    ? "Choose the sheet, the thickness, and the colour, then enter the roof size."
+    ? "Choose the roof shape, then the sheet, the thickness, and the colour, then enter the size."
     : "Decking, cladding, fencing, paving, kerbs, and the other size calculators.";
   const otherLink = roofPage
     ? `<a href="other.html">Other calculators</a>`
@@ -2803,7 +2803,7 @@ function onClick(event) {
     const changed = quote.roofTypeId !== el.dataset.id;
     quote.roofTypeId = el.dataset.id;
     ui.added = false;
-    if (changed) pendingScroll = "measure";
+    if (changed) pendingScroll = nextStepId("type") || "profile";
     render();
     return;
   }
@@ -2836,7 +2836,7 @@ function onClick(event) {
   if (action === "select-colour") {
     quote.colourId = el.dataset.id;
     ui.added = false;
-    pendingScroll = nextStepId("colour") || "type";
+    pendingScroll = nextStepId("colour") || "measure";
     render();
     return;
   }
