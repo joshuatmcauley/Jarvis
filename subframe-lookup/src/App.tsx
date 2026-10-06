@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from 'react'
+import { useEffect, useRef, useState, type FormEvent } from 'react'
 import './App.css'
 import {
   DEMO_PLATE_HINTS,
@@ -25,6 +25,13 @@ export default function App() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [result, setResult] = useState<LookupResult | null>(null)
+  const resultsRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (result) {
+      resultsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }, [result])
 
   const makes = uniqueMakes()
   const [make, setMake] = useState(makes[0] ?? '')
@@ -221,7 +228,7 @@ export default function App() {
           </div>
 
           {result && (
-            <div className="results">
+            <div className="results" ref={resultsRef}>
               <div className="vehicle-strip">
                 <div className="plate">
                   {result.plateOrVin === 'MANUAL' ? 'MANUAL' : result.plateOrVin}
