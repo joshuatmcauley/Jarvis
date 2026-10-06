@@ -1621,6 +1621,7 @@ function visibleSteps() {
   return (config.steps || []).filter((step) => {
     if (step.enabled === false) return false;
     const kind = step.kind || step.id;
+    if (kind === "extras") return false;
     if (ROOF_KINDS.includes(kind)) return jobId === "roof";
     if (kind === "size") return !!jobId && jobId !== "roof";
     if (kind === "job-colour") return jobColours(currentJobProduct()).length > 1;
