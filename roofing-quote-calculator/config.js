@@ -50,10 +50,10 @@ const QUOTE_CONFIG = {
     { id: "job-colour", kind: "job-colour", title: "Select Colour", hint: "Swatches are sampled from the product photos on bcmckeown.net.", enabled: true, required: false },
     { id: "clad-wall", kind: "clad-wall", title: "Enter the wall", hint: "Add each wall on its own. Vertical and horizontal boards are counted differently.", enabled: true, required: false },
     { id: "extras", kind: "extras", title: "Full Product Range", hint: "Not shown in the quote. Gates, sheds, and other whole items stay in the catalogue file.", enabled: false, required: false },
+    { id: "profile", kind: "profile", title: "Choose Your Sheet", hint: "These are different products. 0.5mm Non Drip is not in this list. Choose Tile effect or Box profile, then pick the thickness on the next step.", enabled: true, required: false },
+    { id: "finish", kind: "finish", title: "Choose Thickness", hint: "Same choices as the website. Tile effect 0.5mm Non Drip is £18 a metre. Box profile 0.5mm Non Drip is £12.46 a metre.", enabled: true, required: false },
     { id: "type", kind: "type", title: "Select Roof Type", hint: "Only needed if you want sheet quantities worked out from a roof size.", enabled: true, required: false },
     { id: "measure", kind: "measure", title: "Enter Your Measurements", hint: "Use metres.", enabled: true, required: false },
-    { id: "profile", kind: "profile", title: "Choose Your Sheet", hint: "Cover width is how much of the roof one sheet covers.", enabled: true, required: false },
-    { id: "finish", kind: "finish", title: "Choose Thickness", hint: "Prices are per metre, ex VAT.", enabled: true, required: false },
     { id: "colour", kind: "colour", title: "Select Colour", hint: "Box profile is black, green, and grey. Tile effect is green, black, white, and anthracite grey.", enabled: true, required: false },
     { id: "dripstop", kind: "dripstop", title: "Add Dripstop", hint: "", enabled: false, required: false },
     { id: "rooflight", kind: "rooflight", title: "Add Rooflights", hint: "", enabled: false, required: false },
@@ -151,9 +151,9 @@ const QUOTE_CONFIG = {
       allowsDripstop: false,
       finishes: [
         { id: "box-05", name: "0.5mm", pricePerMetre: 7.1, allowsDripstop: false },
+        { id: "box-05-nd", name: "0.5mm Non Drip", pricePerMetre: 10.38, allowsDripstop: false },
         { id: "box-06", name: "0.6mm", pricePerMetre: 10.38, allowsDripstop: false },
-        { id: "box-05-nd", name: "0.5mm non-drip", pricePerMetre: 10.38, allowsDripstop: false },
-        { id: "box-06-nd", name: "0.6mm non-drip", pricePerMetre: 12.57, allowsDripstop: false },
+        { id: "box-06-nd", name: "0.6mm Non Drip", pricePerMetre: 12.57, allowsDripstop: false },
       ],
       colours: [
         { id: "box-grey", name: "Grey", hex: "#8d8f8c", image: "" },
@@ -174,9 +174,9 @@ const QUOTE_CONFIG = {
       allowsDripstop: false,
       finishes: [
         { id: "tile-05", name: "0.5mm", pricePerMetre: 12.5, allowsDripstop: false },
-        { id: "tile-05-nd", name: "0.5mm non-drip", pricePerMetre: 15, allowsDripstop: false },
+        { id: "tile-05-nd", name: "0.5mm Non Drip", pricePerMetre: 15, allowsDripstop: false },
         { id: "tile-06", name: "0.6mm", pricePerMetre: 15, allowsDripstop: false },
-        { id: "tile-06-nd", name: "0.6mm non-drip", pricePerMetre: 17.5, allowsDripstop: false },
+        { id: "tile-06-nd", name: "0.6mm Non Drip", pricePerMetre: 17.5, allowsDripstop: false },
       ],
       colours: [
         { id: "tile-green", name: "Green", hex: "#2f4a3c", image: "" },

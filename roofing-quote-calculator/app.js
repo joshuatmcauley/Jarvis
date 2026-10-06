@@ -1,6 +1,6 @@
 "use strict";
 
-const CAT_KEY = "roofQuote.catalogue.v5";
+const CAT_KEY = "roofQuote.catalogue.v6";
 const DRAFT_KEY = "roofQuote.draft.v1";
 const SAVED_KEY = "roofQuote.saved.v1";
 
@@ -584,14 +584,30 @@ function renderMeasureStep() {
   return html;
 }
 
+function profileGroup(profile) {
+  const id = profile && profile.id;
+  if (id === "profile-box" || id === "profile-tile" || id === "profile-sandwich") return "Metal roofing";
+  return "Clear roofing";
+}
+
+function profileFromPrice(profile) {
+  const prices = (profile.finishes || []).map((finish) => Number(finish.pricePerMetre) || 0).filter((price) => price > 0);
+  return prices.length ? Math.min(...prices) : 0;
+}
+
 function renderProfileStep() {
   if (!config.profiles.length) return `<p class="muted">${esc(config.copy.emptyProducts)}</p>`;
-  return `<div class="choices">${config.profiles.map((profile) => `
+  const groups = ["Metal roofing", "Clear roofing"];
+  return `<p class="note">Pick the product first. Tile effect 0.5mm Non Drip is £18 a metre, on the next step.</p>` + groups.map((name) => {
+    const profiles = config.profiles.filter((profile) => profileGroup(profile) === name);
+    if (!profiles.length) return "";
+    return `<h3>${esc(name)}</h3><div class="choices">${profiles.map((profile) => `
     <button type="button" class="choice${quote.profileId === profile.id ? " is-selected" : ""}" data-action="select-profile" data-id="${esc(profile.id)}">
       ${thumb(profile.image, profile.name)}
       <strong>${esc(profile.name)}</strong>
-      <p>Cover width ${trimNum(profile.coverWidthM)} m</p>
+      <p>From ${esc(incMoney(profileFromPrice(profile)))} / m · cover ${trimNum(profile.coverWidthM)} m</p>
     </button>`).join("")}</div>`;
+  }).join("");
 }
 
 function renderFinishStep() {
@@ -601,7 +617,7 @@ function renderFinishStep() {
   return profile.finishes.map((finish) => `
     <button type="button" class="choice${quote.finishId === finish.id ? " is-selected" : ""}" data-action="select-finish" data-id="${esc(finish.id)}">
       <strong>${esc(finish.name)}</strong>
-      <p>${incMoney(Number(finish.pricePerMetre) || 0)} per metre, inc VAT${finish.allowsDripstop === false ? " · liner not available" : ""}</p>
+      <p>${incMoney(Number(finish.pricePerMetre) || 0)} per metre, inc VAT</p>
     </button>`).join("");
 }
 
@@ -1618,7 +1634,7 @@ const STEP_VIEWS = {
 
 function visibleSteps() {
   const jobId = quote.jobId || "";
-  return (config.steps || []).filter((step) => {
+  const steps = (config.steps || []).filter((step) => {
     if (step.enabled === false) return false;
     const kind = step.kind || step.id;
     if (kind === "extras") return false;
@@ -1628,6 +1644,9 @@ function visibleSteps() {
     if (kind === "clad-wall") return jobId === "cladding";
     return true;
   });
+  if (jobId !== "roof") return steps;
+  const rank = { job: 0, profile: 1, finish: 2, colour: 3, type: 4, measure: 5, review: 8, export: 9 };
+  return steps.slice().sort((a, b) => (rank[a.kind || a.id] ?? 6) - (rank[b.kind || b.id] ?? 6));
 }
 
 function customMissing() {
