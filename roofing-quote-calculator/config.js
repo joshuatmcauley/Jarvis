@@ -159,7 +159,7 @@ const QUOTE_CONFIG = {
       name: "Tile effect",
       coverWidthM: 1,
       cutToSize: true,
-      image: "images/profiles/tile.svg?v=4",
+      image: "images/profiles/tile.svg?v=5",
       allowsDripstop: false,
       finishes: [
         { id: "tile-05", name: "0.5mm", pricePerMetre: 12.5, allowsDripstop: false },
@@ -299,7 +299,7 @@ const QUOTE_CONFIG = {
       coverWidthM: 0.988,
       cutToSize: false,
       stockLengthsM: [5],
-      image: "images/profiles/diamond.svg?v=3",
+      image: "images/profiles/diamond.svg?v=4",
       allowsDripstop: false,
       finishes: [
         { id: "diamond-5", name: "2.8mm, 5m sheets", pricePerMetre: 25, allowsDripstop: false },
