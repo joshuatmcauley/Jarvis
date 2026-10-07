@@ -1,6 +1,6 @@
 "use strict";
 
-const CAT_KEY = "roofQuote.catalogue.v9";
+const CAT_KEY = "roofQuote.catalogue.v10";
 const DRAFT_KEY = "roofQuote.draft.v1";
 const SAVED_KEY = "roofQuote.saved.v1";
 
@@ -341,6 +341,9 @@ function ensureConfig(data) {
     const fresh = freshProfiles.get(profile.id);
     if (!fresh) return;
     if (fresh.image) profile.image = fresh.image;
+    // Stock status always comes from config.js, so saved browser edits cannot hide it.
+    profile.outOfStock = !!fresh.outOfStock;
+    profile.outOfStockLengthsM = Array.isArray(fresh.outOfStockLengthsM) ? fresh.outOfStockLengthsM.slice() : [];
     if (!Array.isArray(fresh.colours)) return;
     const byId = new Map((profile.colours || []).filter((colour) => colour && colour.id).map((colour) => [colour.id, colour]));
     const ordered = fresh.colours.map((colour) => {
@@ -846,7 +849,9 @@ function renderMeasureStep() {
     html += `<ul class="preview">${lastCalc.slopes.map((slope) => {
       const sheets = slope.sheets == null ? "Choose a profile to count sheets" : `${slope.sheets} sheet${slope.sheets === 1 ? "" : "s"}`;
       const same = Math.abs(slope.ordered - slope.slope) < 0.001;
-      const round = slope.cutToSize
+      const round = slope.blocked
+        ? slope.blockReason
+        : slope.cutToSize
         ? `${trimNum(slope.slope)} m cut to size`
         : slope.special
           ? `${trimNum(slope.slope)} m is above your longest stock size`
@@ -881,7 +886,7 @@ function renderProfileStep() {
     <button type="button" class="choice${quote.profileId === profile.id ? " is-selected" : ""}" data-action="select-profile" data-id="${esc(profile.id)}">
       ${thumb(profile.image, profile.name)}
       <strong>${esc(profile.name)}</strong>
-      <p>From ${esc(incMoney(profileFromPrice(profile)))}&nbsp;/&nbsp;m · cover&nbsp;${trimNum(profile.coverWidthM)}&nbsp;m</p>
+      <p>From ${esc(incMoney(profileFromPrice(profile)))}&nbsp;/&nbsp;m · cover&nbsp;${trimNum(profile.coverWidthM)}&nbsp;m${profile.outOfStock ? " · <strong>Out of stock</strong>" : (Array.isArray(profile.outOfStockLengthsM) && profile.outOfStockLengthsM.length ? ` · ${esc(profile.outOfStockLengthsM.map(trimNum).join(", "))}&nbsp;m out of stock` : "")}</p>
     </button>`).join("")}</div>`;
   }).join("");
 }

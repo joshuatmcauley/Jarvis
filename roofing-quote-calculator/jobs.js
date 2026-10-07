@@ -1,5 +1,5 @@
 /* Calculators for bcmckeown.net.
-   Prices are ex VAT (website price ÷ 1.2).
+   Prices are ex VAT (website price ÷ 1.2), kept to 6 decimals so inc-VAT totals match the shop to the penny.
    A product is here only when a measurement changes how many you buy,
    or the site sells it by the metre or the square metre.
    Whole pieces are counted. They are not priced as if they were cut shorter.
@@ -48,12 +48,12 @@ const JOBS = [
         id: "trim-3",
         name: "WPC 90° corner trim, 3m",
         lengthM: 3,
-        price: 8.33,
+        price: 8.333333,
         note: "£10 inc VAT. Grey, black, and teak are the same price.",
         colours: [
-          { id: "trim-grey", name: "Grey", hex: "#5C6065", price: 8.33, shopifyHandle: "wpc-edging-corner-trims-exterior-corners-90-degree-grey-black-teak-3-metre-lengths", shopifyVariantId: "51958359163211" },
-          { id: "trim-black", name: "Black", hex: "#353C3F", price: 8.33, shopifyHandle: "wpc-edging-corner-trims-exterior-corners-90-degree-grey-black-teak-3-metre-lengths", shopifyVariantId: "51958359163211" },
-          { id: "trim-teak", name: "Teak", hex: "#845D39", price: 8.33, shopifyHandle: "wpc-edging-corner-trims-exterior-corners-90-degree-grey-black-teak-3-metre-lengths", shopifyVariantId: "51958359163211" },
+          { id: "trim-grey", name: "Grey", hex: "#5C6065", price: 8.333333, shopifyHandle: "wpc-edging-corner-trims-exterior-corners-90-degree-grey-black-teak-3-metre-lengths", shopifyVariantId: "51958359163211" },
+          { id: "trim-black", name: "Black", hex: "#353C3F", price: 8.333333, shopifyHandle: "wpc-edging-corner-trims-exterior-corners-90-degree-grey-black-teak-3-metre-lengths", shopifyVariantId: "51958359163211" },
+          { id: "trim-teak", name: "Teak", hex: "#845D39", price: 8.333333, shopifyHandle: "wpc-edging-corner-trims-exterior-corners-90-degree-grey-black-teak-3-metre-lengths", shopifyVariantId: "51958359163211" },
         ],
       },
     ],
@@ -66,7 +66,7 @@ const JOBS = [
     wasteDefault: 0,
     note: "Boards are sold whole at 3.6m. Height is stacked in 170mm courses. This does not cut a board down, and it does not include posts, rails, or a ready-made fence bay.",
     products: [
-      { id: "fence-tg", name: "Black tongue and groove fence board", lengthM: 3.6, coverM: 0.17, price: 22.92, swatch: "#2A2A2A", shopifyHandle: "black-composite-fencing-board-tongue-groove-3-6m-x-170mm", note: "3.6m × 170mm cover. £27.50 inc VAT. The shop export shows 0 in stock." },
+      { id: "fence-tg", name: "Black tongue and groove fence board", lengthM: 3.6, coverM: 0.17, price: 22.916667, swatch: "#2A2A2A", shopifyHandle: "black-composite-fencing-board-tongue-groove-3-6m-x-170mm", note: "3.6m × 170mm cover. £27.50 inc VAT. The shop export shows 0 in stock." },
     ],
   },
   {
@@ -166,7 +166,7 @@ const JOBS = [
         swatch: "#C5C7C4",
         note: "£25 inc VAT for 20mm, £36 inc VAT for 30mm, per slab.",
         variants: [
-          { id: "gran-900-20", name: "20mm", price: 20.83 },
+          { id: "gran-900-20", name: "20mm", price: 20.833333 },
           { id: "gran-900-30", name: "30mm", price: 30 },
         ],
       },
@@ -317,7 +317,7 @@ const JOBS = [
       { id: "step-silver", name: "G603 silver step 1000 × 400 × 30mm", lengthM: 1, depthM: 0.4, price: 20, swatch: "#C5C7C4", note: "£24 inc VAT each." },
       { id: "step-solid", name: "Solid granite step 900 × 300 × 255mm", lengthM: 0.9, depthM: 0.3, price: 60, swatch: "#A9A59C", note: "£72 inc VAT each." },
       { id: "step-riser", name: "G603 riser 1000 × 150 × 30mm", lengthM: 1, depthM: 0.15, price: 10, swatch: "#C5C7C4", note: "£12 inc VAT each." },
-      { id: "step-board", name: "Composite step board 3600 × 310 × 55mm", lengthM: 3.6, depthM: 0.31, price: 58.33, swatch: "#8B7355", note: "£70 inc VAT each." },
+      { id: "step-board", name: "Composite step board 3600 × 310 × 55mm", lengthM: 3.6, depthM: 0.31, price: 58.333333, swatch: "#8B7355", note: "£70 inc VAT each." },
     ],
   },
   {
@@ -346,9 +346,9 @@ const JOBS = [
         swatch: "#D7EEF8",
         note: "£80, £120, and £200 inc VAT.",
         variants: [
-          { id: "acrylic-4", name: "4mm", price: 66.67 },
+          { id: "acrylic-4", name: "4mm", price: 66.666667 },
           { id: "acrylic-6", name: "6mm", price: 100 },
-          { id: "acrylic-10", name: "10mm", price: 166.67 },
+          { id: "acrylic-10", name: "10mm", price: 166.666667 },
         ],
       },
     ],

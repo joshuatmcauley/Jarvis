@@ -30,7 +30,7 @@ const QUOTE_CONFIG = {
     headline: "Quote Calculator",
     subheading: "Size roofing, decking, cladding, paving, kerbs, and steps from the B&C McKeown prices.",
     footer: "B&C McKeown LTD, Cloonagh Road, Downpatrick. Call 02844 615148. Product prices include VAT and match bcmckeown.net. Delivery is extra.",
-    measurementNote: "Box profile and tile-effect sheets are priced at the length you enter. Sandwich panels and polycarbonate sheets round up to the next stock length.",
+    measurementNote: "Box profile and tile-effect sheets are priced at the length you enter. Sandwich panels, FRP and polycarbonate sheets round up to the next stock length.",
     sameSide: "Side 2 length matches side 1",
     rooflightNote: "Each rooflight replaces one metal sheet of the same length.",
     dripstopHelp: "Quantity is the total metres of metal sheet still on the quote (sheet count × ordered length).",
@@ -41,7 +41,7 @@ const QUOTE_CONFIG = {
     needProfile: "Select a profile above to see products for this step.",
     needType: "Select a roof type above to see which flashings apply.",
     basketNote: "Nothing is sent to a shop. This builds the quote on this device so you can print it, save it, or email it.",
-    disclaimer: "Check quantities before you order. These rates exclude VAT and delivery, and they are taken from the public prices on bcmckeown.net. Confirm the current price and colour on the website or by phone before you buy.",
+    disclaimer: "Check quantities before you order. Prices include VAT but not delivery, and they are taken from the public prices on bcmckeown.net. Confirm the current price, stock and colour on the website or by phone before you buy.",
     emptyProducts: "Nothing here yet. Add products with Edit products & prices.",
   },
   steps: [
@@ -52,7 +52,7 @@ const QUOTE_CONFIG = {
     { id: "extras", kind: "extras", title: "Full Product Range", hint: "Not shown in the quote. Gates, sheds, and other whole items stay in the catalogue file.", enabled: false, required: false },
     { id: "type", kind: "type", title: "Select Roof Type", hint: "An apex roof or a single slope.", enabled: true, required: false },
     { id: "profile", kind: "profile", title: "Choose Your Sheet", hint: "Metal sheets first, then clear sheets. Thickness is the next step.", enabled: true, required: false },
-    { id: "finish", kind: "finish", title: "Choose Thickness", hint: "Tile effect 0.5mm Non Drip is £18 a metre. Box profile 0.5mm Non Drip is £12.46 a metre.", enabled: true, required: false },
+    { id: "finish", kind: "finish", title: "Choose Thickness", hint: "Prices are per metre, including VAT.", enabled: true, required: false },
     { id: "colour", kind: "colour", title: "Select Colour", hint: "Each block is the colour of that sheet.", enabled: true, required: false },
     { id: "measure", kind: "measure", title: "Enter Your Measurements", hint: "Use metres. Sheet quantity is worked out from these sizes.", enabled: true, required: false },
     { id: "dripstop", kind: "dripstop", title: "Add Dripstop", hint: "", enabled: false, required: false },
@@ -140,9 +140,9 @@ const QUOTE_CONFIG = {
       allowsDripstop: false,
       finishes: [
         { id: "box-05", name: "0.5mm", pricePerMetre: 7.1, allowsDripstop: false },
-        { id: "box-05-nd", name: "0.5mm Non Drip", pricePerMetre: 10.38, allowsDripstop: false },
-        { id: "box-06", name: "0.6mm", pricePerMetre: 10.38, allowsDripstop: false },
-        { id: "box-06-nd", name: "0.6mm Non Drip", pricePerMetre: 12.57, allowsDripstop: false },
+        { id: "box-05-nd", name: "0.5mm Non Drip", pricePerMetre: 10.383333, allowsDripstop: false },
+        { id: "box-06", name: "0.6mm", pricePerMetre: 10.383333, allowsDripstop: false },
+        { id: "box-06-nd", name: "0.6mm Non Drip", pricePerMetre: 12.566667, allowsDripstop: false },
       ],
       colours: [
         { id: "box-black", name: "Black", hex: "#1a2126", image: "" },
@@ -200,7 +200,7 @@ const QUOTE_CONFIG = {
     {
       id: "profile-poly",
       name: "3mm polycarbonate, 688mm wide",
-      coverWidthM: 0.688,
+      coverWidthM: 0.688, // CHECK: shop lists "688 mm wide" (overall width?). Confirm the real cover width.
       cutToSize: false,
       stockLengthsM: [4, 5, 5.8],
       image: "images/profiles/flat.svg?v=3",
@@ -223,10 +223,11 @@ const QUOTE_CONFIG = {
       coverWidthM: 0.95,
       cutToSize: false,
       stockLengthsM: [2.8, 4, 5, 5.8],
+      outOfStockLengthsM: [4, 5, 5.8], // only 2.8 m in stock on bcmckeown.net (7 Oct 2026)
       image: "images/profiles/corrugated.svg?v=3",
       allowsDripstop: false,
       finishes: [
-        { id: "corr-clear", name: "1.2mm", pricePerMetre: 10.4167, allowsDripstop: false },
+        { id: "corr-clear", name: "1.2mm", pricePerMetre: 10.416667, allowsDripstop: false },
       ],
       colours: [
         { id: "corr-clear-colour", name: "Clear", hex: "#d4ebf5", image: "" },
@@ -245,7 +246,7 @@ const QUOTE_CONFIG = {
       image: "images/profiles/corrugated-bronze.svg?v=3",
       allowsDripstop: false,
       finishes: [
-        { id: "corr-bronze", name: "1.2mm", pricePerMetre: 10.4167, allowsDripstop: false },
+        { id: "corr-bronze", name: "1.2mm", pricePerMetre: 10.416667, allowsDripstop: false },
       ],
       colours: [
         { id: "corr-bronze-colour", name: "Bronze", hex: "#6b4f32", image: "" },
@@ -264,7 +265,7 @@ const QUOTE_CONFIG = {
       image: "images/profiles/frp.svg?v=3",
       allowsDripstop: false,
       finishes: [
-        { id: "frp-m", name: "Per metre", pricePerMetre: 8.3333, allowsDripstop: false },
+        { id: "frp-m", name: "Per metre", pricePerMetre: 8.333333, allowsDripstop: false },
       ],
       colours: [
         { id: "frp-clear", name: "Clear", hex: "#d4ebf5", image: "" },
@@ -280,10 +281,11 @@ const QUOTE_CONFIG = {
       coverWidthM: 1,
       cutToSize: false,
       stockLengthsM: [4],
+      outOfStock: true, // out of stock on bcmckeown.net (7 Oct 2026)
       image: "images/profiles/clear-box.svg?v=3",
       allowsDripstop: false,
       finishes: [
-        { id: "clear-box-4", name: "1.5mm, 4m sheets", pricePerMetre: 14.5833, allowsDripstop: false },
+        { id: "clear-box-4", name: "1.5mm, 4m sheets", pricePerMetre: 14.583333, allowsDripstop: false },
       ],
       colours: [
         { id: "clear-box-colour", name: "Clear", hex: "#d4ebf5", image: "" },
@@ -330,10 +332,10 @@ const QUOTE_CONFIG = {
       image: "",
       profileIds: [],
       variants: [
-        { id: "corr-28", name: "2.8m", price: 29.17, packSize: 1 },
-        { id: "corr-40", name: "4m", price: 41.67, packSize: 1 },
-        { id: "corr-50", name: "5m", price: 52.08, packSize: 1 },
-        { id: "corr-58", name: "5.8m", price: 60.42, packSize: 1 },
+        { id: "corr-28", name: "2.8m", price: 29.166667, packSize: 1 },
+        { id: "corr-40", name: "4m", price: 41.666667, packSize: 1 },
+        { id: "corr-50", name: "5m", price: 52.083333, packSize: 1 },
+        { id: "corr-58", name: "5.8m", price: 60.416667, packSize: 1 },
       ],
     },
   ],

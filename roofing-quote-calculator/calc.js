@@ -6,6 +6,14 @@ function round2(n) {
   return Math.round((v + Number.EPSILON) * 100) / 100;
 }
 
+// Keeps 4 decimals for unit prices that are stored ex-VAT (e.g. 10.3833), so
+// they display and export cleanly. Totals are always worked from the exact rate.
+function round4(n) {
+  const v = Number(n);
+  if (!Number.isFinite(v)) return 0;
+  return Math.round((v + Number.EPSILON) * 10000) / 10000;
+}
+
 function trimNum(n) {
   return round2(n).toFixed(2).replace(/\.00$/, "").replace(/(\.\d)0$/, "$1");
 }
@@ -181,7 +189,7 @@ function priceCladding(q, job, product, option, price, site, lengthM, coverM, wa
       detail: detail + note,
       qty,
       qtyLabel: `${qty} board${qty === 1 ? "" : "s"}`,
-      unitPrice: price,
+      unitPrice: round4(price),
       total: round2(price * qty),
       layout: null,
     }],
@@ -214,7 +222,8 @@ function priceSizedJob(q, cfg, money) {
   const colourPick = colours.find((item) => item.id === q.jobVariantId) || (colours.length ? colours[0] : null);
   const variant = colourPick ? null : (variants.find((item) => item.id === q.jobVariantId) || variants[0] || null);
   const chosen = colourPick || variant;
-  const price = round2(chosen && chosen.price != null && chosen.price !== "" ? Number(chosen.price) : Number(product.price));
+  const rawPrice = chosen && chosen.price != null && chosen.price !== "" ? Number(chosen.price) : Number(product.price);
+  const price = Number.isFinite(rawPrice) ? rawPrice : 0;
   const option = chosen ? chosen.name : "";
   const unit = product.priceUnit || (job.mode === "linear" ? "m" : "piece");
   const errors = [];
@@ -387,7 +396,7 @@ function priceSizedJob(q, cfg, money) {
     detail: detail + note,
     qty,
     qtyLabel,
-    unitPrice: price,
+    unitPrice: round4(price),
     total: round2(price * qty),
     layout,
   };
@@ -421,6 +430,10 @@ function calculate(quote, config) {
   const stock = profile && Array.isArray(profile.stockLengthsM) && profile.stockLengthsM.length
     ? profile.stockLengthsM
     : (Array.isArray(rules.stockLengthsM) ? rules.stockLengthsM : []);
+  const ownStock = !!(profile && Array.isArray(profile.stockLengthsM) && profile.stockLengthsM.length);
+  const outLengths = profile && Array.isArray(profile.outOfStockLengthsM) ? profile.outOfStockLengthsM.map(Number) : [];
+  const availableStock = stock.filter((len) => !outLengths.some((o) => Math.abs(o - Number(len)) < 1e-9));
+  const shopPhone = company.phone ? ` Call ${company.phone}.` : "";
   const overlap = setting(rules.flashingOverlapM, 0.15);
   const vergeRuns = setting(rules.vergeRunsPerSlope, 2);
   const fixingsPerM2 = setting(rules.fixingsPerM2, 4);
@@ -488,6 +501,10 @@ function calculate(quote, config) {
     else if (!colour) errors.push({ step: "colour", message: "Select a colour." });
   }
 
+  if (profile && profile.outOfStock) {
+    warnings.push({ step: "profile", message: `${profile.name} is out of stock on bcmckeown.net at the moment.${shopPhone} Confirm before quoting.` });
+  }
+
   const slopes = [];
   function addSlope(id, label, eavesRaw, slopeRaw) {
     const eaves = val(eavesRaw);
@@ -495,7 +512,21 @@ function calculate(quote, config) {
     if (!(eaves > 0) || !(slope > 0)) return;
     const rounded = profile && profile.cutToSize
       ? { ordered: slope, special: false }
-      : roundUpToStock(slope, stock);
+      : roundUpToStock(slope, availableStock);
+    // A sheet that cannot be bought (too long, or the only long-enough size is out
+    // of stock) is blocked instead of being priced at a length that does not exist.
+    let blocked = false;
+    let blockReason = "";
+    if (profile && !profile.cutToSize && ownStock && rounded.special) {
+      const anySize = roundUpToStock(slope, stock);
+      const longestAll = Math.max(...stock.map(Number));
+      const longestIn = availableStock.length ? Math.max(...availableStock.map(Number)) : 0;
+      blocked = true;
+      blockReason = anySize.special
+        ? `${trimNum(slope)} m is longer than the longest sheet sold (${trimNum(longestAll)} m). Split the slope into two runs.${shopPhone}`
+        : `${trimNum(slope)} m needs the ${trimNum(anySize.ordered)} m sheet, which is out of stock${longestIn ? ` (longest in stock is ${trimNum(longestIn)} m)` : ""}.${shopPhone}`;
+      errors.push({ step: "measure", message: `${label}: ${blockReason}` });
+    }
     const sheets = profile && cover > 0 ? sheetCount(eaves, cover) : null;
     const lightSelected = profile && (profile.rooflights || []).some((item) => item.id === q.rooflightId);
     let rooflights = lightSelected ? Math.max(0, Math.round(Number((q.rooflightQty || {})[id]) || 0)) : 0;
@@ -507,13 +538,15 @@ function calculate(quote, config) {
       eaves,
       slope,
       ordered: rounded.ordered,
-      special: rounded.special,
+      special: rounded.special && !blocked,
+      blocked,
+      blockReason,
       cutToSize: !!(profile && profile.cutToSize),
       sheets,
       rooflights,
       metal,
     });
-    if (rounded.special) {
+    if (rounded.special && !blocked) {
       warnings.push({
         step: "measure",
         message: `${label} is longer than your longest stock size, so the quote uses ${trimNum(slope)} m.`,
@@ -568,7 +601,7 @@ function calculate(quote, config) {
   const dripstopAllowed = !!(profile && finish && profile.allowsDripstop !== false && finish.allowsDripstop !== false);
   let autoDripMetres = 0;
   slopes.forEach((slope) => {
-    if (slope.metal != null) autoDripMetres += slope.metal * slope.ordered;
+    if (slope.metal != null && !slope.blocked) autoDripMetres += slope.metal * slope.ordered;
   });
   const dripMetres = chosenNumber(autoDripMetres, (q.qtyAdjust || {}).dripstop);
 
@@ -578,8 +611,8 @@ function calculate(quote, config) {
       warnings.push({ step: "finish", message: "This finish has no price per metre, so the sheets are priced at 0." });
     }
     slopes.forEach((slope) => {
-      if (slope.sheets == null) return;
-      const rate = round2(perM * slope.ordered);
+      if (slope.sheets == null || slope.blocked) return;
+      const rate = perM * slope.ordered;
       if (slope.metal > 0) {
         const colourName = colour ? `, ${colour.name}` : "";
         lines.push({
@@ -589,14 +622,14 @@ function calculate(quote, config) {
           detail: `${slope.label}. ${slope.metal} metal sheet${slope.metal === 1 ? "" : "s"} at ${trimNum(slope.ordered)} m. Entered slope ${trimNum(slope.slope)} m. ${site(perM)} per metre.`,
           qty: slope.metal,
           qtyLabel: `${slope.metal} sheet${slope.metal === 1 ? "" : "s"}`,
-          unitPrice: rate,
+          unitPrice: round4(rate),
           total: round2(rate * slope.metal),
         });
       }
       if (slope.rooflights > 0 && q.rooflightId) {
         const light = (profile.rooflights || []).find((item) => item.id === q.rooflightId);
         if (light) {
-          const lightRate = round2((Number(light.pricePerMetre) || 0) * slope.ordered);
+          const lightRate = (Number(light.pricePerMetre) || 0) * slope.ordered;
           lines.push({
             id: `light-${slope.id}`,
             section: "Sheets",
@@ -604,7 +637,7 @@ function calculate(quote, config) {
             detail: `${slope.label}. Replaces ${slope.rooflights} metal sheet${slope.rooflights === 1 ? "" : "s"} at ${trimNum(slope.ordered)} m. ${site(Number(light.pricePerMetre) || 0)} per metre.`,
             qty: slope.rooflights,
             qtyLabel: `${slope.rooflights} sheet${slope.rooflights === 1 ? "" : "s"}`,
-            unitPrice: lightRate,
+            unitPrice: round4(lightRate),
             total: round2(lightRate * slope.rooflights),
           });
         }
@@ -725,6 +758,7 @@ function calculate(quote, config) {
       && (!profileFlags.enabled || !profileFlags.required || profileOk)
       && (!finishFlags.enabled || !finishFlags.required || finishOk)
       && (!colourFlags.enabled || !colourFlags.required || colourOk)
+      && !slopes.some((slope) => slope.blocked)
       && sized.errors.length === 0,
     jobOk: sized.ok,
     slopes,
@@ -752,6 +786,7 @@ if (typeof module !== "undefined" && module.exports) {
     piecesForRun,
     describePieces,
     round2,
+    round4,
     trimNum,
     val,
   };
