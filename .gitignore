@@ -42,6 +42,11 @@ videos/
 config/weather_config.json
 config/settings.json
 
+# Homelab secrets (never commit)
+homelab/secrets.md
+**/.env
+**/docker-compose.override.yml
+
 # Temporary files
 *.tmp
 *.temp 
