@@ -2,6 +2,8 @@
 
 A simple desktop application for Raspberry Pi that serves as the foundation for your JARVIS AI assistant.
 
+**IT career path (helpdesk year → networking):** plan, fault diary, and lab templates are in [`it-path/`](it-path/README.md). Homelab hardware notes: [joshuatmcauley/homelab](https://github.com/joshuatmcauley/homelab).
+
 ## Hardware Requirements
 - Raspberry Pi 5
 - Elecrow 7-inch display (optional)
