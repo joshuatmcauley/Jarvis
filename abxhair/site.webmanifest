@@ -1,0 +1,10 @@
+{
+  "name": "ABX Hair — Aleigha Bell",
+  "short_name": "ABX Hair",
+  "description": "Home-visit hairdressing in Saintfield, County Down.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#090807",
+  "theme_color": "#090807",
+  "lang": "en-GB"
+}
