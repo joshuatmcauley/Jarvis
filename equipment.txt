@@ -1,0 +1,14 @@
+=== VEHICLE INFORMATION ===
+
+Vehicle: 2015 Insignia
+Type: Personal Vehicle
+Status: Active - Planning Upgrades
+
+Upgrade Planning Document: INSIGNIA_UPGRADES.md
+
+=== JARVIS PROJECT HARDWARE ===
+
+Raspberry Pi 5
+Elecrow 7-inch display
+Pi Camera module 3
+Arduino ESP32
